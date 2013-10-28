@@ -7,7 +7,7 @@ from werkzeug.contrib.fixers import ProxyFix
 app.wsgi_app = ProxyFix(app.wsgi_app)
 
 users = {}
-with open('../OneDir2/accounts.txt') as accounts:
+with open('accounts.txt') as accounts:
     for line in accounts:
         data = line.strip().split(' ')
         users[data[0]] = data[1]
@@ -22,7 +22,7 @@ def test(arg):
 
 @app.route('/account/<username>/<password>')
 def create_account(username, password):
-    with open('../OneDir2/accounts.txt', 'a+b') as accounts:
+    with open('accounts.txt', 'a+b') as accounts:
         accounts.write(username + ' ' + password + "\n")
     users[username] = password #temporary until the server is restarted and user info is reloaded
     return 'Account Created.'
