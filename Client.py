@@ -1,5 +1,10 @@
 import urllib
+import sqlite3
+import getpass
 #comments lfdjsd;flksdjf
+con = sqlite3.connect(":memory:")
+c = con.cursor()
+c.execute("create table accounts (usr, password)")
 class Client:
 
     def __init__(self):
@@ -31,7 +36,22 @@ class Client:
             exit()
         elif username == 'create':
             usr = raw_input("New Username: ")
-            pw = raw_input("New Password: ")
+            command = "select * from accounts where usr = '%s'" % usr
+            c.execute(command)
+            value = c.fetchone()
+            while value != None:
+                print "The specified email address already exists in the database."
+                usr = raw_input("New Username: ")
+                command = "select * from accounts where usr = '%s'" % usr
+                c.execute(command)
+                value = c.fetchone()
+            pw = getpass.getpass("New Password: ")
+            confirm_pw = getpass.getpass("Confirm Password: ")
+            while password != confirm_pw:
+                print "Passwords do not match."
+                password = getpass.getpass("New password: ")
+                confirm = getpass.getpass("Confirm password: ")
+            c.execute("insert into accounts values (?, ?)", (usr, pw))
             urllib.urlopen(self.url+"/account/" + usr + "/" + pw)
             return 'created'
         return urllib.urlopen(self.url+"/login/" + username + "/" + password)
