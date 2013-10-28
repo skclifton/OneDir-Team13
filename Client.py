@@ -47,10 +47,10 @@ class Client:
                 value = c.fetchone()
             pw = getpass.getpass("New Password: ")
             confirm_pw = getpass.getpass("Confirm Password: ")
-            while password != confirm_pw:
+            while pw != confirm_pw:
                 print "Passwords do not match."
-                password = getpass.getpass("New password: ")
-                confirm = getpass.getpass("Confirm password: ")
+                pw = getpass.getpass("New password: ")
+                confirm_pw = getpass.getpass("Confirm password: ")
             c.execute("insert into accounts values (?, ?)", (usr, pw))
             urllib.urlopen(self.url+"/account/" + usr + "/" + pw)
             return 'created'
