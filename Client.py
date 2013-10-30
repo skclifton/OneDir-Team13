@@ -15,6 +15,8 @@ class Client:
         #self.url = 'http://192.168.1.255:5000' #home Ubuntu server URL
         self.logged_in = False
         self.lfm = None
+        self.username = ''
+        self.password = ''
         thread.start_new_thread(self.CLI, ())
         self.main_loop()
 

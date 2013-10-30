@@ -1,8 +1,10 @@
 from flask import Flask
 import sqlite3
 import os
-#commen
+
 app = Flask(__name__)
+path = os.environ['HOME']
+print path
 
 from werkzeug.contrib.fixers import ProxyFix
 app.wsgi_app = ProxyFix(app.wsgi_app)
@@ -31,9 +33,6 @@ def create_account(username, password):
     #pw = getpass.getpass("New Password: ")
     #confirm_pw = getpass.getpass("Confirm Password: ")
     c.execute("insert into accounts values (?, ?)", (username, password))
-    #with open('accounts.txt', 'a+b') as accounts:
-    #    accounts.write(username + ' ' + password + "\n")
-    #users[username] = password #temporary until the server is restarted and user info is reloaded
     return 'created'
 
 
@@ -42,10 +41,10 @@ def upload(username, password, data, file):
     if login(username, password) != "success":
         return 'failure'
     else:
-        if file not in os.listdir("onedir"):
-            with open("onedir/"+file, 'w') as file:
+        if file not in os.listdir(path + "onedir"):
+            with open(path + "onedir/"+file, 'w') as file:
                 pass
-        upload = open("onedir/"+file, 'ab')
+        upload = open(path + "onedir/"+file, 'ab')
         #print "Writing line: " + data
         data = data.split()
         for data in data:
@@ -67,7 +66,8 @@ def login(username, password):
         return "success"
 
 if __name__ == '__main__':
-    if 'onedir' not in os.listdir(os.getcwd()):
-        os.mkdir("onedir")
+    if 'onedir' not in path:#os.listdir(os.getcwd()):
+        os.mkdir(path + "/onedir")
     #app.run()
     app.run(host = '0.0.0.0', debug = True)
+    app.path = path + "/onedir"
