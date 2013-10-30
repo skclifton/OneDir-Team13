@@ -7,7 +7,7 @@ app = Flask(__name__)
 from werkzeug.contrib.fixers import ProxyFix
 app.wsgi_app = ProxyFix(app.wsgi_app)
 
-con = sqlite3.connect(":memory:")
+con = sqlite3.connect(":memory:", check_same_thread=False)
 c = con.cursor()
 c.execute("create table accounts (usr, password)")
 
@@ -37,9 +37,9 @@ def create_account(username, password):
     return 'created'
 
 
-@app.route("/upload/<username>/<password>/<file>/<data>")
-def upload(username, password, file, data):
-    if login(username, password) is False:
+@app.route("/upload/<username>/<password>/<data>/<path:file>")
+def upload(username, password, data, file):
+    if login(username, password) != "success":
         return 'failure'
     else:
         if file not in os.listdir("onedir"):
@@ -56,9 +56,11 @@ def upload(username, password, file, data):
 
 @app.route('/login/<username>/<password>')
 def login(username, password):
-    command = "select * from accounts where usr = '%s' and pw = '%s'" % username, password
+    command = "select * from accounts where usr = '%s' AND password = '%s'" %(username, password)
     c.execute(command)
+    #c.execute("select * from accounts where usr = ? AND password = ?" (username, password))
     value = c.fetchone()
+    print value
     if value is None:
         return "failure"
     else:
@@ -68,4 +70,4 @@ if __name__ == '__main__':
     if 'onedir' not in os.listdir(os.getcwd()):
         os.mkdir("onedir")
     #app.run()
-    app.run(host = '0.0.0.0', debug = False)
+    app.run(host = '0.0.0.0', debug = True)

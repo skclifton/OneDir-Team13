@@ -15,6 +15,18 @@ class LocalFileMonitor():
         self.username = username
         self.password = password
 
+        thread_list = []
+        wm = WatchManager()
+        handler = EventHandler()
+        self.notifier = Notifier(wm, handler)
+        directory = '/home/' + getpass.getuser() + '/onedir'
+        wm.add_watch(directory, ALL_EVENTS, rec=True, auto_add=True)
+
+    def update(self):
+        self.notifier.process_events()
+        if self.notifier.check_events():
+            self.notifier.read_events()
+
 
 class EventHandler(ProcessEvent):
     def process_IN_CREATE(self, event):
@@ -53,22 +65,16 @@ class EventHandler(ProcessEvent):
         #add pathname to end of list if not already in list
 
 
-# def uploadFile(self, filePath):
-#     with open(filePath, 'rb') as upload:
-#         print "Uploading", filePath
-#         urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+"/"+filePath+"/"+"do not remove this")
-#         for letter in upload.readlines():
-#             line = []
-#             for x in letter:
-#                 line.append(str(ord(x)))
-#             urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+"/"+filePath+"/"+' '.join(line))
-#     print "Done uploading", filePath
+    def uploadFile(self, filePath):
+        with open(filePath, 'rb') as upload:
+            print "Uploading", filePath
+            urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+"/"+filePath+"/"+"do not remove this")
+            for letter in upload.readlines():
+                line = []
+                for x in letter:
+                    line.append(str(ord(x)))
+                urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+"/"+filePath+"/"+' '.join(line))
+        print "Done uploading", filePath
 
-thread_list = []
-wm = WatchManager()
-handler = EventHandler()
-notifier = Notifier(wm, handler)
-directory = '/home/' + getpass.getuser() + '/onedir'
-wm.add_watch(directory, ALL_EVENTS, rec=True, auto_add=True)
+#notifier.loop()
 
-notifier.loop()

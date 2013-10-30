@@ -1,6 +1,9 @@
 import urllib
 import sqlite3
 import getpass
+import LocalFileMonitor
+import time
+import thread
 
 class Client:
 
@@ -10,17 +13,28 @@ class Client:
         #self.url = 'http://172.25.87.129:5000' #o'hill wifi
         self.url = 'http://10.0.2.15:5000'
         #self.url = 'http://192.168.1.255:5000' #home Ubuntu server URL
+        self.logged_in = False
+        self.lfm = None
+        thread.start_new_thread(self.CLI, ())
+        self.main_loop()
 
+    def main_loop(self):
+        while True:
+            time.sleep(1)
+
+    def CLI(self):
         command = ''
-
         while command != 'exit':
+
+            if self.logged_in:
+                thread.start_new_thread(self.lfm.update, ())#self.lfm.update()
+
             command = raw_input('CMD: ').split()
-            if command[0] == 'upload':
-                self.upload(command[1])
             if command[0] == 'create':
+                #thread.start_new_thread(self.create_account(), ())
                 self.create_account()
             if command[0] == 'login':
-                if self.login():
+                if self.login(): #thread.start_new_thread(self.login(), ()):
                     print "Successfully Logged in."
                 else:
                     print "Incorrect username or password."
@@ -36,7 +50,11 @@ class Client:
         if log == 'success':
             self.username = username
             self.password = password
+
+            self.lfm = LocalFileMonitor(username, password)
+
             return True
+        print log
         return False
 
 
@@ -57,19 +75,6 @@ class Client:
             self.create_account()
         else:
             print "Account Created."
-
-
-    def upload(self, file):
-        with open(file, 'rb') as upload:
-            print "Uploading", file
-            urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+"/"+file+"/"+"do not remove this")
-            for letter in upload.readlines():
-                line = []
-                for x in letter:
-                    line.append(str(ord(x)))
-                #print letter
-                urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+"/"+file+"/"+' '.join(line))
-        print "Done uploading", file
 
 
 if __name__ == "__main__":
