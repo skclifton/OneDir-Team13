@@ -17,8 +17,8 @@ class LocalFileMonitor():
 
         thread_list = []
         wm = WatchManager()
-        handler = EventHandler()
-        self.notifier = Notifier(wm, handler)
+        self.handler = EventHandler()
+        self.notifier = Notifier(wm, self.handler)
         directory = '/home/' + getpass.getuser() + '/onedir'
         wm.add_watch(directory, ALL_EVENTS, rec=True, auto_add=True)
 
@@ -27,10 +27,15 @@ class LocalFileMonitor():
         if self.notifier.check_events():
             self.notifier.read_events()
 
+        for filepath in self.handler.files:
+            uploadFile(filepath)
+
 
 class EventHandler(ProcessEvent):
+    files = []
     def process_IN_CREATE(self, event):
-        # if not "~lock" in event.pathname:
+        self.files.append(event.pathname)
+        if not "~lock" in event.pathname:
             print "creating", event.pathname
         # if directory
 
@@ -51,6 +56,7 @@ class EventHandler(ProcessEvent):
             print "opening", event.pathname
 
     def process_IN_CLOSE_WRITE(self, event):
+        self.files.append(event.pathname)
         if not "~lock" in event.pathname:
             print "closing", event.pathname
             # filePath = event.pathname
@@ -60,21 +66,21 @@ class EventHandler(ProcessEvent):
             #     thread.start()
 
     def process_IN_MODIFY(self, event):
+        self.files.append(event.pathname)
         if not "~lock" in event.pathname:
             print "modified", event.pathname
         #add pathname to end of list if not already in list
 
 
-    def uploadFile(self, filePath):
-        with open(filePath, 'rb') as upload:
-            print "Uploading", filePath
-            urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+"/"+filePath+"/"+"do not remove this")
-            for letter in upload.readlines():
-                line = []
-                for x in letter:
-                    line.append(str(ord(x)))
-                urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+"/"+filePath+"/"+' '.join(line))
-        print "Done uploading", filePath
+def uploadFile(self, filePath):
+    with open(filePath, 'rb') as upload:
+        print "Uploading", filePath
+        urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+"/"+filePath+"/"+"do not remove this")
+        for letter in upload.readlines():
+            line = []
+            for x in letter:
+                line.append(str(ord(x)))
+            urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+"/"+filePath+"/"+' '.join(line))
+    print "Done uploading", filePath
 
-#notifier.loop()
 

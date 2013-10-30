@@ -15,6 +15,7 @@ class Client:
         #self.url = 'http://192.168.1.255:5000' #home Ubuntu server URL
         self.logged_in = False
         self.lfm = None
+        self.sync = True
         self.username = ''
         self.password = ''
         thread.start_new_thread(self.CLI, ())
@@ -23,14 +24,12 @@ class Client:
     def main_loop(self):
         while True:
             time.sleep(1)
+            if self.logged_in and self.sync:
+                thread.start_new_thread(self.lfm.update, ())#self.lfm.update()
 
     def CLI(self):
         command = ''
         while command != 'exit':
-
-            if self.logged_in:
-                thread.start_new_thread(self.lfm.update, ())#self.lfm.update()
-
             command = raw_input('CMD: ').split()
             if command[0] == 'create':
                 #thread.start_new_thread(self.create_account(), ())
@@ -40,6 +39,10 @@ class Client:
                     print "Successfully Logged in."
                 else:
                     print "Incorrect username or password."
+            if command[0] == 'sync':
+                self.sync = True
+            if command[0] == 'unsync':
+                self.sync = False
             if command[0] == 'exit':
                 exit()
 

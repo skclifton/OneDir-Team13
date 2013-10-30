@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client.py" afterPath="$PROJECT_DIR$/Client.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server.py" afterPath="$PROJECT_DIR$/Server.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LocalFileMonitor.py" afterPath="$PROJECT_DIR$/LocalFileMonitor.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="OneDir-Team13.iws" />
@@ -27,19 +27,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LocalFileMonitor.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="LocalFileMonitor.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/LocalFileMonitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="37" selection-start="490" selection-end="490" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1230">
-              <folding />
+            <state line="67" column="8" selection-start="2049" selection-end="2049" vertical-scroll-proportion="0.29933482" vertical-offset="870" max-vertical-offset="1380">
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Client.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Client.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="30" selection-start="2329" selection-end="2329" vertical-scroll-proportion="0.60088694" vertical-offset="869" max-vertical-offset="1320">
+            <state line="14" column="33" selection-start="391" selection-end="391" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1365">
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -77,9 +79,9 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/LocalFileMonitor.py" />
         <option value="$PROJECT_DIR$/Server.py" />
         <option value="$PROJECT_DIR$/Client.py" />
+        <option value="$PROJECT_DIR$/LocalFileMonitor.py" />
       </list>
     </option>
   </component>
@@ -376,7 +378,11 @@
       <created>1383159025920</created>
       <updated>1383159025920</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Minor path changes">
+      <created>1383167861135</created>
+      <updated>1383167861135</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers>
       <GitHub shared="false" url="github.com">
         <commitMessageFormat>{id} {summary}</commitMessageFormat>
@@ -431,7 +437,8 @@
     <MESSAGE value="Refactored code." />
     <MESSAGE value="Refactored login, account creation, and CLI" />
     <MESSAGE value="implemented threading and fully connected the database system" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented threading and fully connected the database system" />
+    <MESSAGE value="Minor path changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor path changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -520,13 +527,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LocalFileMonitor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="37" selection-start="490" selection-end="490" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1230">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="0" selection-start="49" selection-end="49" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1185">
@@ -538,9 +538,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="30" selection-start="2329" selection-end="2329" vertical-scroll-proportion="0.60088694" vertical-offset="869" max-vertical-offset="1320">
+        <state line="14" column="33" selection-start="391" selection-end="391" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1365">
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LocalFileMonitor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="8" selection-start="2049" selection-end="2049" vertical-scroll-proportion="0.29933482" vertical-offset="870" max-vertical-offset="1380">
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
