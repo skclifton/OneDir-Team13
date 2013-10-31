@@ -28,14 +28,14 @@ class LocalFileMonitor():
         if self.notifier.check_events():
             self.notifier.read_events()
 
-        for filepath in self.handler.files:
-            uploadFile(filepath)
+        while self.handler.files:
+            uploadFile(self.handler.files.pop())
 
 
 class EventHandler(ProcessEvent):
-    files = []
+    files = set()
     def process_IN_CREATE(self, event):
-        self.files.append(event.pathname)
+        self.files.add(event.pathname)
         if not "~lock" in event.pathname:
             print "creating", event.pathname
         # if directory
@@ -57,7 +57,7 @@ class EventHandler(ProcessEvent):
             print "opening", event.pathname
 
     def process_IN_CLOSE_WRITE(self, event):
-        self.files.append(event.pathname)
+        self.files.add(event.pathname)
         if not "~lock" in event.pathname:
             print "closing", event.pathname
             # filePath = event.pathname
@@ -67,7 +67,7 @@ class EventHandler(ProcessEvent):
             #     thread.start()
 
     def process_IN_MODIFY(self, event):
-        self.files.append(event.pathname)
+        self.files.add(event.pathname)
         if not "~lock" in event.pathname:
             print "modified", event.pathname
         #add pathname to end of list if not already in list
