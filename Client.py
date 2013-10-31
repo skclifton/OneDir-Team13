@@ -29,8 +29,6 @@ class Client:
     def main_loop(self):
         while True:
             time.sleep(1)
-            if self.logged_in and self.sync:
-                thread.start_new_thread(self.lfm.update, ())#self.lfm.update()
 
     def CLI(self):
         command = ''
@@ -51,9 +49,6 @@ class Client:
             if command[0] == 'exit':
                 sys.exit()
 
-
-
-
     def login(self):
         username = raw_input("Username: ")
         password = raw_input("Password: ")
@@ -67,7 +62,6 @@ class Client:
             return True
         print log
         return False
-
 
     def create_account(self):
         usr = raw_input("Username: ")
@@ -86,7 +80,6 @@ class Client:
             self.create_account()
         else:
             print "Account Created."
-
 
 if __name__ == "__main__":
     if 'onedir' not in os.listdir(os.environ['HOME']):
