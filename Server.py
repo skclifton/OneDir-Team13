@@ -27,6 +27,11 @@ def create_account(username, password):
     return 'created'
 
 
+@app.route("/delete/<path:file>")
+def delete(file):
+    if file in os.listdir(path+file):
+        os.remove(file)
+
 @app.route("/upload/<username>/<password>/<data>/<path:file>")
 def upload(username, password, data, file):
     if login(username, password) != "success":

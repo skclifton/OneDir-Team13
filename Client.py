@@ -65,7 +65,7 @@ class Client:
             self.lfm = LocalFileMonitor.LocalFileMonitor(username, password)
 
             return True
-        print log
+
         return False
 
 
@@ -82,7 +82,6 @@ class Client:
         response = urllib.urlopen(self.url+"/account/"+usr+"/"+pw)
         if response.read() != 'created':
             print "Account Exists"
-            print response.read()
             self.create_account()
         else:
             print "Account Created."
