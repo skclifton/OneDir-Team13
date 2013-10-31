@@ -23,6 +23,7 @@ class LocalFileMonitor():
         self.notifier = Notifier(wm, self.handler)
         wm.add_watch(path, ALL_EVENTS, rec=True, auto_add=True)
 
+    '''
     def update(self):
         print "Updating LFM"
         self.notifier.process_events()
@@ -32,7 +33,7 @@ class LocalFileMonitor():
         print self.handler.files + " test"
         while self.handler.files:
             uploadFile(self.handler.files.pop())
-
+    '''
 
 class EventHandler(ProcessEvent):
     files = set()

@@ -30,7 +30,7 @@ class Client:
         while True:
             time.sleep(1)
             if self.logged_in and self.sync:
-                thread.start_new_thread(self.lfm.update, ())#self.lfm.update()
+                pass
 
     def CLI(self):
         command = ''

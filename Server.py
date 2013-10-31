@@ -12,14 +12,6 @@ con = sqlite3.connect(":memory:", check_same_thread=False)
 c = con.cursor()
 c.execute("create table accounts (usr, password)")
 
-@app.route('/')
-def hello():
-    return "hello world"
-
-@app.route('/test/<arg>')
-def test(arg):
-    return arg
-
 @app.route('/account/<username>/<password>')
 def create_account(username, password):
     command = "select * from accounts where usr = '%s'" % username
@@ -68,4 +60,4 @@ if __name__ == '__main__':
     if 'onedir' not in os.listdir(os.environ['HOME']):
         os.mkdir(path)
     #app.run()
-    app.run(host = '0.0.0.0', debug = True)
+    app.run(host = '0.0.0.0', debug = False)
