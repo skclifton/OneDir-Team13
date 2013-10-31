@@ -55,7 +55,7 @@ def login(username, password):
     c.execute(command)
     #c.execute("select * from accounts where usr = ? AND password = ?" (username, password))
     value = c.fetchone()
-    print value
+    #print value
     if value is None:
         return "failure"
     else:
