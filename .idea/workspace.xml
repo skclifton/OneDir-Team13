@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client.py" afterPath="$PROJECT_DIR$/Client.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LocalFileMonitor.py" afterPath="$PROJECT_DIR$/LocalFileMonitor.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -26,10 +27,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LocalFileMonitor.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="LocalFileMonitor.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LocalFileMonitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="15" selection-start="363" selection-end="363" vertical-scroll-proportion="0.5321508" vertical-offset="0" max-vertical-offset="1395">
+            <state line="33" column="48" selection-start="919" selection-end="919" vertical-scroll-proportion="0.0" vertical-offset="149" max-vertical-offset="1425">
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -40,7 +41,7 @@
       <file leaf-file-name="Client.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="88" column="14" selection-start="2650" selection-end="2656" vertical-scroll-proportion="-8.735294" vertical-offset="1023" max-vertical-offset="1440">
+            <state line="30" column="13" selection-start="778" selection-end="778" vertical-scroll-proportion="-1.3235294" vertical-offset="405" max-vertical-offset="1485">
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -48,10 +49,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Server.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Server.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="14" selection-start="1919" selection-end="1925" vertical-scroll-proportion="-7.852941" vertical-offset="738" max-vertical-offset="1155">
+            <state line="62" column="24" selection-start="1847" selection-end="1847" vertical-scroll-proportion="0.46043167" vertical-offset="738" max-vertical-offset="1155">
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -79,8 +80,8 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/Server.py" />
-        <option value="$PROJECT_DIR$/Client.py" />
         <option value="$PROJECT_DIR$/LocalFileMonitor.py" />
+        <option value="$PROJECT_DIR$/Client.py" />
       </list>
     </option>
   </component>
@@ -194,7 +195,9 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Client.py" />
       <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
       <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
@@ -389,7 +392,11 @@
       <created>1383179294530</created>
       <updated>1383179294530</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="working on auto-sync">
+      <created>1383179754221</created>
+      <updated>1383179754221</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers>
       <GitHub shared="false" url="github.com">
         <commitMessageFormat>{id} {summary}</commitMessageFormat>
@@ -416,7 +423,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2496361" sideWeight="0.6712329" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26137134" sideWeight="0.6722689" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39915967" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3277311" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -447,7 +454,8 @@
     <MESSAGE value="Minor path changes" />
     <MESSAGE value="adding automatic file syncing" />
     <MESSAGE value="making universal file path and directory creation" />
-    <option name="LAST_COMMIT_MESSAGE" value="making universal file path and directory creation" />
+    <MESSAGE value="working on auto-sync" />
+    <option name="LAST_COMMIT_MESSAGE" value="working on auto-sync" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -536,9 +544,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server.py">
+    <entry file="file://$PROJECT_DIR$/LocalFileMonitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="14" selection-start="1919" selection-end="1925" vertical-scroll-proportion="-7.852941" vertical-offset="738" max-vertical-offset="1155">
+        <state line="33" column="48" selection-start="919" selection-end="919" vertical-scroll-proportion="0.0" vertical-offset="149" max-vertical-offset="1425">
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
@@ -547,16 +555,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="14" selection-start="2650" selection-end="2656" vertical-scroll-proportion="-8.735294" vertical-offset="1023" max-vertical-offset="1440">
+        <state line="30" column="13" selection-start="778" selection-end="778" vertical-scroll-proportion="-1.3235294" vertical-offset="405" max-vertical-offset="1485">
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LocalFileMonitor.py">
+    <entry file="file://$PROJECT_DIR$/Server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="15" selection-start="363" selection-end="363" vertical-scroll-proportion="0.5321508" vertical-offset="0" max-vertical-offset="1395">
+        <state line="62" column="24" selection-start="1847" selection-end="1847" vertical-scroll-proportion="0.46043167" vertical-offset="738" max-vertical-offset="1155">
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>

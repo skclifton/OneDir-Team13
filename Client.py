@@ -5,6 +5,8 @@ import LocalFileMonitor
 import time
 import thread
 import os
+import sys
+from pyinotify import *
 
 path = os.environ['HOME'] + "/onedir"
 
@@ -38,7 +40,7 @@ class Client:
                 #thread.start_new_thread(self.create_account(), ())
                 self.create_account()
             if command[0] == 'login':
-                if self.login(): #thread.start_new_thread(self.login(), ()):
+                if self.login(): #thread.start_new_thread(self.login(), ())
                     print "Successfully Logged in."
                 else:
                     print "Incorrect username or password."
@@ -47,7 +49,8 @@ class Client:
             if command[0] == 'unsync':
                 self.sync = False
             if command[0] == 'exit':
-                exit()
+                sys.exit()
+
 
 
 
@@ -58,8 +61,8 @@ class Client:
         if log == 'success':
             self.username = username
             self.password = password
-
-            self.lfm = LocalFileMonitor(username, password)
+            self.logged_in = True
+            self.lfm = LocalFileMonitor.LocalFileMonitor(username, password)
 
             return True
         print log
