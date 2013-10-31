@@ -37,10 +37,10 @@ def upload(username, password, data, file):
     if login(username, password) != "success":
         return 'failure'
     else:
-        if file not in os.listdir(path):
-            with open(path + file, 'w') as file:
+        if file not in os.listdir(path): #needs to check if it's in a subfolder too
+            with open(file, 'w') as file:
                 pass
-        upload = open(path + file, 'ab')
+        upload = open(file, 'ab')
         #print "Writing line: " + data
         data = data.split()
         for data in data:
