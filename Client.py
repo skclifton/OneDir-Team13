@@ -53,7 +53,7 @@ class Client:
             self.username = username
             self.password = password
 
-            self.lfm = LocalFileMonitor(username, password)
+            self.lfm = LocalFileMonitor.LocalFileMonitor(username, password)
 
             return True
 

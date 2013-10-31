@@ -2,6 +2,7 @@ from pyinotify import *
 import getpass
 import urllib
 import Queue
+import thread
 import threading
 
 __author__ = 'sarah'
@@ -20,7 +21,8 @@ class LocalFileMonitor():
         notifier = ThreadedNotifier(wm, handler)
         directory = '/home/' + getpass.getuser() + '/onedir'
         wm.add_watch(directory, ALL_EVENTS, rec=True, auto_add=True)
-        notifier.start()
+        #notifier.start()
+        thread.start_new_thread(notifier.loop, ())
 
 
 class EventHandler(ProcessEvent):
