@@ -1,7 +1,6 @@
 from pyinotify import *
 import getpass
 import urllib
-import os
 import Queue
 import threading
 
@@ -19,8 +18,8 @@ class LocalFileMonitor():
         wm = WatchManager()
         handler = EventHandler()
         notifier = ThreadedNotifier(wm, handler)
-        path = os.environ['HOME'] + '/onedir'
-        wm.add_watch(path, ALL_EVENTS, rec=True, auto_add=True)
+        directory = '/home/' + getpass.getuser() + '/onedir'
+        wm.add_watch(directory, ALL_EVENTS, rec=True, auto_add=True)
         notifier.start()
 
 
@@ -33,6 +32,10 @@ class EventHandler(ProcessEvent):
         if not "~lock" in event.pathname:
             urllib.urlopen(self.url + "/delete/" + event.pathname)
 
+    def process_IN_ATTRIB(self, event):
+        if not "~lock" in event.pathname:
+            print "changing metadata for", event.pathname
+
     def process_IN_CLOSE_WRITE(self, event):
         if not "~lock" in event.pathname:
             uploadFile(event.pathname)
@@ -41,13 +44,10 @@ class EventHandler(ProcessEvent):
 def uploadFile(self, filePath):
     with open(filePath, 'rb') as upload:
         print "Uploading", filePath
-        urllib.urlopen(self.url + "/upload/" + self.username + "/"+self.password + "/" + "do not remove this" + "/" +
-                       filePath)
+        urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+"/"+filePath+"/"+"do not remove this")
         for letter in upload.readlines():
             line = []
             for x in letter:
                 line.append(str(ord(x)))
-            urllib.urlopen(self.url + "/upload/" + self.username + "/" + self.password + "/" + ' '.join(line) + "/" +
-                           filePath)
+            urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+"/"+filePath+"/"+' '.join(line))
     print "Done uploading", filePath
-
