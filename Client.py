@@ -4,6 +4,9 @@ import getpass
 import LocalFileMonitor
 import time
 import thread
+import os
+
+path = os.environ['HOME'] + "/onedir"
 
 class Client:
 
@@ -83,4 +86,6 @@ class Client:
 
 
 if __name__ == "__main__":
+    if 'onedir' not in os.listdir(os.environ['HOME']):
+        os.mkdir(path)
     Client()

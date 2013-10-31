@@ -3,8 +3,7 @@ import sqlite3
 import os
 
 app = Flask(__name__)
-path = os.environ['HOME']
-print path
+path = os.environ['HOME'] + "/onedir"
 
 from werkzeug.contrib.fixers import ProxyFix
 app.wsgi_app = ProxyFix(app.wsgi_app)
@@ -27,7 +26,7 @@ def create_account(username, password):
     c.execute(command)
     value = c.fetchone()
 
-    if value != None:
+    if not value is None:
         return 'exists' #"The specified email address already exists in the database."
 
     #pw = getpass.getpass("New Password: ")
@@ -41,10 +40,10 @@ def upload(username, password, data, file):
     if login(username, password) != "success":
         return 'failure'
     else:
-        if file not in os.listdir(path + "onedir"):
-            with open(path + "onedir/"+file, 'w') as file:
+        if file not in os.listdir(path):
+            with open(path + file, 'w') as file:
                 pass
-        upload = open(path + "onedir/"+file, 'ab')
+        upload = open(path + file, 'ab')
         #print "Writing line: " + data
         data = data.split()
         for data in data:
@@ -66,8 +65,7 @@ def login(username, password):
         return "success"
 
 if __name__ == '__main__':
-    if 'onedir' not in path:#os.listdir(os.getcwd()):
-        os.mkdir(path + "/onedir")
+    if 'onedir' not in os.listdir(os.environ['HOME']):
+        os.mkdir(path)
     #app.run()
     app.run(host = '0.0.0.0', debug = True)
-    app.path = path + "/onedir"

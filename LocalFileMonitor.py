@@ -1,6 +1,7 @@
 from pyinotify import *
 import getpass
 import urllib
+import os
 import Queue
 import threading
 
@@ -9,6 +10,7 @@ __author__ = 'sarah'
 #Local File monitor class with a constructor and fields that hold username and password
 #url.self = http://172.25.208.201
 
+path = os.environ['HOME'] + '/onedir'
 
 class LocalFileMonitor():
     def __init__(self, username, password):
@@ -19,8 +21,7 @@ class LocalFileMonitor():
         wm = WatchManager()
         self.handler = EventHandler()
         self.notifier = Notifier(wm, self.handler)
-        directory = '/home/' + getpass.getuser() + '/onedir'
-        wm.add_watch(directory, ALL_EVENTS, rec=True, auto_add=True)
+        wm.add_watch(path, ALL_EVENTS, rec=True, auto_add=True)
 
     def update(self):
         self.notifier.process_events()
@@ -75,12 +76,12 @@ class EventHandler(ProcessEvent):
 def uploadFile(self, filePath):
     with open(filePath, 'rb') as upload:
         print "Uploading", filePath
-        urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+"/"+filePath+"/"+"do not remove this")
+        urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+"/" + "do not remove this" + "/" + filePath)
         for letter in upload.readlines():
             line = []
             for x in letter:
                 line.append(str(ord(x)))
-            urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+"/"+filePath+"/"+' '.join(line))
+            urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+"/" + ' '.join(line) + "/" + filePath)
     print "Done uploading", filePath
 
 
