@@ -6,21 +6,14 @@ import threading
 
 __author__ = 'sarah'
 
-#Local File monitor class with a constructor and fields that hold username and password
-#url.self = http://172.25.208.201
-
+url = 'http://172.25.208.149:5000'
+username = ''
+password = ''
 
 class LocalFileMonitor():
-    def __init__(self, username, password):
-        self.username = username
-        self.password = password
-
-        wm = WatchManager()
-        handler = EventHandler()
-        notifier = ThreadedNotifier(wm, handler)
-        directory = '/home/' + getpass.getuser() + '/onedir'
-        wm.add_watch(directory, ALL_EVENTS, rec=True, auto_add=True)
-        notifier.start()
+    def __init__(self, un, pw):
+        username = un
+        password = pw
 
 
 class EventHandler(ProcessEvent):
@@ -30,7 +23,7 @@ class EventHandler(ProcessEvent):
 
     def process_IN_DELETE(self, event):
         if not "~lock" in event.pathname:
-            urllib.urlopen(self.url + "/delete/" + event.pathname)
+            deleteFile(event.pathname)
 
     def process_IN_ATTRIB(self, event):
         if not "~lock" in event.pathname:
@@ -41,13 +34,25 @@ class EventHandler(ProcessEvent):
             uploadFile(event.pathname)
 
 
-def uploadFile(self, filePath):
+def uploadFile(filePath):
     with open(filePath, 'rb') as upload:
         print "Uploading", filePath
-        urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+"/"+filePath+"/"+"do not remove this")
+        urllib.urlopen(url+"/upload/"+username+"/"+password+"/"+filePath+"/"+"do not remove this")
         for letter in upload.readlines():
             line = []
             for x in letter:
                 line.append(str(ord(x)))
-            urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+"/"+filePath+"/"+' '.join(line))
+            urllib.urlopen(url+"/upload/"+username+"/"+password+"/"+filePath+"/"+' '.join(line))
     print "Done uploading", filePath
+
+
+def deleteFile(filePath):
+    urllib.urlopen(url + "/delete/" + filePath)
+
+
+wm = WatchManager()
+handler = EventHandler()
+notifier = ThreadedNotifier(wm, handler)
+directory = '/home/' + getpass.getuser() + '/onedir'
+wm.add_watch(directory, ALL_EVENTS, rec=True, auto_add=True)
+notifier.start()
