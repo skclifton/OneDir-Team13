@@ -28,17 +28,21 @@ class LocalFileMonitor():
 
         wm = WatchManager()
         handler = EventHandler()
-        notifier = ThreadedNotifier(wm, handler)
+        self.notifier = ThreadedNotifier(wm, handler)
         directory = os.environ['HOME'] + '/onedir'
         wm.add_watch(directory, ALL_EVENTS, rec=True, auto_add=True)
         #notifier.start()
-        thread.start_new_thread(notifier.loop, ())
+        thread.start_new_thread(self.notifier.loop, ())
 
-        def foo():
-            pass
+    def stop_sync(self):
+        self.notifier.stop()
+
+    def start_sync(self):
+        thread.start_new_thread(self.notifier.loop, ())
 
 
 class EventHandler(ProcessEvent):
+
     def process_IN_CREATE(self, event):
         if not "~lock" in event.pathname:
             self.uploadFile(event.pathname)
