@@ -29,7 +29,11 @@ def create_account(username, password):
 
 @app.route("/delete/<path:file>")
 def delete(file):
-    if file in os.listdir(path+file):
+    file = file.split('/')
+    filename = file.pop()
+    filepath = '/'.join(file)
+    os.chdir(filepath)
+    if file in os.listdir(os.getcwd()):
         os.remove(file)
 
 @app.route("/upload/<username>/<password>/<data>/<path:file>")
@@ -37,10 +41,18 @@ def upload(username, password, data, file):
     if login(username, password) != "success":
         return 'failure'
     else:
-        if file not in os.listdir(path): #needs to check if it's in a subfolder too
-            with open(file, 'w') as file:
-                pass
-        upload = open(file, 'ab')
+        file = file.split('/')
+        filename = file.pop()
+        filepath = '/'.join(file)
+
+        if not os.path.exists(filepath):
+            os.makedirs(filepath)
+
+        os.chdir(filepath) #change the current directory to where we're uploading
+        if filename not in os.listdir(os.getcwd()): #if filename not in the filepath
+            open(filename, 'w')
+
+        upload = open(filename, 'ab')
         #print "Writing line: " + data
         data = data.split()
         for data in data:
