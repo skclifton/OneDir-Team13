@@ -59,7 +59,6 @@ class EventHandler(ProcessEvent):
         if not "~lock" in event.pathname:
             self.uploadFile(event.pathname)
 
-
     def uploadFile(self, filePath):
         with open(filePath, 'rb') as upload:
             print "Uploading", filePath
