@@ -27,12 +27,16 @@ def create_account(username, password):
     return 'created'
 
 
-@app.route("/delete/<path:file>")
-def delete(file):
+@app.route("/delete/<username>/<password>/<path:file>")
+def delete(username, password, file):
+    if login(username, password) != "success":
+        return 'failure'
     file = file.split('/')
+    file.remove(0) # remove 'home'
+    file.remove(0) # remove 'profile' (Virtualbox profile is 'student' by default, but profile is different for others)
     filename = file.pop()
     filepath = '/'.join(file)
-    os.chdir(filepath)
+    os.chdir(path + '/' + username + '/' + filepath)
     if file in os.listdir(os.getcwd()):
         os.remove(file)
 
@@ -42,8 +46,11 @@ def upload(username, password, data, file):
         return 'failure'
     else:
         file = file.split('/')
+        file.remove(0)
+        file.remove(0)
         filename = file.pop()
         filepath = '/'.join(file)
+        filepath = path + '/' + username + '/' + filepath
 
         if not os.path.exists(filepath):
             os.makedirs(filepath)
@@ -77,4 +84,4 @@ if __name__ == '__main__':
     if 'onedir' not in os.listdir(os.environ['HOME']):
         os.mkdir(path)
     #app.run()
-    app.run(host = '0.0.0.0', debug = False)
+    app.run(host = '0.0.0.0', debug = True)

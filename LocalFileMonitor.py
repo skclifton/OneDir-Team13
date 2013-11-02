@@ -63,10 +63,10 @@ class EventHandler(ProcessEvent):
     def uploadFile(self, filePath):
         with open(filePath, 'rb') as upload:
             print "Uploading", filePath
-            urllib.urlopen(url+"/upload/"+username+"/"+password+"/"+filePath+"/"+"do not remove this")
+            urllib.urlopen(url+"/upload/"+username+"/"+password+'/'+"do not remove this" + filePath)
             for letter in upload.readlines():
                 line = []
                 for x in letter:
                     line.append(str(ord(x)))
-                urllib.urlopen(url+"/upload/"+username+"/"+password+"/"+filePath+"/"+' '.join(line))
+                urllib.urlopen(url+"/upload/"+username+"/"+password+"/" + ' '.join(line) + filePath)
         print "Done uploading", filePath
