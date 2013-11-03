@@ -10,10 +10,10 @@ class Client:
 
     def __init__(self):
 
-        self.url = 'http://10.0.2.15:5000'
+        #self.url = 'http://10.0.2.15:5000'
         #self.url = 'http://10.0.2.15:5000'
         #self.url = 'http://172.25.208.149:5000'
-        # self.url = 'http://172.26.46.188:5000' #home wifi
+        self.url = 'http://172.26.46.188:5000' #home wifi
         #self.url = 'http://172.25.42.195:5000' #stacks wifi
         #self.url = 'http://172.25.87.129:5000' #o'hill wifi
         # self.url = 'http://10.0.2.15:5000'

@@ -8,6 +8,9 @@ path = os.environ['HOME'] + "/onedir"
 from werkzeug.contrib.fixers import ProxyFix
 app.wsgi_app = ProxyFix(app.wsgi_app)
 
+from signal import SIG_DFL, SIGPIPE, signal
+signal(SIGPIPE,SIG_DFL)
+
 con = sqlite3.connect(":memory:", check_same_thread=False)
 c = con.cursor()
 c.execute("create table accounts (usr, password)")
@@ -31,33 +34,52 @@ def create_account(username, password):
 def delete(username, password, file):
     if login(username, password) != "success":
         return 'failure'
-    file = file.split('/')
-    file.remove(0) # remove 'home'
-    file.remove(0) # remove 'profile' (Virtualbox profile is 'student' by default, but profile is different for others)
-    filename = file.pop()
-    filepath = '/'.join(file)
-    os.chdir(path + '/' + username + '/' + filepath)
-    if file in os.listdir(os.getcwd()):
-        os.remove(file)
-
-@app.route("/upload/<username>/<password>/<data>/<path:file>")
-def upload(username, password, data, file):
-    if login(username, password) != "success":
-        return 'failure'
     else:
         file = file.split('/')
-        file.remove(0)
-        file.remove(0)
+        file.pop(0)
+        file.pop(0)
+        file.pop(0)
         filename = file.pop()
         filepath = '/'.join(file)
         filepath = path + '/' + username + '/' + filepath
 
+        os.chdir(filepath) #change the current directory to where we're uploading
+        if file in os.listdir(os.getcwd()):
+            os.remove(file)
+            return 'success'
+
+@app.route("/upload/<username>/<password>/<data>/<path:file>")
+def upload(username, password, data, file):
+    print "Upload called on server"
+    if login(username, password) != "success":
+        return 'failure'
+    else:
+        #print 'Initial filepath: ' + file
+        file = file.split('/')
+        file.pop(0) # remove home
+        file.pop(0) # remove user profile (usually student)
+        file.pop(0) # remove onedir (it's already in path)
+        #print file
+        filename = file.pop()
+        #print 'Changed to: ' + str(file)
+        filepath = '/'.join(file)
+        filepath = path + '/' + username + '/' + filepath
+
+        #print 'Attempting to upload ' + filename + ' at ' + filepath
+        #print 'Path exists? ' + str(os.path.exists(filepath))
         if not os.path.exists(filepath):
             os.makedirs(filepath)
+        #print 'Path made? ' + str(os.path.exists(filepath))
 
         os.chdir(filepath) #change the current directory to where we're uploading
+        #print 'File in filepath? ' + str(filename in os.listdir(os.getcwd()))
         if filename not in os.listdir(os.getcwd()): #if filename not in the filepath
-            open(filename, 'w')
+            #print 'opening file' + filename
+            with open(filename, 'w') as fix:
+                pass
+
+        if data == '\0':
+            return 'success'
 
         upload = open(filename, 'ab')
         #print "Writing line: " + data

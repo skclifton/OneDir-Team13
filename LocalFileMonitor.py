@@ -11,6 +11,8 @@ __author__ = 'sarah'
 #Local File monitor class with a constructor and fields that hold username and password
 #url.self = http://172.25.208.201
 
+
+
 global username
 global password
 global url
@@ -38,22 +40,23 @@ class LocalFileMonitor():
         self.notifier.stop()
 
     def start_sync(self):
-        thread.start_new_thread(self.notifier.loop, ())
+        #thread.start_new_thread(self.notifier.loop, ())
+        self.notifier.loop()
 
 
 class EventHandler(ProcessEvent):
 
-    def process_IN_CREATE(self, event):
-        if not "~lock" in event.pathname:
-            self.uploadFile(event.pathname)
+    #def process_IN_CREATE(self, event):
+    #    if not "~lock" in event.pathname:
+    #       self.uploadFile(event.pathname)
 
     def process_IN_DELETE(self, event):
         if not "~lock" in event.pathname:
-            urllib.urlopen(self.url + "/delete/" + event.pathname)
+            urllib.urlopen(url + "/delete/" + event.pathname)
 
-    def process_IN_ATTRIB(self, event):
-        if not "~lock" in event.pathname:
-            print "changing metadata for", event.pathname
+    #def process_IN_ATTRIB(self, event):
+    #    if not "~lock" in event.pathname:
+    #        print "changing metadata for", event.pathname
 
     def process_IN_CLOSE_WRITE(self, event):
         if not "~lock" in event.pathname:
@@ -62,7 +65,7 @@ class EventHandler(ProcessEvent):
     def uploadFile(self, filePath):
         with open(filePath, 'rb') as upload:
             print "Uploading", filePath
-            urllib.urlopen(url+"/upload/"+username+"/"+password+'/'+"do not remove this" + filePath)
+            urllib.urlopen(url+"/upload/"+username+"/"+password+'/'+"\0" + filePath)
             for letter in upload.readlines():
                 line = []
                 for x in letter:
