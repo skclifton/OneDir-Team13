@@ -43,6 +43,14 @@ class LocalFileMonitor():
         #thread.start_new_thread(self.notifier.loop, ())
         self.notifier.loop()
 
+    def set_username(self, new_username):
+        global username
+        username = new_username
+
+    def set_password(self, new_password):
+        global password
+        password = new_password
+
 
 class EventHandler(ProcessEvent):
 

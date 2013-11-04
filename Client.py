@@ -3,7 +3,6 @@ import sqlite3
 import getpass
 import sys
 import LocalFileMonitor
-from LocalFileMonitor import username, password
 import time
 import thread
 
@@ -155,9 +154,7 @@ class Client:
 
         if urllib.urlopen(self.url + '/' + 'changepw/' + username + '/' + password2 + '/' + new_password).read() == 'success':
             self.password = new_password
-
-            global password
-            password = new_password
+            self.lfm.set_password(new_password)
 
             return 'success'
         else:
@@ -171,9 +168,7 @@ class Client:
 
         if urllib.urlopen(self.url + '/' + 'changeusr/' + username2 + '/' + password + '/' + new_usr).read() == 'success':
             self.username = new_usr
-
-            global username
-            username = new_usr
+            self.lfm.set_username(new_usr)
 
             return 'success'
         else:
