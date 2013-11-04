@@ -107,6 +107,9 @@ def change_username(username, password, new_usr):
 
     command = "UPDATE accounts SET usr = '%s' WHERE usr = '%s'" %(new_usr, username)
     c.execute(command)
+
+    os.rename(path + '/' + username, path + '/' + new_usr)
+
     return 'success'
 
 @app.route('/login/<username>/<password>')

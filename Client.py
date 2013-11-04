@@ -100,7 +100,7 @@ class Client:
                 # change password
                 if command[0] == '7':
                     success = self.change_password(self.username, self.password)
-                    if success == 'successs':
+                    if success == 'success':
                         print 'Password succesfully changed.'
                     else:
                         print 'Ya done goofed ;-D'
