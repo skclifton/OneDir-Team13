@@ -100,6 +100,15 @@ def change_password(username, password, new_password):
     c.execute(command)
     return 'success'
 
+@app.route('/changeusr/<username>/<password>/<new_usr>')
+def change_username(username, password, new_usr):
+    if not login(username, password):
+        return 'failure'
+
+    command = "UPDATE accounts SET usr = '%s' WHERE usr = '%s'" %(new_usr, username)
+    c.execute(command)
+    return 'success'
+
 @app.route('/login/<username>/<password>')
 def login(username, password):
     command = "select * from accounts where usr = '%s' AND password = '%s'" %(username, password)
