@@ -74,12 +74,12 @@ def upload(username, password, data, file):
 
         os.chdir(filepath) #change the current directory to where we're uploading
         #print 'File in filepath? ' + str(filename in os.listdir(os.getcwd()))
-        if filename not in os.listdir(os.getcwd()): #if filename not in the filepath
-            #print 'opening file' + filename
-            with open(filename, 'w') as fix:
-                pass
+        #if filename not in os.listdir(os.getcwd()): #if filename not in the filepath
+        #    #print 'opening file' + filename
 
         if data == '\0':
+            with open(filename, 'w') as fix:
+                pass
             return 'success'
 
         upload = open(filename, 'ab')
@@ -90,6 +90,15 @@ def upload(username, password, data, file):
         upload.close()
         return 'success'
 
+
+@app.route('/changepw/<username>/<password>/<new_password>')
+def change_password(username, password, new_password):
+    if not login(username, password):
+        return 'failure'
+
+    command = "UPDATE accounts SET password = '%s' WHERE usr = '%s'" %(new_password, username)
+    c.execute(command)
+    return 'success'
 
 @app.route('/login/<username>/<password>')
 def login(username, password):
@@ -107,4 +116,4 @@ if __name__ == '__main__':
     if 'onedir' not in os.listdir(os.environ['HOME']):
         os.mkdir(path)
     #app.run()
-    app.run(host = '0.0.0.0', debug = True)
+    app.run(host = '0.0.0.0', debug = False)

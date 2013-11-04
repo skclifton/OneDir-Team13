@@ -31,7 +31,7 @@
       <file leaf-file-name="LocalFileMonitor.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LocalFileMonitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="27" selection-start="1254" selection-end="1254" vertical-scroll-proportion="0.0" vertical-offset="705" max-vertical-offset="1200">
+            <state line="34" column="16" selection-start="676" selection-end="676" vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="1305">
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -39,10 +39,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Server.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Server.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="27" selection-start="1475" selection-end="1475" vertical-scroll-proportion="0.6666667" vertical-offset="420" max-vertical-offset="1725">
+            <state line="116" column="20" selection-start="3903" selection-end="3903" vertical-scroll-proportion="0.0" vertical-offset="1320" max-vertical-offset="1875">
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -50,11 +50,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Client.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Client.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Client.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="23" selection-start="634" selection-end="634" vertical-scroll-proportion="0.0" vertical-offset="1440" max-vertical-offset="2115">
-              <folding />
+            <state line="144" column="22" selection-start="4689" selection-end="4689" vertical-scroll-proportion="0.73333335" vertical-offset="1830" max-vertical-offset="2340">
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -78,9 +80,9 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Client.py" />
         <option value="$PROJECT_DIR$/LocalFileMonitor.py" />
         <option value="$PROJECT_DIR$/Server.py" />
+        <option value="$PROJECT_DIR$/Client.py" />
       </list>
     </option>
   </component>
@@ -362,7 +364,15 @@
       <created>1383434168428</created>
       <updated>1383434168428</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fixed everything">
+      <created>1383516799867</created>
+      <updated>1383516799867</updated>
+    </task>
+    <task id="LOCAL-00004" summary="changed stuff">
+      <created>1383526756371</created>
+      <updated>1383526756371</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers>
       <GitHub shared="false" url="github.com">
         <commitMessageFormat>{id} {summary}</commitMessageFormat>
@@ -383,6 +393,7 @@
     <frame x="64" y="-4" width="1475" height="841" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -398,7 +409,6 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -413,7 +423,9 @@
     </option>
     <MESSAGE value="Testing how to commit changes&#10;Minor modifications to LocalFileMonitor with no functionality added" />
     <MESSAGE value="XML comitting" />
-    <option name="LAST_COMMIT_MESSAGE" value="XML comitting" />
+    <MESSAGE value="fixed everything" />
+    <MESSAGE value="changed stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed stuff" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -467,7 +479,9 @@
     <entry file="file://$PROJECT_DIR$/Client.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1200">
-          <folding />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -506,16 +520,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="23" selection-start="634" selection-end="634" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2115">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LocalFileMonitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="27" selection-start="1254" selection-end="1254" vertical-scroll-proportion="0.0" vertical-offset="705" max-vertical-offset="1200">
+        <state line="34" column="16" selection-start="676" selection-end="676" vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="1305">
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
@@ -524,9 +531,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="27" selection-start="1475" selection-end="1475" vertical-scroll-proportion="0.6666667" vertical-offset="420" max-vertical-offset="1725">
+        <state line="116" column="20" selection-start="3903" selection-end="3903" vertical-scroll-proportion="0.0" vertical-offset="1320" max-vertical-offset="1875">
           <folding>
             <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="144" column="22" selection-start="4689" selection-end="4689" vertical-scroll-proportion="0.73333335" vertical-offset="1830" max-vertical-offset="2340">
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>

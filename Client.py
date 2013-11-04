@@ -138,6 +138,14 @@ class Client:
         else:
             print "Account Created."
 
+    def change_password(self, username, password):
+        confirm_pw = 'z'
+        new_password = getpass.getpass('Enter your new password: ')
+        while not new_password == confirm_pw:
+            confirm_pw = getpass.getpass('Enter your new password: ')
+
+        urllib.urlopen(self.url + '/' + '/changepw/' + username + '/' + password + '/' + new_password)
+
 
 if __name__ == "__main__":
     Client()
