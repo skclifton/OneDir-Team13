@@ -66,7 +66,7 @@ class EventHandler(ProcessEvent):
     def process_IN_MOVED_FROM(self, event):
         print event.pathname
         print event.pathname.split('/')[-1] + ' removed from directory ' + event.pathname
-        urllib.urlopen(url + '/delete/' + username + '/' + password + '/' + event.pathname)
+        urllib.urlopen(url + '/delete/' + username + '/' + password + event.pathname)
 
 
     #def process_IN_ATTRIB(self, event):

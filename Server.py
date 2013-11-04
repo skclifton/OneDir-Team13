@@ -44,9 +44,9 @@ def delete(username, password, file):
         filepath = path + '/' + username + '/' + filepath
 
         os.chdir(filepath)
-        if file in os.listdir(os.getcwd()):
+        if filename in os.listdir(os.getcwd()):
             print 'file removed: ' + filename
-            os.remove(file)
+            os.remove(filename)
             return 'success'
 
 @app.route("/upload/<username>/<password>/<data>/<path:file>")
