@@ -152,7 +152,11 @@ class Client:
         while not new_password == confirm_pw:
             confirm_pw = getpass.getpass('Enter your new password: ')
 
-        return urllib.urlopen(self.url + '/' + 'changepw/' + username + '/' + password + '/' + new_password).read()
+        if urllib.urlopen(self.url + '/' + 'changepw/' + username + '/' + password + '/' + new_password).read() == 'success':
+            self.password = new_password
+            return 'success'
+        else:
+            return 'failure'
 
     def change_username(self, username, password):
         confirm_usr = 'z'
@@ -160,7 +164,11 @@ class Client:
         while not new_usr == confirm_usr:
             confirm_usr = raw_input('Enter your new username: ')
 
-        return urllib.urlopen(self.url + '/' + 'changeusr/' + username + '/' + password + '/' + new_usr).read()
+        if urllib.urlopen(self.url + '/' + 'changeusr/' + username + '/' + password + '/' + new_usr).read() == 'success':
+            self.username = new_usr
+            return 'success'
+        else:
+            return 'failure'
 
 
 if __name__ == "__main__":
