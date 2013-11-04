@@ -45,6 +45,7 @@ def delete(username, password, file):
 
         os.chdir(filepath) #change the current directory to where we're uploading
         if file in os.listdir(os.getcwd()):
+            print 'file removed: ' + filename
             os.remove(file)
             return 'success'
 

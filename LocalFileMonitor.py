@@ -51,8 +51,15 @@ class EventHandler(ProcessEvent):
     #       self.uploadFile(event.pathname)
 
     def process_IN_DELETE(self, event):
+        print 'file to be deleted at ' + event.pathname
         if not "~lock" in event.pathname:
-            urllib.urlopen(url + "/delete/" + event.pathname)
+            urllib.urlopen(url + "/delete/" + username + '/' + password + '/' + event.pathname)
+
+    def process_IN_MOVED_FROM(self, event):
+        print event.pathname
+        print event.split('/')[-1] + ' removed from directory ' + event.pathname
+        urllib.urlopen(url + '/delete/' + username + '/' + password + '/' + event.pathname)
+
 
     #def process_IN_ATTRIB(self, event):
     #    if not "~lock" in event.pathname:
