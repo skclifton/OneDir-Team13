@@ -95,13 +95,17 @@ class Client:
 
                 # change username
                 if command[0] == '6':
-                    self.change_username(self.username, self.password)
+                    success = self.change_username(self.username, self.password)
+                    if success == 'success':
+                        print 'Username successfully changed.'
+                    else:
+                        print 'Ya done goofed ;-D'
 
                 # change password
                 if command[0] == '7':
                     success = self.change_password(self.username, self.password)
                     if success == 'success':
-                        print 'Password succesfully changed.'
+                        print 'Password successfully changed.'
                     else:
                         print 'Ya done goofed ;-D'
 
@@ -148,15 +152,15 @@ class Client:
         while not new_password == confirm_pw:
             confirm_pw = getpass.getpass('Enter your new password: ')
 
-        urllib.urlopen(self.url + '/' + 'changepw/' + username + '/' + password + '/' + new_password)
+        return urllib.urlopen(self.url + '/' + 'changepw/' + username + '/' + password + '/' + new_password).read()
 
     def change_username(self, username, password):
         confirm_usr = 'z'
-        new_usr = raw_input('Enter your new password: ')
+        new_usr = raw_input('Enter your new username: ')
         while not new_usr == confirm_usr:
-            confirm_usr = raw_input('Enter your new password: ')
+            confirm_usr = raw_input('Enter your new username: ')
 
-        urllib.urlopen(self.url + '/' + 'changeusr/' + username + '/' + password + '/' + new_usr)
+        return urllib.urlopen(self.url + '/' + 'changeusr/' + username + '/' + password + '/' + new_usr).read()
 
 
 if __name__ == "__main__":

@@ -43,7 +43,7 @@ def delete(username, password, file):
         filepath = '/'.join(file)
         filepath = path + '/' + username + '/' + filepath
 
-        os.chdir(filepath) #change the current directory to where we're uploading
+        os.chdir(filepath)
         if file in os.listdir(os.getcwd()):
             print 'file removed: ' + filename
             os.remove(file)
@@ -51,7 +51,7 @@ def delete(username, password, file):
 
 @app.route("/upload/<username>/<password>/<data>/<path:file>")
 def upload(username, password, data, file):
-    print "Upload called on server"
+    #print "Upload called on server"
     if login(username, password) != "success":
         return 'failure'
     else:
