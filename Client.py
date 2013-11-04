@@ -3,6 +3,7 @@ import sqlite3
 import getpass
 import sys
 import LocalFileMonitor
+from LocalFileMonitor import username, password
 import time
 import thread
 
@@ -146,26 +147,34 @@ class Client:
         else:
             print "Account Created."
 
-    def change_password(self, username, password):
+    def change_password(self, username, password2):
         confirm_pw = 'z'
         new_password = getpass.getpass('Enter your new password: ')
         while not new_password == confirm_pw:
             confirm_pw = getpass.getpass('Enter your new password: ')
 
-        if urllib.urlopen(self.url + '/' + 'changepw/' + username + '/' + password + '/' + new_password).read() == 'success':
+        if urllib.urlopen(self.url + '/' + 'changepw/' + username + '/' + password2 + '/' + new_password).read() == 'success':
             self.password = new_password
+
+            global password
+            password = new_password
+
             return 'success'
         else:
             return 'failure'
 
-    def change_username(self, username, password):
+    def change_username(self, username2, password):
         confirm_usr = 'z'
         new_usr = raw_input('Enter your new username: ')
         while not new_usr == confirm_usr:
             confirm_usr = raw_input('Enter your new username: ')
 
-        if urllib.urlopen(self.url + '/' + 'changeusr/' + username + '/' + password + '/' + new_usr).read() == 'success':
+        if urllib.urlopen(self.url + '/' + 'changeusr/' + username2 + '/' + password + '/' + new_usr).read() == 'success':
             self.username = new_usr
+
+            global username
+            username = new_usr
+
             return 'success'
         else:
             return 'failure'
