@@ -11,11 +11,10 @@ __author__ = 'sarah'
 #Local File monitor class with a constructor and fields that hold username and password
 #url.self = http://172.25.208.201
 
-
-
 global username
 global password
 global url
+
 
 class LocalFileMonitor():
     def __init__(self, un, pw, u):
