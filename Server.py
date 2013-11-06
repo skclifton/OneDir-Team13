@@ -125,8 +125,20 @@ def login(username, password):
     else:
         return "success"
 
+@app.route('/list/<username>/<password>')
+def list(username, password):
+    #(dirpath, dirnames, filenames) for each file and directory
+    list_of_directories = os.walk(path + '/' + username) # walk through the user's files
+    output = ''
+    for files_and_directories in list_of_directories:
+        directory = files_and_directories[0]
+        for file in files_and_directories[2]:
+            # add the full filepath for each file on the server in the user's folder
+            output += directory + '/' + file + '@'#'<br />'
+    return output
+
 if __name__ == '__main__':
     if 'onedir' not in os.listdir(os.environ['HOME']):
         os.mkdir(path)
     #app.run()
-    app.run(host = '0.0.0.0', debug = False)
+    app.run(host = '0.0.0.0', debug = True)

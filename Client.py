@@ -4,6 +4,7 @@ import getpass
 import sys
 import LocalFileMonitor
 import time
+import os
 import thread
 
 
@@ -14,7 +15,7 @@ class Client:
         #self.url = 'http://10.0.2.15:5000'
         #self.url = 'http://10.0.2.15:5000'
         #self.url = 'http://172.25.208.149:5000'
-        #self.url = 'http://172.26.46.188:5000' #home wifi
+        self.url = 'http://172.26.47.242:5000' #home wifi
         #self.url = 'http://172.25.42.195:5000' #stacks wifi
         #self.url = 'http://172.25.43.190:5000'
         #self.url = 'http://172.25.87.129:5000' #o'hill wifi
@@ -163,16 +164,38 @@ class Client:
     def change_username(self, username2, password):
         confirm_usr = 'z'
         new_usr = raw_input('Enter your new username: ')
+
         while not new_usr == confirm_usr:
             confirm_usr = raw_input('Enter your new username: ')
 
         if urllib.urlopen(self.url + '/' + 'changeusr/' + username2 + '/' + password + '/' + new_usr).read() == 'success':
             self.username = new_usr
             self.lfm.set_username(new_usr)
-
             return 'success'
         else:
             return 'failure'
+
+    # This method will check the files in a user's onedir folder and compare them to the ones the server has for that
+    # user and upload and download the missing files on each end, it is to be called when first logged in, and then
+    # periodically to check for updates from other computers
+    def sync(self, username, password):
+        # get the server's list of files for the user (separated by '@' symbols) to send in one string
+        server_files = urllib.urlopen(self.url + '/list/' + username + '/' + password).read().split('@')
+        local_files = ''
+        #(dirpath, dirnames, filenames) for each file and directory
+        list_of_directories = os.walk(os.environ['HOME'] + '/ondedir') # returns the 3 tuple above
+        for files_and_directories in list_of_directories:
+            directory = files_and_directories[0]  # stores the path of each directory
+            for file in files_and_directories[2]: # for each file in the list of files contained in a directory
+                local_files.append(directory + '/' + file)
+
+        for file in server_files:
+            if not file in local_files:
+                pass #download file
+        for file in local_files:
+            if not file in server_files:
+                pass #upload file
+
 
 if __name__ == "__main__":
     Client()
