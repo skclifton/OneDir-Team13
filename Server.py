@@ -137,6 +137,20 @@ def list(username, password):
             output += directory + '/' + file + '@'#'<br />'
     return output
 
+@app.route('/lastmodified/<path:file>')
+def last_modified(filepath):
+    return os.path.getmtime(file)
+
+@app.route('/download/<username>/<password>/<path:file>')
+def download(username, password, file):
+    server_path = file.split('/')
+    server_path.pop(0) # home
+    server_path.pop(0) # user
+    server_path.pop(0) # onedir
+    server_path = '/'.join(server_path)
+    with open(path + '/' + username + '/' + server_path) as server_file:
+        return server_file.read()
+
 if __name__ == '__main__':
     if 'onedir' not in os.listdir(os.environ['HOME']):
         os.mkdir(path)
