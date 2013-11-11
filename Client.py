@@ -190,11 +190,18 @@ class Client:
                 local_files.append(directory + '/' + file)
 
         for file in server_files:
-            if not file in local_files:
-                pass #download file
+            server_path = file.split('/')
+            server_path.pop(0) # home
+            server_path.pop(0) # user
+            server_path.pop(0) # ondir
+            server_path.pop(0) # username
+            file = os.environ['HOME'] + '/onedir/' + server_path
         for file in local_files:
-            if not file in server_files:
-                pass #upload file
+            local_path = file.split('/')
+            local_path.pop(0) # home
+            local_path.pop(0) # user
+            local_path.pop(0) # onedir
+            file = os.environ['HOME'] + '/onedir/' + self.username + '/' + local_path
 
 
 if __name__ == "__main__":
