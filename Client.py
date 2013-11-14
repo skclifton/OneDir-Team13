@@ -15,7 +15,7 @@ class Client:
         #self.url = 'http://10.0.2.15:5000'
         #self.url = 'http://10.0.2.15:5000'
         #self.url = 'http://172.25.208.149:5000'
-        self.url = 'http://172.26.47.242:5000' #home wifi
+        #self.url = 'http://172.26.47.242:5000' #home wifi
         #self.url = 'http://172.25.42.195:5000' #stacks wifi
         #self.url = 'http://172.25.43.190:5000'
         #self.url = 'http://172.25.87.129:5000' #o'hill wifi
@@ -29,7 +29,8 @@ class Client:
 
     def main_loop(self):
         while True:
-            time.sleep(1)
+            time.sleep(5)
+            self.sync()
 
     def CLI(self):
         loggedOutMenu = 'Choose an action by typing the number:\n1: exit\n2: create account\n3: login\n8: help'
@@ -178,9 +179,9 @@ class Client:
     # This method will check the files in a user's onedir folder and compare them to the ones the server has for that
     # user and upload and download the missing files on each end, it is to be called when first logged in, and then
     # periodically to check for updates from other computers
-    def sync(self, username, password):
+    def sync(self):
         # get the server's list of files for the user (separated by '@' symbols) to send in one string
-        server_files = urllib.urlopen(self.url + '/list/' + username + '/' + password).read().split('@')
+        server_files = urllib.urlopen(self.url + '/list/' + self.username + '/' + self.password).read().split('@')
         local_files = ''
         #(dirpath, dirnames, filenames) for each file and directory
         list_of_directories = os.walk(os.environ['HOME'] + '/ondedir') # returns the 3 tuple above
@@ -189,19 +190,43 @@ class Client:
             for file in files_and_directories[2]: # for each file in the list of files contained in a directory
                 local_files.append(directory + '/' + file)
 
+        #make the server filepaths match the user's
         for file in server_files:
+
             server_path = file.split('/')
             server_path.pop(0) # home
             server_path.pop(0) # user
-            server_path.pop(0) # ondir
+            server_path.pop(0) # onedir
             server_path.pop(0) # username
-            file = os.environ['HOME'] + '/onedir/' + server_path
+            server_path = os.environ['HOME'] + '/onedir/' + server_path
+            newer = time.strptime(urllib.urlopen(self.url+'/lastmodified/'+file)) > os.path.getmtime(server_path)
+            if server_path not in local_files or newer: # if we don't have the file or the server has a newer version
+                with open(server_path) as dlFile:
+                    dlFile.write(urllib.urlopen(self.url+'/download/'+self.username+'/'+self.password+'/'+file).read())
+
+        #make the user's filepaths match the server's
+        modified_local_files = []
         for file in local_files:
             local_path = file.split('/')
             local_path.pop(0) # home
             local_path.pop(0) # user
             local_path.pop(0) # onedir
-            file = os.environ['HOME'] + '/onedir/' + self.username + '/' + local_path
+            local_path = os.environ['HOME'] + '/onedir/' + self.username + '/' + local_path
+            newer = os.path.getmtime(file) > time.strptime(urllib.urlopen(self.url+'/lastmodified/'+local_path))
+            if local_path not in server_files or newer:
+                self.uploadFile(local_path)
+
+    def uploadFile(self, filePath):
+        with open(filePath, 'rb') as upload:
+            print "Uploading", filePath
+            urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+'/'+"\0" + filePath)
+            for letter in upload.readlines():
+                line = []
+                for x in letter:
+                    line.append(str(ord(x)))
+        urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+"/" + ' '.join(line) + filePath)
+        print "Done uploading", filePath
+
 
 
 if __name__ == "__main__":
