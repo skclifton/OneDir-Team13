@@ -199,7 +199,7 @@ class Client:
             server_path.pop(0) # onedir
             server_path.pop(0) # username
             server_path = os.environ['HOME'] + '/onedir/' + server_path
-            newer = time.strptime(urllib.urlopen(self.url+'/lastmodified/'+file)) > os.path.getmtime(server_path)
+            newer = int(urllib.urlopen(self.url+'/lastmodified/'+file)) > os.path.getmtime(server_path)
             if server_path not in local_files or newer: # if we don't have the file or the server has a newer version
                 with open(server_path) as dlFile:
                     dlFile.write(urllib.urlopen(self.url+'/download/'+self.username+'/'+self.password+'/'+file).read())
@@ -212,7 +212,7 @@ class Client:
             local_path.pop(0) # user
             local_path.pop(0) # onedir
             local_path = os.environ['HOME'] + '/onedir/' + self.username + '/' + local_path
-            newer = os.path.getmtime(file) > time.strptime(urllib.urlopen(self.url+'/lastmodified/'+local_path))
+            newer = os.path.getmtime(file) > int(urllib.urlopen(self.url+'/lastmodified/'+local_path))
             if local_path not in server_files or newer:
                 self.uploadFile(local_path)
 
