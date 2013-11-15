@@ -35,10 +35,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Server.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Server.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3345">
+            <state line="8" column="41" selection-start="168" selection-end="168" vertical-scroll-proportion="0.2660754" vertical-offset="0" max-vertical-offset="3360">
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -46,10 +46,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Client.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Client.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="236" column="0" selection-start="9395" selection-end="9395" vertical-scroll-proportion="1.5049505" vertical-offset="2932" max-vertical-offset="3795">
+            <state line="247" column="12" selection-start="9844" selection-end="9844" vertical-scroll-proportion="-9.235294" vertical-offset="3391" max-vertical-offset="3795">
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -414,7 +414,11 @@
       <created>1384544871673</created>
       <updated>1384544871673</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="changed file opening for history.txt to auto-create">
+      <created>1384545757584</created>
+      <updated>1384545757584</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers>
       <GitHub shared="false" url="github.com">
         <commitMessageFormat>{id} {summary}</commitMessageFormat>
@@ -471,7 +475,8 @@
     <MESSAGE value="added the ability for users to change username" />
     <MESSAGE value="increased wait time between syncs" />
     <MESSAGE value="trying to fix temporary file issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying to fix temporary file issues" />
+    <MESSAGE value="changed file opening for history.txt to auto-create" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed file opening for history.txt to auto-create" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -568,15 +573,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3345">
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LocalFileMonitor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="68" column="0" selection-start="1826" selection-end="1826" vertical-scroll-proportion="0.0" vertical-offset="869" max-vertical-offset="1320">
@@ -586,9 +582,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="236" column="0" selection-start="9395" selection-end="9395" vertical-scroll-proportion="1.5049505" vertical-offset="2932" max-vertical-offset="3795">
+        <state line="247" column="12" selection-start="9844" selection-end="9844" vertical-scroll-proportion="-9.235294" vertical-offset="3391" max-vertical-offset="3795">
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="41" selection-start="168" selection-end="168" vertical-scroll-proportion="0.2660754" vertical-offset="0" max-vertical-offset="3360">
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
