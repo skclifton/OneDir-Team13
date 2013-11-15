@@ -28,7 +28,7 @@ class Client:
 
     def update(self):
         while True:
-            n = 5
+            n = 6
             time.sleep(n)
             self.sync(False)
             # get any updated server files every n seconds
