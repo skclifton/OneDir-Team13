@@ -244,4 +244,6 @@ class Client:
 
 
 if __name__ == "__main__":
+    if 'onedir' not in os.listdir(os.environ['HOME']):
+        os.mkdir(os.environ['HOME'] + '/ondedir')
     Client()

@@ -154,11 +154,11 @@ def list(username, password):
     return output
 
 @app.route('/lastmodified/<path:file>')
-def last_modified(filepath):
-    if os.path.isfile(file):
-        return os.path.getmtime(file)
+def last_modified(file):
+    if os.path.exists(file):
+        return str(os.path.getmtime(file))
     else:
-        return datetime.datetime.now.time()
+        return str(datetime.datetime.now.time())
 
 @app.route('/download/<username>/<password>/<path:file>')
 def download(username, password, file):
@@ -217,4 +217,4 @@ if __name__ == '__main__':
     if 'onedir' not in os.listdir(os.environ['HOME']):
         os.mkdir(path)
     #app.run()
-    app.run(host = '0.0.0.0', debug = True)
+    app.run(host = '0.0.0.0', debug = False)
