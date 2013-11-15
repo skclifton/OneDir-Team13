@@ -12,9 +12,13 @@ app.wsgi_app = ProxyFix(app.wsgi_app)
 from signal import SIG_DFL, SIGPIPE, signal
 signal(SIGPIPE,SIG_DFL)
 
-con = sqlite3.connect(":memory:", check_same_thread=False)
+con = sqlite3.connect("accounts.db", check_same_thread=False)
+con.isolation_level = None
 c = con.cursor()
-c.execute("create table accounts (usr, password)")
+h = open('history.txt', 'r+')
+
+
+# c.execute("create table accounts (usr, password)")
 
 @app.route('/account/<username>/<password>')
 def create_account(username, password):
@@ -54,10 +58,12 @@ def delete(username, password, file):
 @app.route("/upload/<username>/<password>/<data>/<path:file>")
 def upload(username, password, data, file):
     #print "Upload called on server"
+    c = con.cursor()
     if login(username, password) != "success":
         return 'failure'
     else:
         #print 'Initial filepath: ' + file
+
         file = file.split('/')
         file.pop(0) # remove home
         file.pop(0) # remove user profile (usually student)
@@ -67,6 +73,7 @@ def upload(username, password, data, file):
         #print 'Changed to: ' + str(file)
         filepath = '/'.join(file)
         filepath = path + '/' + username + '/' + filepath
+        h.write("Upload | User: " + username + " Filepath: " + filepath + "\n")
 
         #print 'Attempting to upload ' + filename + ' at ' + filepath
         #print 'Path exists? ' + str(os.path.exists(filepath))
@@ -82,6 +89,7 @@ def upload(username, password, data, file):
         if data == '\0':
             with open(filename, 'w') as fix:
                 pass
+
             return 'success'
 
         upload = open(filename, 'ab')
@@ -90,6 +98,7 @@ def upload(username, password, data, file):
         for data in data:
             upload.write(chr(int(data)))
         upload.close()
+
         return 'success'
 
 
@@ -155,6 +164,49 @@ def download(username, password, file):
     server_path = '/'.join(server_path)
     with open(path + '/' + username + '/' + server_path) as server_file:
         return server_file.read()
+
+@app.route('/userinfo')
+def userinfo():
+    retStr = 'Username\t\tPassword\n'
+    command = "SELECT usr from accounts"
+    c.execute(command)
+    i = 0
+    user = c.fetchone()
+    while user is not None:
+        retStr += user[0] + '\t\t' + user[1]
+    return retStr
+
+@app.route('/fileinfo')
+def fileinfo():
+    retStr = 'User: \nUser\t\tFile Size\t\tFile Count\n'
+    totalsize = 0
+    totalcount = 0
+    command = "SELECT usr from accounts"
+    c.execute(command)
+    i = 0
+    user = c.fetchone()
+    while user is not None:
+        usersize = 0
+        usercount = 0
+        for root, dirs, files in os.walk(path + '/' + user[0]):
+            for name in files:
+                totalsize += os.path.getsize(name)
+                totalcount += 1
+                usersize += os.path.getsize(name)
+                usercount += 1
+        retStr += user[0] + "\t\t" + str(usersize) + "\t\t" + str(usercount) + "\n"
+        user = c.fetchone()
+        i += 1
+
+    retStr += 'Total: \n' + 'File Size: ' + str(totalsize) + '\tFile Count: ' + str(totalcount)
+    return retStr
+
+@app.route('/synchistory')
+def synchistory():
+    historyStr = ''
+    for line in h:
+        historyStr += line
+    return historyStr
 
 if __name__ == '__main__':
     if 'onedir' not in os.listdir(os.environ['HOME']):
