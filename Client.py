@@ -32,6 +32,7 @@ class Client:
             time.sleep(n)
             self.sync()
             # get any updated server files every n seconds
+            # sdhflksdj;flkj;
 
     def CLI(self):
         loggedOutMenu = 'Choose an action by typing the number:\n1: exit\n2: create account\n3: login\n8: help'
