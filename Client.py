@@ -30,7 +30,7 @@ class Client:
         while True:
             n = 6
             time.sleep(n)
-            self.sync(False)
+            self.sync()
             # get any updated server files every n seconds
 
     def CLI(self):
@@ -128,7 +128,7 @@ class Client:
             self.password = password
             self.logged_in = True
             self.lfm = LocalFileMonitor.LocalFileMonitor(username, password, self.url)
-            self.sync(True)
+            self.sync()
             thread.start_new_thread(self.update, ())
             return True
 
@@ -182,9 +182,10 @@ class Client:
     # This method will check the files in a user's onedir folder and compare them to the ones the server has for that
     # user and upload and download the missing files on each end, it is to be called when first logged in, and then
     # periodically to check for updates from other computers
-    def sync(self, up):
+    def sync(self):
         # get the server's list of files for the user (separated by '\0' symbols) to send in one string
         server_files = urllib.urlopen(self.url + '/list/' + self.username + '/' + self.password).read().split('\0')
+        server_files.remove('')
         if server_files == ['']:
             server_files = []
         local_files = []
@@ -194,26 +195,27 @@ class Client:
             directory = files_and_directories[0]  # stores the path of each directory
             for file in files_and_directories[2]: # for each file in the list of files contained in a directory
                 local_files.append(directory + '/' + file)
-        print 'local files: ' + str(local_files)
+        #print 'local files: ' + str(local_files)
 
         #make the server filepaths match the user's
         #print 'server files: ' + str(server_files) + 'size: ' + str(len(server_files))
         if len(server_files) > 0: # isn't empty
             for file in server_files:
                 server_path = file.split('/')
+                #print 'server path' + str(server_path)
                 server_path.pop(0) # home
                 server_path.pop(0) # user
                 server_path.pop(0) # onedir
                 server_path.pop(0) # username
                 server_path = '/'.join(server_path)
                 server_path = os.environ['HOME'] + '/onedir/' + server_path
-                print 'file on server: ' + file
+                #print 'file on server: ' + file
                 if os.path.isfile(file) and (server_path not in local_files or int(urllib.urlopen(self.url+'/lastmodified/'+file).read()) > os.path.getmtime(server_path)): # if we don't have the file or the server has a newer version
-                    with open(server_path) as dlFile:
+                    with open(server_path, 'w') as dlFile:
                         dlFile.write(urllib.urlopen(self.url+'/download/'+self.username+'/'+self.password+'/'+file).read())
 
         #make the user's filepaths match the server's
-        if up and len(local_files) > 0:
+        if len(local_files) > 0:
             for file in local_files:
                 local_path = file.split('/')
                 local_path.pop(0) # home
@@ -222,7 +224,7 @@ class Client:
                 local_path.pop(0)
                 local_path = '/'.join(local_path)
                 local_path = os.environ['HOME'] + '/onedir/' + self.username + '/' + local_path
-                print 'path on server: ' + local_path
+                # print 'path on server: ' + local_path
 
                 if os.path.isfile(file) and (local_path not in server_files or os.path.getmtime(file) > int(urllib.urlopen(self.url+'/lastmodified/'+local_path).read())):
                     self.uploadFile(file)

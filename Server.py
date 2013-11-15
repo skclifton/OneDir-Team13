@@ -1,6 +1,7 @@
 from flask import Flask
 import sqlite3
 import os
+import datetime
 
 app = Flask(__name__)
 path = os.environ['HOME'] + "/onedir"
@@ -48,6 +49,7 @@ def delete(username, password, file):
             print 'file removed: ' + filename
             os.remove(file)
             return 'success'
+        return 'failure'
 
 @app.route("/upload/<username>/<password>/<data>/<path:file>")
 def upload(username, password, data, file):
@@ -139,7 +141,10 @@ def list(username, password):
 
 @app.route('/lastmodified/<path:file>')
 def last_modified(filepath):
-    return os.path.getmtime(file)
+    if os.path.isfile(file):
+        return os.path.getmtime(file)
+    else:
+        return datetime.datetime.now.time()
 
 @app.route('/download/<username>/<password>/<path:file>')
 def download(username, password, file):
