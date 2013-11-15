@@ -48,9 +48,9 @@ def delete(username, password, file):
         filepath = path + '/' + username + '/' + filepath
 
         os.chdir(filepath)
-        if filename in os.listdir(os.getcwd()):
+        if file in os.listdir(os.getcwd()):
             print 'file removed: ' + filename
-            os.remove(filename)
+            os.remove(file)
             return 'success'
 
 @app.route("/upload/<username>/<password>/<data>/<path:file>")
@@ -143,7 +143,7 @@ def list(username, password):
         directory = files_and_directories[0]
         for file in files_and_directories[2]:
             # add the full filepath for each file on the server in the user's folder
-            output += directory + '/' + file + '@'#'<br />'
+            output += directory + '/' + file + '\0'#'<br />'
     return output
 
 @app.route('/lastmodified/<path:file>')
@@ -207,4 +207,4 @@ if __name__ == '__main__':
     if 'onedir' not in os.listdir(os.environ['HOME']):
         os.mkdir(path)
     #app.run()
-    app.run(host = '0.0.0.0', debug = True)
+    app.run(host = '0.0.0.0', debug = False)
