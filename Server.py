@@ -18,10 +18,12 @@ c = con.cursor()
 #h = open('history.txt', 'r+')
 
 if not 'history.txt' in os.listdir(path):
-    h = open(path + '/history.txt', 'w+')
+    with open(path + '/history.txt', 'w+'):
+        pass
 
+h = open(path + '/history.txt', 'r+')
 
-# c.execute("create table accounts (usr, password)")
+c.execute("create table if not exists accounts (usr, password)")
 
 @app.route('/account/<username>/<password>')
 def create_account(username, password):
