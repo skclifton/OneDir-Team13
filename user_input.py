@@ -43,6 +43,7 @@ while True:
                 password = getpass.getpass("Enter password: ")
                 confirm = getpass.getpass("Confirm password: ")
             c.execute("insert into accounts values (?, ?)", (email, password))
+            con.commit()
         while option == '2':
             print ("Enter blank line to exit.")
             email = raw_input("Enter username: ")
@@ -83,6 +84,7 @@ while True:
                 confirm_pwd = getpass.getpass("Confirm new password: ")
             command = "update accounts set password = '%s' where email = '%s'" %(new_pwd, email)
             c.execute(command)
+            con.commit()
         while option == '3':
             print ("Enter blank line to exit.")
             email = raw_input("Enter username of account you would like to delete: ")
@@ -105,3 +107,5 @@ while True:
                 break
             command = "delete from accounts where email = '%s'" %(email)
             c.execute(command)
+            con.commit()
+con.close()
