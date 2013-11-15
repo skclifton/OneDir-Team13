@@ -15,7 +15,7 @@ signal(SIGPIPE,SIG_DFL)
 con = sqlite3.connect("accounts.db", check_same_thread=False)
 con.isolation_level = None
 c = con.cursor()
-h = open('history.txt', 'r+')
+#h = open('history.txt', 'r+')
 
 
 # c.execute("create table accounts (usr, password)")
@@ -211,5 +211,7 @@ def synchistory():
 if __name__ == '__main__':
     if 'onedir' not in os.listdir(os.environ['HOME']):
         os.mkdir(path)
+        if not 'history.txt' in os.listdir(path):
+            h = open('history.txt', 'r+')
     #app.run()
     app.run(host = '0.0.0.0', debug = False)
