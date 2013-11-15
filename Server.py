@@ -1,7 +1,7 @@
 from flask import Flask
 import sqlite3
 import os
-import datetime
+import time
 
 app = Flask(__name__)
 path = os.environ['HOME'] + "/onedir"
@@ -153,12 +153,13 @@ def list(username, password):
             output += directory + '/' + file + '\0'#'<br />'
     return output
 
-@app.route('/lastmodified/<path:file>')
-def last_modified(file):
-    if os.path.exists(file):
-        return str(os.path.getmtime(file))
+@app.route('/lastmodified/<path:file2>')
+def last_modified(file2):
+    print 'routed to lastmodified'
+    if os.path.exists(file2):
+        return str(os.path.getmtime(file2))
     else:
-        return str(datetime.datetime.now.time())
+        return str(time.time())
 
 @app.route('/download/<username>/<password>/<path:file>')
 def download(username, password, file):
