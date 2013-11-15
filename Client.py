@@ -203,10 +203,12 @@ class Client:
             for file in server_files:
                 server_path = file.split('/')
                 #print 'server path' + str(server_path)
+                server_path.pop(0) # remove ''
                 server_path.pop(0) # home
                 server_path.pop(0) # user
                 server_path.pop(0) # onedir
                 server_path.pop(0) # username
+                filename = server_path[-1]
                 server_path = '/'.join(server_path)
                 server_path = os.environ['HOME'] + '/onedir/' + server_path
                 #print 'file on server: ' + file
@@ -218,7 +220,13 @@ class Client:
                     server_time = float(urllib.urlopen(self.url+'/lastmodified'+file).read())
                     server_newer = server_time > local_time
                 if not has or server_newer:
-                    with open(server_path, 'w') as dlFile:
+                    server_path = server_path.split('/')
+                    filename = server_path.pop()
+                    '/'.join(server_path)
+                    if not os.path.exists(server_path):
+                        os.makedirs(server_path)
+                    os.chdir(server_path)
+                    with open(filename, 'w') as dlFile:
                         dlFile.write(urllib.urlopen(self.url+'/download/'+self.username+'/'+self.password+'/'+file).read())
 
         #make the user's filepaths match the server's
