@@ -215,11 +215,12 @@ class Client:
                 # comment
                 has = server_path in local_files
                 server_newer = False
+                valid = urllib.urlopen(self.url+'/validfile'+file).read() == 'valid'
                 if has:
                     local_time = float(os.path.getmtime(server_path))
                     server_time = float(urllib.urlopen(self.url+'/lastmodified'+file).read())
                     server_newer = server_time > local_time
-                if not has or server_newer:
+                if (valid and not has) or server_newer:
                     server_path = server_path.split('/')
                     filename = server_path.pop()
                     '/'.join(server_path)
@@ -227,7 +228,7 @@ class Client:
                         os.makedirs(server_path)
                     os.chdir(server_path)
                     with open(filename, 'w') as dlFile:
-                        dlFile.write(urllib.urlopen(self.url+'/download/'+self.username+'/'+self.password+'/'+file).read())
+                        dlFile.write(urllib.urlopen(self.url+'/download/'+self.username+'/'+self.password+file).read())
 
         #make the user's filepaths match the server's
         if len(local_files) > 0:

@@ -161,14 +161,22 @@ def last_modified(file2):
     else:
         return str(time.time())
 
+@app.route('/validfile/<path:file>')
+def valid(file):
+    if os.path.exists(file):
+        return 'valid'
+    else:
+        return 'invalid'
+
 @app.route('/download/<username>/<password>/<path:file>')
 def download(username, password, file):
     server_path = file.split('/')
+    server_path.pop(0) # ''
     server_path.pop(0) # home
     server_path.pop(0) # user
     server_path.pop(0) # onedir
     server_path = '/'.join(server_path)
-    with open(path + '/' + username + '/' + server_path) as server_file:
+    with open(path + '/' + server_path) as server_file:
         return server_file.read()
 
 @app.route('/userinfo')
