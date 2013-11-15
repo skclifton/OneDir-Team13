@@ -211,7 +211,13 @@ class Client:
                 server_path = os.environ['HOME'] + '/onedir/' + server_path
                 #print 'file on server: ' + file
                 # comment
-                if os.path.isfile(file) and (server_path not in local_files or float(urllib.urlopen(self.url+'/lastmodified'+file).read()) > float(os.path.getmtime(server_path))): # if we don't have the file or the server has a newer version
+                has = server_path in local_files
+                server_newer = False
+                if has:
+                    local_time = float(os.path.getmtime(server_path))
+                    server_time = float(urllib.urlopen(self.url+'/lastmodified'+file).read())
+                    server_newer = server_time > local_time
+                if not has or server_newer:
                     with open(server_path, 'w') as dlFile:
                         dlFile.write(urllib.urlopen(self.url+'/download/'+self.username+'/'+self.password+'/'+file).read())
 

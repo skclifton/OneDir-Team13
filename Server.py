@@ -155,7 +155,7 @@ def list(username, password):
 
 @app.route('/lastmodified/<path:file2>')
 def last_modified(file2):
-    print 'routed to lastmodified'
+    #print 'routed to lastmodified'
     if os.path.exists(file2):
         return str(os.path.getmtime(file2))
     else:
