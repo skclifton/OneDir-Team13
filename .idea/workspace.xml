@@ -38,7 +38,7 @@
       <file leaf-file-name="Server.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="41" selection-start="168" selection-end="168" vertical-scroll-proportion="0.2660754" vertical-offset="0" max-vertical-offset="3360">
+            <state line="218" column="0" selection-start="6940" selection-end="6940" vertical-scroll-proportion="0.8004435" vertical-offset="2909" max-vertical-offset="3360">
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -418,7 +418,11 @@
       <created>1384545757584</created>
       <updated>1384545757584</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="changed file opening for history.txt to auto-create">
+      <created>1384546003474</created>
+      <updated>1384546003474</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers>
       <GitHub shared="false" url="github.com">
         <commitMessageFormat>{id} {summary}</commitMessageFormat>
@@ -591,7 +595,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="41" selection-start="168" selection-end="168" vertical-scroll-proportion="0.2660754" vertical-offset="0" max-vertical-offset="3360">
+        <state line="218" column="0" selection-start="6940" selection-end="6940" vertical-scroll-proportion="0.8004435" vertical-offset="2909" max-vertical-offset="3360">
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>

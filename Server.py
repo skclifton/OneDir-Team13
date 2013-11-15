@@ -18,7 +18,7 @@ c = con.cursor()
 #h = open('history.txt', 'r+')
 
 if not 'history.txt' in os.listdir(path):
-    h = open(path + '/history.txt', 'w')
+    h = open(path + '/history.txt', 'w+')
 
 
 # c.execute("create table accounts (usr, password)")
