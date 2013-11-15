@@ -134,7 +134,7 @@ def list(username, password):
         directory = files_and_directories[0]
         for file in files_and_directories[2]:
             # add the full filepath for each file on the server in the user's folder
-            output += directory + '/' + file + '@'#'<br />'
+            output += directory + '/' + file + '\0'#'<br />'
     return output
 
 @app.route('/lastmodified/<path:file>')
