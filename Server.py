@@ -163,21 +163,26 @@ def last_modified(file2):
 
 @app.route('/validfile/<path:file>')
 def valid(file):
-    if os.path.exists(file):
+    if os.path.exists('/'+file):
         return 'valid'
     else:
         return 'invalid'
 
 @app.route('/download/<username>/<password>/<path:file>')
 def download(username, password, file):
+    print file
+    '''
     server_path = file.split('/')
     server_path.pop(0) # ''
     server_path.pop(0) # home
     server_path.pop(0) # user
     server_path.pop(0) # onedir
     server_path = '/'.join(server_path)
-    with open(path + '/' + server_path) as server_file:
-        return server_file.read()
+    '''
+    data = ''
+    with open('/' + file, 'r') as server_file:
+        data = server_file.read()
+    return data
 
 @app.route('/changepwadmin/<username>/<password>')
 def change_password_admin(username, new_password):
@@ -249,4 +254,4 @@ if __name__ == '__main__':
     if 'onedir' not in os.listdir(os.environ['HOME']):
         os.mkdir(path)
     #app.run()
-    app.run(host = '0.0.0.0', debug = False)
+    app.run(host = '0.0.0.0', debug = True)
