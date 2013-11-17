@@ -50,7 +50,7 @@ class Admin:
                     if success == 'success':
                         print 'Password successfully changed.'
                     else:
-                        print 'Ya done goofed ;-D'
+                        print 'User does not exist'
 
                 # view user information
                 if command[0] == '4':

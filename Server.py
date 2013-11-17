@@ -184,7 +184,7 @@ def download(username, password, file):
         data = server_file.read()
     return data
 
-@app.route('/changepwadmin/<username>/<password>')
+@app.route('/changepwadmin/<username>/<new_password>')
 def change_password_admin(username, new_password):
     command = "select * from accounts where usr = '%s'" %(username)
     c.execute(command)
@@ -216,7 +216,7 @@ def user_info():
     c.execute(command)
     user = c.fetchone()
     while user is not None:
-        retStr += user[0] + '\t\t' + user[1]
+        retStr += user[0] + '\t\t\t\t' + user[1] + '\n'
         user = c.fetchone()
     return retStr
 
