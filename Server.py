@@ -179,25 +179,49 @@ def download(username, password, file):
     with open(path + '/' + server_path) as server_file:
         return server_file.read()
 
-@app.route('/userinfo')
-def userinfo():
-    retStr = 'Username\t\tPassword\n'
-    command = "SELECT usr from accounts"
+@app.route('/changepwadmin/<username>/<password>')
+def change_password_admin(username, new_password):
+    command = "select * from accounts where usr = '%s'" %(username)
     c.execute(command)
-    i = 0
+    value = c.fetchone()
+    if value is None:
+        return 'failure'
+    command = "UPDATE accounts SET password = '%s' WHERE usr = '%s'" %(new_password, username)
+    c.execute(command)
+    con.commit()
+    print 'did we get?'
+    return 'success'
+
+@app.route('/deleteaccount/<username>')
+def delete_account(username):
+    command = "select * from accounts where usr = '%s'" %(username)
+    c.execute(command)
+    value = c.fetchone()
+    if value is None:
+        return 'failure'
+    command = "delete from accounts where usr = '%s'" %(username)
+    c.execute(command)
+    con.commit()
+    return 'success'
+
+@app.route('/userinfo')
+def user_info():
+    retStr = 'Username\t\tPassword\n'
+    command = "SELECT * from accounts"
+    c.execute(command)
     user = c.fetchone()
     while user is not None:
         retStr += user[0] + '\t\t' + user[1]
+        user = c.fetchone()
     return retStr
 
 @app.route('/fileinfo')
-def fileinfo():
+def file_info():
     retStr = 'User: \nUser\t\tFile Size\t\tFile Count\n'
     totalsize = 0
     totalcount = 0
     command = "SELECT usr from accounts"
     c.execute(command)
-    i = 0
     user = c.fetchone()
     while user is not None:
         usersize = 0
@@ -210,13 +234,12 @@ def fileinfo():
                 usercount += 1
         retStr += user[0] + "\t\t" + str(usersize) + "\t\t" + str(usercount) + "\n"
         user = c.fetchone()
-        i += 1
 
     retStr += 'Total: \n' + 'File Size: ' + str(totalsize) + '\tFile Count: ' + str(totalcount)
     return retStr
 
 @app.route('/synchistory')
-def synchistory():
+def sync_history():
     historyStr = ''
     for line in h:
         historyStr += line

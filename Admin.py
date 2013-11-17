@@ -1,3 +1,4 @@
+import getpass
 import urllib
 
 
@@ -34,11 +35,22 @@ class Admin:
 
                 # delete user account
                 if command[0] == '2':
-                    print
+                    username = raw_input("Enter username to be deleted: ")
+                    success = self.delete_account(username)
+                    if success == 'success':
+                        print 'User successfully deleted'
+                    else:
+                        print 'User does not exist'
 
-                 # change user password
+                 # reset user password
                 if command[0] == '3':
-                    print
+                    username = raw_input("Enter username: ")
+                    new_password = getpass.getpass('Enter new password: ')
+                    success = self.change_password(username, new_password)
+                    if success == 'success':
+                        print 'Password successfully changed.'
+                    else:
+                        print 'Ya done goofed ;-D'
 
                 # view user information
                 if command[0] == '4':
@@ -61,6 +73,16 @@ class Admin:
                 # help/print menu
                 if command[0] == '7':
                     print menu
+
+    def change_password(self, username, new_password):
+        if urllib.urlopen(self.url + '/' + 'changepwadmin/' + username + '/' + new_password).read() == 'success':
+            return 'success'
+        return 'failure'
+
+    def delete_account(self, username):
+        if urllib.urlopen(self.url + '/' + 'deleteaccount/' + username).read() == 'success':
+            return 'success'
+        return 'failure'
 
 if __name__ == "__main__":
     Admin()

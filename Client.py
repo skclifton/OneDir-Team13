@@ -12,15 +12,7 @@ class Client:
 
     def __init__(self):
 
-        #self.url = 'http://10.0.2.15:5000'
-        #self.url = 'http://10.0.2.15:5000'
-        #self.url = 'http://172.25.208.149:5000'
-        #self.url = 'http://172.26.47.242:5000' #home wifi
-        #self.url = 'http://172.25.42.195:5000' #stacks wifi
-        self.url = 'http://172.25.208.235:5000'
-        #self.url = 'http://172.25.43.190:5000'
-        # self.url = 'http://10.0.2.15:5000'
-        #self.url = 'http://192.168.1.255:5000' #home Ubuntu server URL
+        self.url = 'http://10.0.2.15:5000'
         self.logged_in = False
         self.lfm = None
         self.CLI()
