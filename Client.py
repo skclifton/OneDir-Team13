@@ -230,6 +230,7 @@ class Client:
                     with open(filename, 'w') as dlFile:
                         dlFile.write(urllib.urlopen(self.url+'/download/'+self.username+'/'+self.password+file).read())
 
+
         #make the user's filepaths match the server's
         if len(local_files) > 0:
             for file in local_files:
