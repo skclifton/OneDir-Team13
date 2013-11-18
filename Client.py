@@ -13,9 +13,8 @@ import config
 class Client:
 
     def __init__(self):
-
-        self.url = 'http://172.25.42.25:5000'
         self.logged_in = False
+        self.lfm = None
         self.lfm = None
         self.CLI()
 
@@ -93,7 +92,7 @@ class Client:
 
                 # change username
                 if command[0] == '6':
-                    success = self.change_username(self.username, self.password)
+                    success = self.change_username(config.username, config.password)
                     if success == 'success':
                         print 'Username successfully changed.'
                     else:
@@ -101,7 +100,7 @@ class Client:
 
                 # change password
                 if command[0] == '7':
-                    success = self.change_password(self.username, self.password)
+                    success = self.change_password(config.username, config.password)
                     if success == 'success':
                         print 'Password successfully changed.'
                     else:
@@ -117,10 +116,8 @@ class Client:
     def login(self):
         username = raw_input("Username: ")
         password = raw_input("Password: ")
-        log = urllib.urlopen(self.url+"/login/" + username + "/" + password).read()
+        log = urllib.urlopen(config.url+"/login/" + username + "/" + password).read()
         if log == 'success':
-            self.username = username
-            self.password = password
             config.username = username
             config.password = password
             self.logged_in = True
@@ -141,7 +138,7 @@ class Client:
             if pw != confirm_pw:
                 print "Passwords do not match."
 
-        response = urllib.urlopen(self.url+"/account/"+usr+"/"+pw)
+        response = urllib.urlopen(config.url+"/account/"+usr+"/"+pw)
         if response.read() != 'created':
             print "Account Exists"
             self.create_account()
@@ -154,9 +151,7 @@ class Client:
         while not new_password == confirm_pw:
             confirm_pw = getpass.getpass('Enter your new password: ')
 
-        if urllib.urlopen(self.url + '/' + 'changepw/' + username + '/' + password2 + '/' + new_password).read() == 'success':
-            self.password = new_password
-            #self.lfm.set_password(new_password)
+        if urllib.urlopen(config.url + '/' + 'changepw/' + username + '/' + password2 + '/' + new_password).read() == 'success':
             config.password = new_password
 
             return 'success'
@@ -170,8 +165,7 @@ class Client:
         while not new_usr == confirm_usr:
             confirm_usr = raw_input('Enter your new username: ')
 
-        if urllib.urlopen(self.url + '/' + 'changeusr/' + username2 + '/' + password + '/' + new_usr).read() == 'success':
-            self.username = new_usr
+        if urllib.urlopen(config.url + '/' + 'changeusr/' + username2 + '/' + password + '/' + new_usr).read() == 'success':
             config.username = new_usr
             return 'success'
         else:
@@ -182,7 +176,7 @@ class Client:
     # periodically to check for updates from other computers
     def sync(self, upload):
         # get the server's list of files for the user (separated by '\0' symbols) to send in one string
-        server_files = urllib.urlopen(self.url + '/list/' + self.username + '/' + self.password).read().split('\0')
+        server_files = urllib.urlopen(config.url + '/list/' + config.username + '/' + config.password).read().split('\0')
         server_files.remove('')
         if server_files == ['']:
             server_files = []
@@ -209,10 +203,10 @@ class Client:
                 # comment
                 has = server_path in local_files
                 server_newer = False
-                valid = urllib.urlopen(self.url+'/validfile'+file).read() == 'valid'
+                valid = urllib.urlopen(config.url+'/validfile'+file).read() == 'valid'
                 if has:
                     local_time = float(os.path.getmtime(server_path))
-                    server_time = float(urllib.urlopen(self.url+'/lastmodified'+file).read())
+                    server_time = float(urllib.urlopen(config.url+'/lastmodified'+file).read())
                     server_newer = server_time < local_time
                 if (valid and not has) or server_newer:
                     server_path = server_path.split('/')
@@ -222,7 +216,7 @@ class Client:
                         os.makedirs(server_path)
                     os.chdir(server_path)
                     with open(filename, 'w') as dlFile:
-                        data = (urllib.urlopen(self.url+'/download/'+self.username+'/'+self.password+file).read())
+                        data = (urllib.urlopen(config.url+'/download/'+config.username+'/'+config.password+file).read())
                         dlFile.write(data)
 
 
@@ -236,21 +230,21 @@ class Client:
                     local_path.pop(0) # onedir
                     local_path.pop(0)
                     local_path = '/'.join(local_path)
-                    local_path = os.environ['HOME'] + '/onedir/' + self.username + '/' + local_path
+                    local_path = os.environ['HOME'] + '/onedir/' + config.username + '/' + local_path
 
 
-                    if os.path.isfile(file) and (local_path not in server_files or float(os.path.getmtime(file)) > float(urllib.urlopen(self.url+'/lastmodified'+local_path).read())):
-                        self.uploadFile(file)
+                    if os.path.isfile(file) and (local_path not in server_files or float(os.path.getmtime(file)) > float(urllib.urlopen(config.url+'/lastmodified'+local_path).read())):
+                        uploadFile(file)
 
-    def uploadFile(self, filePath):
-        if config.run:
-            with open(filePath, 'rb') as upload:
-                urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+'/'+"\0" + filePath)
-                for letter in upload.readlines():
-                    line = []
-                    for x in letter:
-                        line.append(str(ord(x)))
-                    urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+"/" + ' '.join(line) + filePath)
+def uploadFile(self, filePath):
+    if config.run:
+        with open(filePath, 'rb') as upload:
+            urllib.urlopen(config.url+"/upload/"+config.username+"/"+config.password+'/'+"\0" + filePath)
+            for letter in upload.readlines():
+                line = []
+                for x in letter:
+                    line.append(str(ord(x)))
+                urllib.urlopen(config.url+"/upload/"+config.username+"/"+config.password+"/" + ' '.join(line) + filePath)
 
 
 
