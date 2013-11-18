@@ -21,7 +21,7 @@ class Client:
         while True:
             n = 6
             time.sleep(n)
-            self.sync()
+            self.sync(False)
             # get any updated server files every n seconds
             # sdhflksdj;flkj;
 
@@ -120,7 +120,7 @@ class Client:
             self.password = password
             self.logged_in = True
             self.lfm = thread.start_new_thread(LocalFileMonitor.LocalFileMonitor, (username, password, self.url))
-            self.sync()
+            self.sync(True)
             thread.start_new_thread(self.update, ())
             return True
 
@@ -174,7 +174,7 @@ class Client:
     # This method will check the files in a user's onedir folder and compare them to the ones the server has for that
     # user and upload and download the missing files on each end, it is to be called when first logged in, and then
     # periodically to check for updates from other computers
-    def sync(self):
+    def sync(self, upload):
         # get the server's list of files for the user (separated by '\0' symbols) to send in one string
         server_files = urllib.urlopen(self.url + '/list/' + self.username + '/' + self.password).read().split('\0')
         server_files.remove('')
@@ -224,19 +224,21 @@ class Client:
 
 
         #make the user's filepaths match the server's
-        if len(local_files) > 0:
-            for file in local_files:
-                local_path = file.split('/')
-                local_path.pop(0) # home
-                local_path.pop(0) # user
-                local_path.pop(0) # onedir
-                local_path.pop(0)
-                local_path = '/'.join(local_path)
-                local_path = os.environ['HOME'] + '/onedir/' + self.username + '/' + local_path
-                # print 'path on server: ' + local_path
+        if upload:
+            print 'First time upload'
+            if len(local_files) > 0:
+                for file in local_files:
+                    local_path = file.split('/')
+                    local_path.pop(0) # home
+                    local_path.pop(0) # user
+                    local_path.pop(0) # onedir
+                    local_path.pop(0)
+                    local_path = '/'.join(local_path)
+                    local_path = os.environ['HOME'] + '/onedir/' + self.username + '/' + local_path
+                    # print 'path on server: ' + local_path
 
-                if os.path.isfile(file) and (local_path not in server_files or float(os.path.getmtime(file)) > float(urllib.urlopen(self.url+'/lastmodified'+local_path).read())):
-                    self.uploadFile(file)
+                    if os.path.isfile(file) and (local_path not in server_files or float(os.path.getmtime(file)) > float(urllib.urlopen(self.url+'/lastmodified'+local_path).read())):
+                        self.uploadFile(file)
 
     def uploadFile(self, filePath):
         with open(filePath, 'rb') as upload:
