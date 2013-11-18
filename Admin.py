@@ -36,7 +36,10 @@ class Admin:
                 # delete user account
                 if command[0] == '2':
                     username = raw_input("Enter username to be deleted: ")
-                    success = self.delete_account(username)
+                    deletefiles = ''
+                    while not (deletefiles == 'Y' or deletefiles == 'N'):
+                        deletefiles = raw_input("Do you want to delete the users files? (Y/N)")
+                    success = self.delete_account(username, deletefiles)
                     if success == 'success':
                         print 'User successfully deleted'
                     else:
@@ -79,8 +82,8 @@ class Admin:
             return 'success'
         return 'failure'
 
-    def delete_account(self, username):
-        if urllib.urlopen(self.url + '/' + 'deleteaccount/' + username).read() == 'success':
+    def delete_account(self, username, deletefiles):
+        if urllib.urlopen(self.url + '/' + 'deleteaccount/' + username + '/' + deletefiles).read() == 'success':
             return 'success'
         return 'failure'
 

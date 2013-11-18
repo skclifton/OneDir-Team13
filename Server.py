@@ -1,3 +1,4 @@
+import shutil
 from flask import Flask
 import sqlite3
 import os
@@ -17,13 +18,11 @@ con.isolation_level = None
 c = con.cursor()
 #h = open('history.txt', 'r+')
 
-'''
 if not 'history.txt' in os.listdir(path):
     with open(path + '/history.txt', 'w+'):
         pass
-        '''
 
-h = open(path + '/history.txt', 'a')
+h = open(path + '/history.txt', 'r+')
 
 c.execute("create table if not exists accounts (usr, password)")
 
@@ -199,8 +198,10 @@ def change_password_admin(username, new_password):
     print 'did we get?'
     return 'success'
 
-@app.route('/deleteaccount/<username>')
-def delete_account(username):
+@app.route('/deleteaccount/<username>/<deletefiles>')
+def delete_account(username, deletefiles):
+    if deletefiles == 'Y':
+        shutil.rmtree(path + '/' + username)
     command = "select * from accounts where usr = '%s'" %(username)
     c.execute(command)
     value = c.fetchone()
