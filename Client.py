@@ -12,7 +12,7 @@ class Client:
 
     def __init__(self):
 
-        self.url = 'http://10.0.2.15:5000'
+        self.url = 'http://172.25.42.25:5000'
         self.logged_in = False
         self.lfm = None
         self.CLI()
@@ -211,10 +211,11 @@ class Client:
                 if has:
                     local_time = float(os.path.getmtime(server_path))
                     server_time = float(urllib.urlopen(self.url+'/lastmodified'+file).read())
-                    server_newer = server_time > local_time
+                    server_newer = server_time < local_time
                 print 'last modified on server: ' + str(server_time) + ', last modified on client: ' + str(local_time)
                 print 'file: ' + file
                 print 'valid: ' + str(valid) + ' has: ' + str(has) + ' server_newer: ' + str(server_newer)
+                print 'time different: ' + str(server_time - local_time)
                 if (valid and not has) or server_newer:
                     server_path = server_path.split('/')
                     filename = server_path.pop()

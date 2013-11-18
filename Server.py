@@ -55,9 +55,9 @@ def delete(username, password, file):
         filepath = path + '/' + username + '/' + filepath
 
         os.chdir(filepath)
-        if file in os.listdir(os.getcwd()):
+        if filename in os.listdir(os.getcwd()):
             print 'file removed: ' + filename
-            os.remove(file)
+            os.remove(filename)
             return 'success'
         return 'failure'
 
@@ -171,7 +171,6 @@ def valid(file):
 
 @app.route('/download/<username>/<password>/<path:file>')
 def download(username, password, file):
-    print file
     '''
     server_path = file.split('/')
     server_path.pop(0) # ''
