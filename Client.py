@@ -2,11 +2,11 @@ import urllib
 import sqlite3
 import getpass
 import sys
-import LocalFileMonitor
 import time
 import os
 import thread
 from pyinotify import *
+import LocalFileMonitor
 import config
 
 
@@ -124,7 +124,7 @@ class Client:
             config.username = username
             config.password = password
             self.logged_in = True
-            self.lfm = thread.start_new_thread(LocalFileMonitor.LocalFileMonitor, (username, password, self.url))
+            self.lfm = thread.start_new_thread(LocalFileMonitor.LocalFileMonitor, ())
             self.sync(True)
             thread.start_new_thread(self.update, ())
             return True
@@ -258,94 +258,3 @@ if __name__ == "__main__":
     if 'onedir' not in os.listdir(os.environ['HOME']):
         os.mkdir(os.environ['HOME'] + '/ondedir')
     Client()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-class LocalFileMonitor():
-    def __init__(self):
-
-        wm = WatchManager()
-        handler = EventHandler()
-        self.notifier = ThreadedNotifier(wm, handler)
-        directory = os.environ['HOME'] + '/onedir'
-        wm.add_watch(directory, ALL_EVENTS, rec=True, auto_add=True)
-        #notifier.start()
-        thread.start_new_thread(self.notifier.loop, ())
-
-class EventHandler(ProcessEvent):
-
-    #def process_IN_CREATE(self, event):
-    #    if not "~lock" in event.pathname:
-    #       self.uploadFile(event.pathname)
-
-    def process_IN_DELETE(self, event):
-        if not "~lock" in event.pathname:
-            urllib.urlopen(config.url + "/delete/" + config.username + '/' + config.password + '/' + event.pathname)
-
-    def process_IN_MOVED_FROM(self, event):
-        urllib.urlopen(config.url + '/delete/' + config.username + '/' + config.password + event.pathname)
-
-    def process_IN_MOVED_TO(self, event):
-        #urllib.urlopen(url + '/upload/' + username + '/' + password + event.pathname)
-        if not '~lock' in event.pathname:
-            Client.uploadFile(event.pathname)
-
-
-
-    #def process_IN_ATTRIB(self, event):
-    #    if not "~lock" in event.pathname:
-
-    def process_IN_CLOSE_WRITE(self, event):
-        if not "~lock" in event.pathname:
-            Client.uploadFile(event.pathname)
