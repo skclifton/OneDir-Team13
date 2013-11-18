@@ -57,9 +57,15 @@ class Admin:
 
                 # view user information
                 if command[0] == '4':
-                    print '---------- START USER INFORMATION ----------'
-                    print urllib.urlopen(self.url + "/userinfo").read()
-                    print '---------- END USER INFORMATION ----------'
+                    userinfo = urllib.urlopen(self.url + "/userinfo").read().split('\t')
+                    print "{0:<20} {1:>20}".format("Username", "Password")
+                    print "-"*41
+                    i = 0
+                    j = 1
+                    while j < len(userinfo):
+                        print "{0:20} {1:>20}".format(userinfo[i], userinfo[j])
+                        i += 2
+                        j += 2
 
                 # view sync history
                 if command[0] == '5':
@@ -69,9 +75,17 @@ class Admin:
 
                 # view file information
                 if command[0] == '6':
-                    print '---------- START FILE INFORMATION ----------'
-                    print urllib.urlopen(self.url + "/fileinfo").read()
-                    print '---------- START FILE INFORMATION ----------'
+                    fileinfo = urllib.urlopen(self.url + "/fileinfo").read().split('\t')
+                    print "{0:<20} {1:^20} {2:>20}".format("User", "File Size", "Number of Files")
+                    print "-"*62
+                    i = 0
+                    j = 1
+                    k = 2
+                    while k < len(fileinfo):
+                        print "{0:20} {1:^20} {2:>20}".format(fileinfo[i], fileinfo[j], fileinfo[k])
+                        i += 3
+                        j += 3
+                        k += 3
 
                 # help/print menu
                 if command[0] == '7':

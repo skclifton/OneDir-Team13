@@ -16,13 +16,8 @@ signal(SIGPIPE,SIG_DFL)
 con = sqlite3.connect("accounts.db", check_same_thread=False)
 con.isolation_level = None
 c = con.cursor()
-#h = open('history.txt', 'r+')
 
-if not 'history.txt' in os.listdir(path):
-    with open(path + '/history.txt', 'w+'):
-        pass
-
-h = open(path + '/history.txt', 'r+')
+h = open(path + '/history.txt', 'a+')
 
 c.execute("create table if not exists accounts (usr, password)")
 
@@ -213,18 +208,18 @@ def delete_account(username, deletefiles):
 
 @app.route('/userinfo')
 def user_info():
-    retStr = 'Username\t\tPassword\n'
+    retStr = ''
     command = "SELECT * from accounts"
     c.execute(command)
     user = c.fetchone()
     while user is not None:
-        retStr += user[0] + '\t\t\t\t' + user[1] + '\n'
+        retStr += user[0] + '\t' + user[1] + '\t'
         user = c.fetchone()
     return retStr
 
 @app.route('/fileinfo')
 def file_info():
-    retStr = 'User: \nUser\t\tFile Size\t\tFile Count\n'
+    retStr = ''
     totalsize = 0
     totalcount = 0
     command = "SELECT usr from accounts"
@@ -239,10 +234,10 @@ def file_info():
                 totalcount += 1
                 usersize += os.path.getsize(name)
                 usercount += 1
-        retStr += user[0] + "\t\t" + str(usersize) + "\t\t" + str(usercount) + "\n"
+        retStr += user[0] + "\t" + str(usersize) + "\t" + str(usercount) + "\t"
         user = c.fetchone()
 
-    retStr += 'Total: \n' + 'File Size: ' + str(totalsize) + '\tFile Count: ' + str(totalcount)
+    retStr += 'Total\t' + str(totalsize) + '\t' + str(totalcount)
     return retStr
 
 @app.route('/synchistory')
