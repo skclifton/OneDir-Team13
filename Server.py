@@ -17,11 +17,13 @@ con.isolation_level = None
 c = con.cursor()
 #h = open('history.txt', 'r+')
 
+'''
 if not 'history.txt' in os.listdir(path):
     with open(path + '/history.txt', 'w+'):
         pass
+        '''
 
-h = open(path + '/history.txt', 'r+')
+h = open(path + '/history.txt', 'a')
 
 c.execute("create table if not exists accounts (usr, password)")
 

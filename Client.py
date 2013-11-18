@@ -119,7 +119,7 @@ class Client:
             self.username = username
             self.password = password
             self.logged_in = True
-            self.lfm = LocalFileMonitor.LocalFileMonitor(username, password, self.url)
+            self.lfm = thread.start_new_thread(LocalFileMonitor.LocalFileMonitor, (username, password, self.url))
             self.sync()
             thread.start_new_thread(self.update, ())
             return True
@@ -215,7 +215,7 @@ class Client:
                 if (valid and not has) or server_newer:
                     server_path = server_path.split('/')
                     filename = server_path.pop()
-                    '/'.join(server_path)
+                    server_path = '/'.join(server_path)
                     if not os.path.exists(server_path):
                         os.makedirs(server_path)
                     os.chdir(server_path)
