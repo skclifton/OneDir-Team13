@@ -175,6 +175,7 @@ def download(username, password, file):
     server_path = '/'.join(server_path)
     '''
     data = ''
+    h.write("Download | User: " + username + " Filepath: " + file + "\n")
     with open('/' + file, 'r') as server_file:
         data = server_file.read()
     return data
