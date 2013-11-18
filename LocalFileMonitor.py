@@ -4,7 +4,7 @@ import Client
 import thread
 import config
 
-class LocalFileMonitor2():
+class LocalFileMonitor():
     def __init__(self):
 
         wm = WatchManager()
