@@ -31,7 +31,7 @@ class EventHandler(ProcessEvent):
     def process_IN_MOVED_TO(self, event):
         #urllib.urlopen(url + '/upload/' + username + '/' + password + event.pathname)
         if not '~lock' in event.pathname:
-            Client.uploadFile(event.pathname)
+            self.uploadFile(event.pathname)
 
 
 
@@ -40,7 +40,7 @@ class EventHandler(ProcessEvent):
 
     def process_IN_CLOSE_WRITE(self, event):
         if not "~lock" in event.pathname:
-            Client.Client.uploadFile(event.pathname)
+            self.uploadFile(event.pathname)
 
     def uploadFile(self, filePath):
         if config.run:
