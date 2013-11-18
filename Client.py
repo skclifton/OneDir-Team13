@@ -7,14 +7,8 @@ import time
 import os
 import thread
 from pyinotify import *
+import config
 
-
-global run
-run = True
-global username
-global password
-global url
-url = 'http://172.25.42.25:5000'
 
 class Client:
 
@@ -26,15 +20,15 @@ class Client:
         self.CLI()
 
     def update(self):
-        while run:
+        while True:
             n = 6
             time.sleep(n)
-            self.sync(False)
+            if config.run:
+                self.sync(False)
             # get any updated server files every n seconds
             # sdhflksdj;flkj;
 
     def CLI(self):
-        global run
         loggedOutMenu = 'Choose an action by typing the number:\n1: exit\n2: create account\n3: login\n8: help'
 
         loggedInMenu = 'Choose an action by typing the number:\n1: exit\n2: create account\n3: login\n' \
@@ -91,11 +85,11 @@ class Client:
 
                 # turn sync on
                 if command[0] == '4':
-                    run = True
+                    config.run = True
 
                 # turn sync off
                 if command[0] == '5':
-                    run = False
+                    config.run = False
 
                 # change username
                 if command[0] == '6':
@@ -127,6 +121,8 @@ class Client:
         if log == 'success':
             self.username = username
             self.password = password
+            config.username = username
+            config.password = password
             self.logged_in = True
             self.lfm = thread.start_new_thread(LocalFileMonitor.LocalFileMonitor, (username, password, self.url))
             self.sync(True)
@@ -161,8 +157,7 @@ class Client:
         if urllib.urlopen(self.url + '/' + 'changepw/' + username + '/' + password2 + '/' + new_password).read() == 'success':
             self.password = new_password
             #self.lfm.set_password(new_password)
-            global password
-            password = new_password
+            config.password = new_password
 
             return 'success'
         else:
@@ -177,8 +172,7 @@ class Client:
 
         if urllib.urlopen(self.url + '/' + 'changeusr/' + username2 + '/' + password + '/' + new_usr).read() == 'success':
             self.username = new_usr
-            global username
-            username = new_usr
+            config.username = new_usr
             return 'success'
         else:
             return 'failure'
@@ -249,8 +243,7 @@ class Client:
                         self.uploadFile(file)
 
     def uploadFile(self, filePath):
-        global run
-        if run:
+        if config.run:
             with open(filePath, 'rb') as upload:
                 urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+'/'+"\0" + filePath)
                 for letter in upload.readlines():
@@ -265,7 +258,6 @@ if __name__ == "__main__":
     if 'onedir' not in os.listdir(os.environ['HOME']):
         os.mkdir(os.environ['HOME'] + '/ondedir')
     Client()
-    #Client()
 
 
 
@@ -321,15 +313,7 @@ if __name__ == "__main__":
 
 
 class LocalFileMonitor():
-    def __init__(self, un, pw, u):
-        global username
-        username = un
-
-        global password
-        password = pw
-
-        global url
-        url = u
+    def __init__(self):
 
         wm = WatchManager()
         handler = EventHandler()
@@ -339,24 +323,6 @@ class LocalFileMonitor():
         #notifier.start()
         thread.start_new_thread(self.notifier.loop, ())
 
-    def stop_sync(self):
-        global run
-        run = False
-
-    def start_sync(self):
-        #thread.start_new_thread(self.notifier.loop, ())
-        global run
-        run = True
-
-    def set_username(self, new_username):
-        global username
-        username = new_username
-
-    def set_password(self, new_password):
-        global password
-        password = new_password
-
-
 class EventHandler(ProcessEvent):
 
     #def process_IN_CREATE(self, event):
@@ -365,10 +331,10 @@ class EventHandler(ProcessEvent):
 
     def process_IN_DELETE(self, event):
         if not "~lock" in event.pathname:
-            urllib.urlopen(url + "/delete/" + username + '/' + password + '/' + event.pathname)
+            urllib.urlopen(config.url + "/delete/" + config.username + '/' + config.password + '/' + event.pathname)
 
     def process_IN_MOVED_FROM(self, event):
-        urllib.urlopen(url + '/delete/' + username + '/' + password + event.pathname)
+        urllib.urlopen(config.url + '/delete/' + config.username + '/' + config.password + event.pathname)
 
     def process_IN_MOVED_TO(self, event):
         #urllib.urlopen(url + '/upload/' + username + '/' + password + event.pathname)
