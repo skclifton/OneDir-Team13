@@ -212,6 +212,9 @@ class Client:
                     local_time = float(os.path.getmtime(server_path))
                     server_time = float(urllib.urlopen(self.url+'/lastmodified'+file).read())
                     server_newer = server_time > local_time
+                print 'last modified on server: ' + str(server_time) + ', last modified on client: ' + str(local_time)
+                print 'file: ' + file
+                print 'valid: ' + str(valid) + ' has: ' + str(has) + ' server_newer: ' + str(server_newer)
                 if (valid and not has) or server_newer:
                     server_path = server_path.split('/')
                     filename = server_path.pop()
@@ -220,7 +223,9 @@ class Client:
                         os.makedirs(server_path)
                     os.chdir(server_path)
                     with open(filename, 'w') as dlFile:
-                        dlFile.write(urllib.urlopen(self.url+'/download/'+self.username+'/'+self.password+file).read())
+                        data = (urllib.urlopen(self.url+'/download/'+self.username+'/'+self.password+file).read())
+                        print data
+                        dlFile.write(data)
 
 
         #make the user's filepaths match the server's
@@ -256,4 +261,5 @@ class Client:
 if __name__ == "__main__":
     if 'onedir' not in os.listdir(os.environ['HOME']):
         os.mkdir(os.environ['HOME'] + '/ondedir')
+    Client()
     Client()
