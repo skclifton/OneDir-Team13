@@ -6,7 +6,15 @@ import LocalFileMonitor
 import time
 import os
 import thread
+from pyinotify import *
 
+
+global run
+run = True
+global username
+global password
+global url
+url = 'http://172.25.42.25:5000'
 
 class Client:
 
@@ -18,7 +26,7 @@ class Client:
         self.CLI()
 
     def update(self):
-        while True:
+        while run:
             n = 6
             time.sleep(n)
             self.sync(False)
@@ -26,6 +34,7 @@ class Client:
             # sdhflksdj;flkj;
 
     def CLI(self):
+        global run
         loggedOutMenu = 'Choose an action by typing the number:\n1: exit\n2: create account\n3: login\n8: help'
 
         loggedInMenu = 'Choose an action by typing the number:\n1: exit\n2: create account\n3: login\n' \
@@ -82,11 +91,11 @@ class Client:
 
                 # turn sync on
                 if command[0] == '4':
-                    self.lfm.start_sync()
+                    run = True
 
                 # turn sync off
                 if command[0] == '5':
-                    self.lfm.stop_sync()
+                    run = False
 
                 # change username
                 if command[0] == '6':
@@ -151,7 +160,9 @@ class Client:
 
         if urllib.urlopen(self.url + '/' + 'changepw/' + username + '/' + password2 + '/' + new_password).read() == 'success':
             self.password = new_password
-            self.lfm.set_password(new_password)
+            #self.lfm.set_password(new_password)
+            global password
+            password = new_password
 
             return 'success'
         else:
@@ -166,7 +177,8 @@ class Client:
 
         if urllib.urlopen(self.url + '/' + 'changeusr/' + username2 + '/' + password + '/' + new_usr).read() == 'success':
             self.username = new_usr
-            self.lfm.set_username(new_usr)
+            global username
+            username = new_usr
             return 'success'
         else:
             return 'failure'
@@ -187,14 +199,11 @@ class Client:
             directory = files_and_directories[0]  # stores the path of each directory
             for file in files_and_directories[2]: # for each file in the list of files contained in a directory
                 local_files.append(directory + '/' + file)
-        #print 'local files: ' + str(local_files)
 
         #make the server filepaths match the user's
-        #print 'server files: ' + str(server_files) + 'size: ' + str(len(server_files))
         if len(server_files) > 0: # isn't empty
             for file in server_files:
                 server_path = file.split('/')
-                #print 'server path' + str(server_path)
                 server_path.pop(0) # remove ''
                 server_path.pop(0) # home
                 server_path.pop(0) # user
@@ -203,7 +212,6 @@ class Client:
                 filename = server_path[-1]
                 server_path = '/'.join(server_path)
                 server_path = os.environ['HOME'] + '/onedir/' + server_path
-                #print 'file on server: ' + file
                 # comment
                 has = server_path in local_files
                 server_newer = False
@@ -212,10 +220,6 @@ class Client:
                     local_time = float(os.path.getmtime(server_path))
                     server_time = float(urllib.urlopen(self.url+'/lastmodified'+file).read())
                     server_newer = server_time < local_time
-                print 'last modified on server: ' + str(server_time) + ', last modified on client: ' + str(local_time)
-                print 'file: ' + file
-                print 'valid: ' + str(valid) + ' has: ' + str(has) + ' server_newer: ' + str(server_newer)
-                print 'time different: ' + str(server_time - local_time)
                 if (valid and not has) or server_newer:
                     server_path = server_path.split('/')
                     filename = server_path.pop()
@@ -225,13 +229,11 @@ class Client:
                     os.chdir(server_path)
                     with open(filename, 'w') as dlFile:
                         data = (urllib.urlopen(self.url+'/download/'+self.username+'/'+self.password+file).read())
-                        print data
                         dlFile.write(data)
 
 
         #make the user's filepaths match the server's
         if upload:
-            print 'First time upload'
             if len(local_files) > 0:
                 for file in local_files:
                     local_path = file.split('/')
@@ -241,21 +243,21 @@ class Client:
                     local_path.pop(0)
                     local_path = '/'.join(local_path)
                     local_path = os.environ['HOME'] + '/onedir/' + self.username + '/' + local_path
-                    # print 'path on server: ' + local_path
+
 
                     if os.path.isfile(file) and (local_path not in server_files or float(os.path.getmtime(file)) > float(urllib.urlopen(self.url+'/lastmodified'+local_path).read())):
                         self.uploadFile(file)
 
     def uploadFile(self, filePath):
-        with open(filePath, 'rb') as upload:
-            print "Uploading", filePath
-            urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+'/'+"\0" + filePath)
-            for letter in upload.readlines():
-                line = []
-                for x in letter:
-                    line.append(str(ord(x)))
-                urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+"/" + ' '.join(line) + filePath)
-        print "Done uploading", filePath
+        global run
+        if run:
+            with open(filePath, 'rb') as upload:
+                urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+'/'+"\0" + filePath)
+                for letter in upload.readlines():
+                    line = []
+                    for x in letter:
+                        line.append(str(ord(x)))
+                    urllib.urlopen(self.url+"/upload/"+self.username+"/"+self.password+"/" + ' '.join(line) + filePath)
 
 
 
@@ -263,4 +265,121 @@ if __name__ == "__main__":
     if 'onedir' not in os.listdir(os.environ['HOME']):
         os.mkdir(os.environ['HOME'] + '/ondedir')
     Client()
-    Client()
+    #Client()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class LocalFileMonitor():
+    def __init__(self, un, pw, u):
+        global username
+        username = un
+
+        global password
+        password = pw
+
+        global url
+        url = u
+
+        wm = WatchManager()
+        handler = EventHandler()
+        self.notifier = ThreadedNotifier(wm, handler)
+        directory = os.environ['HOME'] + '/onedir'
+        wm.add_watch(directory, ALL_EVENTS, rec=True, auto_add=True)
+        #notifier.start()
+        thread.start_new_thread(self.notifier.loop, ())
+
+    def stop_sync(self):
+        global run
+        run = False
+
+    def start_sync(self):
+        #thread.start_new_thread(self.notifier.loop, ())
+        global run
+        run = True
+
+    def set_username(self, new_username):
+        global username
+        username = new_username
+
+    def set_password(self, new_password):
+        global password
+        password = new_password
+
+
+class EventHandler(ProcessEvent):
+
+    #def process_IN_CREATE(self, event):
+    #    if not "~lock" in event.pathname:
+    #       self.uploadFile(event.pathname)
+
+    def process_IN_DELETE(self, event):
+        if not "~lock" in event.pathname:
+            urllib.urlopen(url + "/delete/" + username + '/' + password + '/' + event.pathname)
+
+    def process_IN_MOVED_FROM(self, event):
+        urllib.urlopen(url + '/delete/' + username + '/' + password + event.pathname)
+
+    def process_IN_MOVED_TO(self, event):
+        #urllib.urlopen(url + '/upload/' + username + '/' + password + event.pathname)
+        if not '~lock' in event.pathname:
+            Client.uploadFile(event.pathname)
+
+
+
+    #def process_IN_ATTRIB(self, event):
+    #    if not "~lock" in event.pathname:
+
+    def process_IN_CLOSE_WRITE(self, event):
+        if not "~lock" in event.pathname:
+            Client.uploadFile(event.pathname)
