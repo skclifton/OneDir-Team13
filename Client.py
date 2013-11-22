@@ -205,9 +205,11 @@ class Client:
                 server_newer = False
                 valid = urllib.urlopen(config.url+'/validfile'+file).read() == 'valid'
                 if has:
+                    print 'has file ' + str(has)
                     local_time = float(os.path.getmtime(server_path))
                     server_time = float(urllib.urlopen(config.url+'/lastmodified'+file).read())
                     server_newer = server_time < local_time
+                    print 'server newer ' + str(server_newer)
                 if (valid and not has) or server_newer:
                     server_path = server_path.split('/')
                     filename = server_path.pop()
