@@ -40,14 +40,4 @@ class EventHandler(ProcessEvent):
 
     def process_IN_CLOSE_WRITE(self, event):
         if not "~lock" in event.pathname:
-            Client.Client.uploadFile(event.pathname)
-
-    def uploadFile(self, filePath):
-        if config.run:
-            with open(filePath, 'rb') as upload:
-                urllib.urlopen(config.url+"/upload/"+config.username+"/"+config.password+'/'+"\0" + filePath)
-                for letter in upload.readlines():
-                    line = []
-                    for x in letter:
-                        line.append(str(ord(x)))
-                    urllib.urlopen(config.url+"/upload/"+config.username+"/"+config.password+"/" + ' '.join(line) + filePath)
+            Client.uploadFile(event.pathname)
