@@ -3,6 +3,7 @@ import urllib
 import Client
 import thread
 import config
+import os
 
 class LocalFileMonitor():
     def __init__(self):
@@ -30,7 +31,7 @@ class EventHandler(ProcessEvent):
 
     def process_IN_MOVED_TO(self, event):
         #urllib.urlopen(url + '/upload/' + username + '/' + password + event.pathname)
-        if not '~lock' in event.pathname:
+        if not '~lock' in event.pathname and os.path.isfile(event.pathname):
             Client.uploadFile(event.pathname)
 
 

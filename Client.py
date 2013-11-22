@@ -236,7 +236,7 @@ class Client:
                     if os.path.isfile(file) and (local_path not in server_files or float(os.path.getmtime(file)) > float(urllib.urlopen(config.url+'/lastmodified'+local_path).read())):
                         uploadFile(file)
 
-def uploadFile(self, filePath):
+def uploadFile(filePath):
     if config.run:
         with open(filePath, 'rb') as upload:
             urllib.urlopen(config.url+"/upload/"+config.username+"/"+config.password+'/'+"\0" + filePath)
