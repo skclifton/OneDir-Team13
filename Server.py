@@ -231,10 +231,12 @@ def file_info():
         usercount = 0
         for root, dirs, files in os.walk(path + '/' + user[0]):
             for name in files:
-                totalsize += os.path.getsize(name)
-                totalcount += 1
-                usersize += os.path.getsize(name)
-                usercount += 1
+                filepath = os.path.join(root, name)
+                if os.path.exists(filepath) and name[-1] != '~':
+                    totalsize += os.path.getsize(filepath)
+                    totalcount += 1
+                    usersize += os.path.getsize(filepath)
+                    usercount += 1
         retStr += user[0] + "\t" + str(usersize) + "\t" + str(usercount) + "\t"
         user = c.fetchone()
 
@@ -252,4 +254,4 @@ if __name__ == '__main__':
     if 'onedir' not in os.listdir(os.environ['HOME']):
         os.mkdir(path)
     #app.run()
-    app.run(host = '0.0.0.0', debug = False)
+    app.run(host = '0.0.0.0', debug = True)
