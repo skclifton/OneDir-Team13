@@ -132,7 +132,7 @@ class Client:
             thread.start_new_thread(self.update, ())
             return True
         return False
-
+    '''
     def create_account(self):
         usr = raw_input("Username: ")
         pw = 'a'
@@ -144,10 +144,12 @@ class Client:
                 print "Passwords do not match."
 
         key = cipher.generateKey()
-
         response = urllib.urlopen(config.url+"/account/"+usr+"/"+pw+"/"+key)
+    '''
+
     def create_account(self, usr, pw):
-        response = urllib.urlopen(config.url+"/account/"+usr+"/"+pw)
+        key = cipher.generateKey()
+        response = urllib.urlopen(config.url+"/account/"+usr+"/"+pw+"/"+key)
         if response.read() != 'created':
             return "Account Exists"
             # self.create_account()
