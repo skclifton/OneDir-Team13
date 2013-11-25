@@ -1,11 +1,8 @@
 import urllib
-import sqlite3
 import getpass
-import sys
 import time
 import os
 import thread
-from pyinotify import *
 import LocalFileMonitor
 import config
 
@@ -28,94 +25,99 @@ class Client:
             # sdhflksdj;flkj;
 
     def CLI(self):
-        loggedOutMenu = 'Choose an action by typing the number:\n1: exit\n2: create account\n3: login\n8: help'
+        # loggedOutMenu = 'Choose an action by typing the number:\n1: exit\n2: create account\n3: login\n8: help'
+        #
+        # loggedInMenu = 'Choose an action by typing the number:\n1: exit\n2: create account\n3: login\n' \
+        #                '4: turn sync on\n5: turn sync off\n6: change username\n7: change password\n8: help'
 
-        loggedInMenu = 'Choose an action by typing the number:\n1: exit\n2: create account\n3: login\n' \
-                       '4: turn sync on\n5: turn sync off\n6: change username\n7: change password\n8: help'
-
-        if self.logged_in:
-            print loggedInMenu
-        else:
-            print loggedOutMenu
+        # if self.logged_in:
+        #     print loggedInMenu
+        # else:
+        #     print loggedOutMenu
 
         command = ''
 
-        while True:
-            command = raw_input('CMD: ').split()
+        # while True:
+        #     command = raw_input('CMD: ').split()
+        #
+        #     if self.logged_in \
+        #         and not (command[0] == '1'
+        #                  or command[0] == '2'
+        #                  or command[0] == '3'
+        #                  or command[0] == '4'
+        #                  or command[0] == '5'
+        #                  or command[0] == '6'
+        #                  or command[0] == '7'
+        #                  or command[0] == '8'):
+        #         print 'invalid command'
+        #         continue
+        #
+        #     elif not self.logged_in \
+        #         and not (command[0] == '1'
+        #                  or command[0] == '2'
+        #                  or command[0] == '3'
+        #                  or command[0] == '8'):
+        #         print 'invalid command'
+        #         continue
+        #
+        #     else:
+        #         # exit
+        #         if command[0] == '1':
+        #             thread.exit()
+        #             exit(0)
+        #
+        #         # create a new account
+        #         if command[0] == '2':
+        #             usr = raw_input("Username: ")
+        #             pw = 'a'
+        #             confirm_pw = 'b'
+        #             while pw != confirm_pw:
+        #                 pw = raw_input("Password: ")
+        #                 confirm_pw = raw_input("Confirm your password: ")
+        #                 if pw != confirm_pw:
+        #                     print "Passwords do not match."
+        #             self.create_account(usr, pw)
+        #
+        #         # login
+        #         if command[0] == '3':
+        #             if self.login(): #thread.start_new_thread(self.login(), ()):
+        #                 print "Successfully Logged in."
+        #                 print loggedInMenu
+        #             else:
+        #                 print "Incorrect username or password."
+        #
+        #         # turn sync on
+        #         if command[0] == '4':
+        #             config.run = True
+        #
+        #         # turn sync off
+        #         if command[0] == '5':
+        #             config.run = False
+        #
+        #         # change username
+        #         if command[0] == '6':
+        #             success = self.change_username(config.username, config.password)
+        #             if success == 'success':
+        #                 print 'Username successfully changed.'
+        #             else:
+        #                 print 'Ya done goofed ;-D'
+        #
+        #         # change password
+        #         if command[0] == '7':
+        #             success = self.change_password(config.username, config.password)
+        #             if success == 'success':
+        #                 print 'Password successfully changed.'
+        #             else:
+        #                 print 'Ya done goofed ;-D'
+        #
+        #         # help/print menu
+        #         if command[0] == '8':
+        #             if self.logged_in:
+        #                 print loggedInMenu
+        #             else:
+        #                 print loggedOutMenu
 
-            if self.logged_in \
-                and not (command[0] == '1'
-                         or command[0] == '2'
-                         or command[0] == '3'
-                         or command[0] == '4'
-                         or command[0] == '5'
-                         or command[0] == '6'
-                         or command[0] == '7'
-                         or command[0] == '8'):
-                print 'invalid command'
-                continue
-
-            elif not self.logged_in \
-                and not (command[0] == '1'
-                         or command[0] == '2'
-                         or command[0] == '3'
-                         or command[0] == '8'):
-                print 'invalid command'
-                continue
-
-            else:
-                # exit
-                if command[0] == '1':
-                    thread.exit()
-                    exit(0)
-
-                # create a new account
-                if command[0] == '2':
-                    #thread.start_new_thread(self.create_account(), ())
-                    self.create_account()
-
-                # login
-                if command[0] == '3':
-                    if self.login(): #thread.start_new_thread(self.login(), ()):
-                        print "Successfully Logged in."
-                        print loggedInMenu
-                    else:
-                        print "Incorrect username or password."
-
-                # turn sync on
-                if command[0] == '4':
-                    config.run = True
-
-                # turn sync off
-                if command[0] == '5':
-                    config.run = False
-
-                # change username
-                if command[0] == '6':
-                    success = self.change_username(config.username, config.password)
-                    if success == 'success':
-                        print 'Username successfully changed.'
-                    else:
-                        print 'Ya done goofed ;-D'
-
-                # change password
-                if command[0] == '7':
-                    success = self.change_password(config.username, config.password)
-                    if success == 'success':
-                        print 'Password successfully changed.'
-                    else:
-                        print 'Ya done goofed ;-D'
-
-                # help/print menu
-                if command[0] == '8':
-                    if self.logged_in:
-                        print loggedInMenu
-                    else:
-                        print loggedOutMenu
-
-    def login(self):
-        username = raw_input("Username: ")
-        password = raw_input("Password: ")
+    def login(self, username, password):
         log = urllib.urlopen(config.url+"/login/" + username + "/" + password).read()
         if log == 'success':
             config.username = username
@@ -125,25 +127,15 @@ class Client:
             self.sync(True)
             thread.start_new_thread(self.update, ())
             return True
-
         return False
 
-    def create_account(self):
-        usr = raw_input("Username: ")
-        pw = 'a'
-        confirm_pw = 'b'
-        while pw != confirm_pw:
-            pw = raw_input("Password: ")
-            confirm_pw = raw_input("Confirm your password: ")
-            if pw != confirm_pw:
-                print "Passwords do not match."
-
+    def create_account(self, usr, pw):
         response = urllib.urlopen(config.url+"/account/"+usr+"/"+pw)
         if response.read() != 'created':
-            print "Account Exists"
-            self.create_account()
+            return "Account Exists"
+            # self.create_account()
         else:
-            print "Account Created."
+            return "Account Created."
 
     def change_password(self, username, password2):
         confirm_pw = 'z'
