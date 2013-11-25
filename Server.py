@@ -19,10 +19,10 @@ c = con.cursor()
 
 h = open(path + '/history.txt', 'a+')
 
-c.execute("create table if not exists accounts (usr, password)")
+c.execute("create table if not exists accounts (usr, password, key)")
 
-@app.route('/account/<username>/<password>')
-def create_account(username, password):
+@app.route('/account/<username>/<password>/<key>')
+def create_account(username, password, key):
     command = "select * from accounts where usr = '%s'" % username
     c.execute(command)
     value = c.fetchone()
@@ -32,7 +32,7 @@ def create_account(username, password):
 
     #pw = getpass.getpass("New Password: ")
     #confirm_pw = getpass.getpass("Confirm Password: ")
-    c.execute("insert into accounts values (?, ?)", (username, password))
+    c.execute("insert into accounts values (?, ?, ?)", (username, password, key))
     return 'created'
 
 
@@ -135,7 +135,7 @@ def login(username, password):
     if value is None:
         return "failure"
     else:
-        return "success"
+        return value[2]
 
 @app.route('/list/<username>/<password>')
 def list(username, password):
