@@ -6,6 +6,7 @@ import time
 import os
 import thread
 from pyinotify import *
+from crypto import AESCipher
 import LocalFileMonitor
 import config
 
