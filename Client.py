@@ -10,7 +10,7 @@ from crypto import AESCipher
 import LocalFileMonitor
 import config
 
-
+#cipher = AESCipher()
 class Client:
 
     def __init__(self):
@@ -133,7 +133,7 @@ class Client:
             thread.start_new_thread(self.update, ())
             return True
         return False
-    '''
+
     def create_account(self):
         usr = raw_input("Username: ")
         pw = 'a'
@@ -146,7 +146,7 @@ class Client:
 
         key = cipher.generateKey()
         response = urllib.urlopen(config.url+"/account/"+usr+"/"+pw+"/"+key)
-    '''
+
 
     def create_account(self, usr, pw):
         key = cipher.generateKey()
