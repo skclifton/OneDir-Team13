@@ -103,13 +103,20 @@ class LoggedOut(Frame):
 
 
         def view_user_info():
+            root = Tk()
+            root.wm_title("View User Info")
             userinfo = urllib.urlopen(config.url + "/userinfo").read().split('\t')
-            print "{0:<20} {1:>20}".format("Username", "Password")
-            print "-"*41
+            #print "{0:<20} {1:>20}".format("Username", "Password")
+            a = Label(root, text = "{0:<20} {1:>20}".format("Username", "Password"))
+            a.pack()
+            #print "-"*41
+            b = Label(root, text = "-"*41)
+            b.pack()
             i = 0
             j = 1
             while j < len(userinfo):
-                print "{0:20} {1:>20}".format(userinfo[i], userinfo[j])
+                #print "{0:20} {1:>20}".format(userinfo[i], userinfo[j])
+                c = Label(root, text = "{0:20} {1:>20}".format(userinfo[i], userinfo[j]))
                 i += 2
                 j += 2
 
@@ -134,17 +141,26 @@ class LoggedOut(Frame):
             root.mainloop()
 
         def view_file_info():
+            root = Tk()
+            root.wm_title("View File Info")
             fileinfo = urllib.urlopen(config.url + "/fileinfo").read().split('\t')
-            print "{0:<20} {1:^20} {2:>20}".format("User", "File Size", "Number of Files")
-            print "-"*62
+            #print "{0:<20} {1:^20} {2:>20}".format("User", "File Size", "Number of Files")
+            a = Label(root, text = "{0:<20} {1:^20} {2:>20}".format("User", "File Size", "Number of Files"))
+            a.pack()
+            #print "-"*62
+            b = Label(root, text = "-"*62)
+            b.pack()
             i = 0
             j = 1
             k = 2
             while k < len(fileinfo):
-                print "{0:20} {1:^20} {2:>20}".format(fileinfo[i], fileinfo[j], fileinfo[k])
+                #print "{0:20} {1:^20} {2:>20}".format(fileinfo[i], fileinfo[j], fileinfo[k])
+                c = Label(root, text = "{0:20} {1:^20} {2:>20}".format(fileinfo[i], fileinfo[j], fileinfo[k]))
+                c.pack()
                 i += 3
                 j += 3
                 k += 3
+            root.mainloop()
 
 
         def error(self):
