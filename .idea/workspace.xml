@@ -2,11 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/crypto.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/run_admin.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/run_client.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/run_server.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Admin.py" afterPath="$PROJECT_DIR$/Admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client.py" afterPath="$PROJECT_DIR$/Client.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server.py" afterPath="$PROJECT_DIR$/Server.py" />
     </list>
     <ignored path="OneDir-Team13.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1385756324082" ignored="false" />
+    <file path="/Dummy.txt" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1385756364234" ignored="false" />
     <file path="/Server.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1385580998888" ignored="false" />
     <file path="/Admin.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1385581438562" ignored="false" />
     <file path="/Client.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1385326219953" ignored="false" />
@@ -14,6 +20,7 @@
     <file path="/LocalFileMonitor.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1384810266705" ignored="false" />
     <file path="/AdminGUI.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1385756266044" ignored="false" />
     <file path="/config.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1385579975992" ignored="false" />
+    <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1385756433223" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,10 +40,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Admin.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Admin.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="100" column="92" selection-start="4156" selection-end="4156" vertical-scroll-proportion="0.0">
+            <state line="94" column="0" selection-start="3780" selection-end="3780" vertical-scroll-proportion="2.3079019">
               <folding />
             </state>
           </provider>
@@ -45,7 +52,7 @@
       <file leaf-file-name="Server.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="182" column="52" selection-start="5869" selection-end="5869" vertical-scroll-proportion="0.0">
+            <state line="182" column="52" selection-start="5892" selection-end="5892" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -60,10 +67,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminGUI.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AdminGUI.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AdminGUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="21" selection-start="187" selection-end="187" vertical-scroll-proportion="0.40871936">
+            <state line="10" column="21" selection-start="187" selection-end="187" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#23#44#0" expanded="true" />
               </folding>
@@ -83,7 +90,7 @@
       <file leaf-file-name="Client.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="16" selection-start="970" selection-end="970" vertical-scroll-proportion="0.0">
+            <state line="41" column="16" selection-start="1049" selection-end="1049" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -123,9 +130,9 @@
         <option value="$PROJECT_DIR$/Client.py" />
         <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/Server.py" />
-        <option value="$PROJECT_DIR$/Admin.py" />
         <option value="$PROJECT_DIR$/gui_sample.py" />
         <option value="$PROJECT_DIR$/AdminGUI.py" />
+        <option value="$PROJECT_DIR$/Admin.py" />
       </list>
     </option>
   </component>
@@ -524,7 +531,11 @@
       <created>1385756328294</created>
       <updated>1385756328294</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Added GUI capabilities to AdminGUI file">
+      <created>1385756365556</created>
+      <updated>1385756365556</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers>
       <GitHub shared="false">
         <commitMessageFormat>{id} {summary}</commitMessageFormat>
@@ -607,7 +618,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="added ability for admin to remove files when deleting a user" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added GUI capabilities to AdminGUI file" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -633,6 +644,7 @@
     <MESSAGE value="updates to admin functions" />
     <MESSAGE value="minor changes to make admin functions work" />
     <MESSAGE value="added ability for admin to remove files when deleting a user" />
+    <MESSAGE value="Added GUI capabilities to AdminGUI file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -691,7 +703,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="16" selection-start="970" selection-end="970" vertical-scroll-proportion="0.0">
+        <state line="41" column="16" selection-start="1049" selection-end="1049" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -699,13 +711,6 @@
     <entry file="file://$PROJECT_DIR$/ClientGUI.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="172" column="10" selection-start="5211" selection-end="5211" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="92" selection-start="4156" selection-end="4156" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -719,7 +724,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="182" column="52" selection-start="5869" selection-end="5869" vertical-scroll-proportion="0.0">
+        <state line="182" column="52" selection-start="5892" selection-end="5892" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -733,10 +738,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AdminGUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="21" selection-start="187" selection-end="187" vertical-scroll-proportion="0.40871936">
+        <state line="10" column="21" selection-start="187" selection-end="187" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#23#44#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="94" column="0" selection-start="3780" selection-end="3780" vertical-scroll-proportion="2.3079019">
+          <folding />
         </state>
       </provider>
     </entry>
