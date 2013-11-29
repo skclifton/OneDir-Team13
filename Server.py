@@ -182,12 +182,12 @@ def download(username, password, file):
 
 @app.route('/changepwadmin/<username>/<new_password>')
 def change_password_admin(username, new_password):
-    command = "select * from accounts where usr = '%s'" %(username)
+    command = "select * from accounts where usr = '%s'" %(str(username))
     c.execute(command)
     value = c.fetchone()
     if value is None:
         return 'failure'
-    command = "UPDATE accounts SET password = '%s' WHERE usr = '%s'" %(new_password, username)
+    command = "UPDATE accounts SET password = '%s' WHERE usr = '%s'" %(str(new_password), str(username))
     c.execute(command)
     con.commit()
     print 'did we get?'
