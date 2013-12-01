@@ -1,12 +1,16 @@
 import urllib
+import sqlite3
 import getpass
+import sys
 import time
 import os
 import thread
+from pyinotify import *
+from crypto import AESCipher
 import LocalFileMonitor
 import config
 
-
+#cipher = AESCipher()
 class Client:
 
     def __init__(self):
@@ -119,18 +123,34 @@ class Client:
 
     def login(self, username, password):
         log = urllib.urlopen(config.url+"/login/" + username + "/" + password).read()
-        if log == 'success':
+        if log != 'failure':
             config.username = username
             config.password = password
             self.logged_in = True
+            cipher.initialize(log) # log will be the key if login is successful
             self.lfm = thread.start_new_thread(LocalFileMonitor.LocalFileMonitor, ())
             self.sync(True)
             thread.start_new_thread(self.update, ())
             return True
         return False
 
+    def create_account(self):
+        usr = raw_input("Username: ")
+        pw = 'a'
+        confirm_pw = 'b'
+        while pw != confirm_pw:
+            pw = raw_input("Password: ")
+            confirm_pw = raw_input("Confirm your password: ")
+            if pw != confirm_pw:
+                print "Passwords do not match."
+
+        key = cipher.generateKey()
+        response = urllib.urlopen(config.url+"/account/"+usr+"/"+pw+"/"+key)
+
+
     def create_account(self, usr, pw):
-        response = urllib.urlopen(config.url+"/account/"+usr+"/"+pw)
+        key = cipher.generateKey()
+        response = urllib.urlopen(config.url+"/account/"+usr+"/"+pw+"/"+key)
         if response.read() != 'created':
             return "Account Exists"
             # self.create_account()
@@ -195,9 +215,10 @@ class Client:
                     if not os.path.exists(server_path):
                         os.makedirs(server_path)
                     os.chdir(server_path)
-                    with open(filename, 'w') as dlFile:
+                    with open(filename, 'a+') as dlFile:
                         data = (urllib.urlopen(config.url+'/download/'+config.username+'/'+config.password+file).read())
-                        dlFile.write(data)
+                        for line in dlFile.readlines():
+                            dlFile.write(cipher.decrypt(line))
 
 
         #make the user's filepaths match the server's
@@ -224,6 +245,7 @@ def uploadFile(filePath):
                 line = []
                 for x in letter:
                     line.append(str(ord(x)))
+                cipher.encrypt(line)
                 urllib.urlopen(config.url+"/upload/"+config.username+"/"+config.password+"/" + ' '.join(line) + filePath)
 
 
@@ -231,4 +253,5 @@ def uploadFile(filePath):
 if __name__ == "__main__":
     if 'onedir' not in os.listdir(os.environ['HOME']):
         os.mkdir(os.environ['HOME'] + '/ondedir')
+    cipher = AESCipher()
     Client()

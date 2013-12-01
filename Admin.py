@@ -4,7 +4,7 @@ import urllib
 
 class Admin:
     def __init__(self):
-        self.url = 'http://10.0.2.15:5000'
+        self.url = 'http://10.0.2.15.:5000'
         self.ADMIN()
 
     def ADMIN(self):
