@@ -122,7 +122,6 @@ def change_username(username, password, new_usr):
 
     if os.path.exists(path + '/' + username):
         os.rename(path + '/' + username, path + '/' + new_usr)
-
     return 'success'
 
 @app.route('/login/<username>/<password>')

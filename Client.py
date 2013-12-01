@@ -137,27 +137,15 @@ class Client:
         else:
             return "Account Created."
 
-    def change_password(self, username, password2):
-        confirm_pw = 'z'
-        new_password = getpass.getpass('Enter your new password: ')
-        while not new_password == confirm_pw:
-            confirm_pw = getpass.getpass('Enter your new password: ')
-
-        if urllib.urlopen(config.url + '/' + 'changepw/' + username + '/' + password2 + '/' + new_password).read() == 'success':
+    def change_password(self, username, password, new_password):
+        if urllib.urlopen(config.url + '/' + 'changepw/' + username + '/' + password + '/' + new_password).read() == 'success':
             config.password = new_password
-
             return 'success'
         else:
             return 'failure'
 
-    def change_username(self, username2, password):
-        confirm_usr = 'z'
-        new_usr = raw_input('Enter your new username: ')
-
-        while not new_usr == confirm_usr:
-            confirm_usr = raw_input('Enter your new username: ')
-
-        if urllib.urlopen(config.url + '/' + 'changeusr/' + username2 + '/' + password + '/' + new_usr).read() == 'success':
+    def change_username(self, username, password, new_usr):
+        if urllib.urlopen(config.url + '/' + 'changeusr/' + username + '/' + password + '/' + new_usr).read() == 'success':
             config.username = new_usr
             return 'success'
         else:
