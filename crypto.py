@@ -1,6 +1,8 @@
 #!/user/bin/env python
 # -*- coding: utf-8 -*-
 
+#s
+
 import hashlib
 import hmac
 import os
