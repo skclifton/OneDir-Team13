@@ -214,12 +214,13 @@ class Client:
                     if not os.path.exists(server_path):
                         os.makedirs(server_path)
                     os.chdir(server_path)
-                    with open(filename, 'a+') as dlFile:
+                    with open(filename, 'w') as dlFile:
                         data = (urllib.urlopen(config.url+'/download/'+config.username+'/'+config.password+file).read())
                         #for line in dlFile.readlines():
                         #print 'encrypted data to decrypt: ' + data
-                        cipher = AESCipher(config.key)
-                        dlFile.write(cipher.decrypt(data))
+                        dlFile.write(data)
+                        #cipher = AESCipher(config.key)
+                        #dlFile.write(cipher.decrypt(data))
 
 
         #make the user's filepaths match the server's
@@ -242,17 +243,17 @@ def uploadFile(filePath):
     if config.run:
         with open(filePath, 'rb') as upload:
             urllib.urlopen(config.url+"/upload/"+config.username+"/"+config.password+'/'+"\0" + filePath)
-            data = upload.read()
-            cipher = AESCipher(config.key)
-            encrypted_data = cipher.encrypt(data)
-            for letter in encrypted_data.splitlines(True):
-            # for letter in upload.readlines():
+            #data = upload.read()
+            #cipher = AESCipher(config.key)
+            #encrypted_data = cipher.encrypt(data)
+
+            #for letter in encrypted_data.splitlines():
+            for letter in upload.readlines():
                 #letter = cipher.encrypt(letter)
                 line = []
                 for x in letter:
                     line.append(str(ord(x)))
-                line = ' '.join(line)
-                urllib.urlopen(config.url+"/upload/"+config.username+"/"+config.password+"/" + line + filePath)
+                urllib.urlopen(config.url+"/upload/"+config.username+"/"+config.password+"/" + ' '.join(line) + filePath)
 
 
 

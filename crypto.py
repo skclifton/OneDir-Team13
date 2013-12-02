@@ -67,12 +67,11 @@ class AESCipher(object):
         return data[:-ord(data[-1])]
 
 
-'''
+
 if __name__ == '__main__':
     with open('test.txt') as testfile:
         data = testfile.read()
         cipher = AESCipher('key')
         enc = cipher.encrypt(data)
-
+        cipher = AESCipher('key')
         print cipher.decrypt(enc)
-'''

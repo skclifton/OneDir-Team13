@@ -94,9 +94,11 @@ def upload(username, password, data, file):
 
         upload = open(filename, 'ab')
         #print "Writing line: " + data
+
         data = data.split()
         for data in data:
             upload.write(chr(int(data)))
+
         upload.close()
 
         return 'success'
