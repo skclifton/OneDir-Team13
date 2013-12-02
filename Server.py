@@ -16,7 +16,6 @@ signal(SIGPIPE,SIG_DFL)
 con = sqlite3.connect("accounts.db", check_same_thread=False)
 con.isolation_level = None
 c = con.cursor()
-#s
 
 c.execute("create table if not exists accounts (usr, password, key)")
 

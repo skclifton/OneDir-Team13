@@ -31,11 +31,12 @@ class LoggedOut(Frame):
         self.columnconfigure(1, pad=5)
         self.columnconfigure(2, pad=5)
 
-        self.rowconfigure(0, pad=3)
+        self.rowconfigure(0, pad=20)
         self.rowconfigure(1, pad=3)
         self.rowconfigure(2, pad=3)
         self.rowconfigure(3, pad=3)
         self.rowconfigure(4, pad=3)
+        self.rowconfigure(5, pad=3)
 
         onedirLabel = Label(self, text="OneDir Admin", font='25')
         onedirLabel.grid(row=0, column=0, rowspan=2)
@@ -56,11 +57,9 @@ class LoggedOut(Frame):
         def del_acct():
             root = Tk()
             root.wm_title("Delete Account")
-            root.option_add('*background', gray)
-            root.option_add('*foreground', 'white')
-            root.option_add('*Button*background', blue)
+            root.option_add('*foreground', gray)
+            root.option_add('*Button*background', 'white')
             root.option_add('*Entry*background', 'white')
-            root.option_add('*Entry*foreground', blue)
             usernameLabel = Label(root, text="Username:")
             usernameLabel.grid(row=2, column=0, pady=5, padx=5)
             usrTf = Entry(root)
@@ -84,11 +83,9 @@ class LoggedOut(Frame):
         def reset_pw():
             root = Tk()
             root.wm_title("Change Password")
-            root.option_add('*background', gray)
-            root.option_add('*foreground', 'white')
-            root.option_add('*Button*background', blue)
+            root.option_add('*foreground', gray)
+            root.option_add('*Button*background', 'white')
             root.option_add('*Entry*background', 'white')
-            root.option_add('*Entry*foreground', blue)
             usernameLabel = Label(root, text="Username:")
             usernameLabel.grid(row=2, column=0, pady=5, padx=5)
             usrTf = Entry(root)
@@ -121,23 +118,15 @@ class LoggedOut(Frame):
                 j += 2
 
         def view_sync_info():
-            # print '---------- START SYNC HISTORY ----------'
-            # print urllib.urlopen(config.url + "/synchistory").read()
-            # print '---------- END SYNC HISTORY ----------'
             root = Tk()
             root.wm_title("View Sync Info")
-            root.option_add('*background', gray)
-            root.option_add('*foreground', 'white')
-            root.option_add('*Button*background', blue)
+            root.option_add('*background', blue)
+            root.option_add('*foreground', 'black')
+            root.option_add('*Button*background', 'white')
             root.option_add('*Entry*background', 'white')
-            root.option_add('*Entry*foreground', blue)
             usernameLabel = Label(root, text="Username:")
-            a = Label(root, text = "---------- START SYNC HISTORY ----------")
-            a.pack()
             b = Label(root, text = urllib.urlopen(config.url + "/synchistory").read())
             b.pack()
-            c = Label(root, text = "---------- END SYNC HISTORY ----------")
-            c.pack()
             root.mainloop()
 
         def view_file_info():
@@ -191,22 +180,23 @@ class LoggedOut(Frame):
         # pwTf.grid(row=3, column=1, columnspan=2, padx=5, sticky=E + W)
 
         del_acct_btn = Button(self, text="Delete Account", command=lambda: del_acct())
-        del_acct_btn.grid(row=4, column=1)
+        del_acct_btn.grid(row=2, column=0)
 
         change_pw_btn = Button(self, text="Change Password", command=lambda: reset_pw())
-        change_pw_btn.grid(row=4, column=2)
+        change_pw_btn.grid(row=3, column=0)
 
         view_info_btn = Button(self, text = "View User Info", command=lambda: view_user_info())
-        view_info_btn.grid(row=4, column=3)
+        view_info_btn.grid(row=4, column=0)
 
         view_sync_btn = Button(self, text = "View Sync Info", command=lambda: view_sync_info())
-        view_sync_btn.grid(row=4, column=4)
+        view_sync_btn.grid(row=5, column=0)
 
         view_file_btn = Button(self, text = "View File Info", command=lambda: view_file_info())
-        view_file_btn.grid(row=4, column=5)
+        view_file_btn.grid(row=6, column=0)
+
     def centerWindow(self):
-        w = 720
-        h = 125
+        w = 140
+        h = 183
 
         sw = self.parent.winfo_screenwidth()
         sh = self.parent.winfo_screenheight()
@@ -218,11 +208,10 @@ class LoggedOut(Frame):
 
 def main():
     root = Tk()
-    root.option_add('*background', gray)
-    root.option_add('*foreground', 'white')
-    root.option_add('*Button*background', blue)
+    root.option_add('*background', blue)
+    root.option_add('*foreground', gray)
+    root.option_add('*Button*background', 'white')
     root.option_add('*Entry*background', 'white')
-    root.option_add('*Entry*foreground', blue)
     app = LoggedOut(root)
     root.mainloop()
 
