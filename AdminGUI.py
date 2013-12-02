@@ -104,18 +104,21 @@ class LoggedOut(Frame):
             root.wm_title("View User Info")
             userinfo = urllib.urlopen(config.url + "/userinfo").read().split('\t')
             #print "{0:<20} {1:>20}".format("Username", "Password")
-            a = Label(root, text = "{0:<20} {1:>20}".format("Username", "Password"))
+            a = Label(root, text = "{0:<20} {1:^20} {2:>20}".format("Username", "Password", "Key"))
             a.pack()
             #print "-"*41
             b = Label(root, text = "-"*41)
             b.pack()
             i = 0
             j = 1
-            while j < len(userinfo):
+            k = 2
+            while k < len(userinfo):
                 #print "{0:20} {1:>20}".format(userinfo[i], userinfo[j])
-                c = Label(root, text = "{0:20} {1:>20}".format(userinfo[i], userinfo[j]))
+                c = Label(root, text = "{0:20} {1:^20} {2:>20}".format(userinfo[i], userinfo[j], userinfo[k]))
+                c.pack()
                 i += 2
                 j += 2
+                k += 2
 
         def view_sync_info():
             root = Tk()
