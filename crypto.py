@@ -1,62 +1,76 @@
-from Crypto.Cipher import AES
-from Crypto import Random
+#!/user/bin/env python
+# -*- coding: utf-8 -*-
+
 import hashlib
-import random
-import string
+import hmac
+import os
+import base64
+import unicodedata
+from Crypto.Cipher import AES
 
 
-__author__ = 'student'
+class AuthenticationError(Exception):
+    pass
 
 
-class AESCipher:
+class AESCipher(object):
+    AES_BLOCK_SIZE = 32
+    SIG_SIZE = hashlib.sha256().digest_size
 
-    def __init__(self):
-        self.BLOCK_SIZE = 16
+    def __init__(self, key):
+        self.key = self._hash_key(key)
 
-    def initialize(self, key):
-        mode = AES.MODE_CBC
-        print 'cipher key ' + key
-        iv = Random.new().read(self.BLOCK_SIZE)
-        self.encryptor = AES.new(key,mode,IV=iv)
-        self.decryptor = AES.new(key,mode,IV=iv)
+    def _hash_key(self, key):
+        """Return a key suitable for use with the cipher"""
+        return hashlib.sha256(key).digest()
 
-    def generateKey(self):
-        key = ''.join(random.choice(string.digits) for x in range(16))
-        return str(hashlib.sha256(key).hexdigest())[:self.BLOCK_SIZE]
+    def _initialisation_vector(self):
+        """get a random initialisation vector"""
+        return os.urandom(16)
 
-    def encrypt( self, raw ):
-        raw = self.pad(raw)
-        return self.encryptor.encrypt(raw)
+    def _cipher(self, key, iv):
+        """Return a cipher. An object that implements .encrypt() and
+        .decrypt()
+        """
+        return AES.new(key, AES.MODE_CBC, iv)
 
-    def decrypt( self, enc ):
-        return self.unpad(self.decryptor.decrypt(enc))
+    def encrypt(self, data):
+        iv = self._initialisation_vector()
+        cipher = self._cipher(self.key, iv)
+        ## get the required padding length
+        pad = self.AES_BLOCK_SIZE - len(data) % self.AES_BLOCK_SIZE
+        ## pad the data by appending repeate char
+        data = data + pad * chr(pad)
+        ## encrypt and prepend the initialisation vector
+        data = iv + cipher.encrypt(data)
+        ## hash the encrypted data
+        sig = hmac.new(self.key, data, hashlib.sha256).digest()
+        ## append the hash to the data
+        return data + sig
 
+    def decrypt(self, data):
+        ## extract the hash
+        sig = data[-self.SIG_SIZE:]
+        data = data[:-self.SIG_SIZE]
+        ## check the encrypted data is valid using the hmac hash
+        if hmac.new(self.key, data, hashlib.sha256).digest() != sig:
+            raise AuthenticationError("message authentication failed")
+        ## extract the initialisation vector
+        iv = data[:16]
+        data = data[16:]
+        cipher = AES.new(self.key, AES.MODE_CBC, iv)
+        ## decrypt
+        data = cipher.decrypt(data)
+        ## remove the padding
+        return data[:-ord(data[-1])]
 
-    def pad(self,plaintext):
-        pad = self.BLOCK_SIZE - (len(plaintext)%self.BLOCK_SIZE)
-        return plaintext + chr(pad)*pad
-
-    def unpad(self,plaintext):
-        char = plaintext[-1]
-        return plaintext[:-ord(char)]
 
 '''
-if __name__ == "__main__":
-    e = AESCipher()
-    key = e.generateKey()
-    e.initialize(key)
-    print 'hello world'
-    enc = e.encrypt('hello world')
-    print enc
-    dec = e.decrypt(enc)
-    print dec
+if __name__ == '__main__':
+    with open('test.txt') as testfile:
+        data = testfile.read()
+        cipher = AESCipher('key')
+        enc = cipher.encrypt(data)
+
+        print cipher.decrypt(enc)
 '''
-
-
-
-
-
-
-
-
-

@@ -10,9 +10,6 @@ from crypto import AESCipher
 import LocalFileMonitor
 import config
 
-
-cipher = AESCipher()
-
 class Client:
 
     def __init__(self):
@@ -129,7 +126,7 @@ class Client:
             config.username = username
             config.password = password
             self.logged_in = True
-            cipher.initialize(log) # log will be the key if login is successful
+            config.key = log # log will be the key if login is successful
             self.lfm = thread.start_new_thread(LocalFileMonitor.LocalFileMonitor, ())
             self.sync(True)
             thread.start_new_thread(self.update, ())
@@ -151,8 +148,8 @@ class Client:
     '''
 
     def create_account(self, usr, pw):
-        key = cipher.generateKey()
-        response = urllib.urlopen(config.url+"/account/"+usr+"/"+pw+"/"+key)
+        config.key = str(datetime.now())
+        response = urllib.urlopen(config.url+"/account/"+usr+"/"+pw+"/"+config.key)
         if response.read() != 'created':
             return "Account Exists"
             # self.create_account()
@@ -219,8 +216,10 @@ class Client:
                     os.chdir(server_path)
                     with open(filename, 'a+') as dlFile:
                         data = (urllib.urlopen(config.url+'/download/'+config.username+'/'+config.password+file).read())
-                        for line in dlFile.readlines():
-                            dlFile.write(cipher.decrypt(line))
+                        #for line in dlFile.readlines():
+                        #print 'encrypted data to decrypt: ' + data
+                        cipher = AESCipher(config.key)
+                        dlFile.write(cipher.decrypt(data))
 
 
         #make the user's filepaths match the server's
@@ -243,16 +242,19 @@ def uploadFile(filePath):
     if config.run:
         with open(filePath, 'rb') as upload:
             urllib.urlopen(config.url+"/upload/"+config.username+"/"+config.password+'/'+"\0" + filePath)
-            for letter in upload.readlines():
+            data = upload.read()
+            cipher = AESCipher(config.key)
+            encrypted_data = cipher.encrypt(data)
+            for letter in encrypted_data.splitlines(True):
+            # for letter in upload.readlines():
+                #letter = cipher.encrypt(letter)
                 line = []
                 for x in letter:
                     line.append(str(ord(x)))
-                cipher.encrypt(line)
-                urllib.urlopen(config.url+"/upload/"+config.username+"/"+config.password+"/" + ' '.join(line) + filePath)
+                line = ' '.join(line)
+                urllib.urlopen(config.url+"/upload/"+config.username+"/"+config.password+"/" + line + filePath)
 
 
 
 if __name__ == "__main__":
-    if 'onedir' not in os.listdir(os.environ['HOME']):
-        os.mkdir(os.environ['HOME'] + '/ondedir')
     Client()

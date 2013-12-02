@@ -36,7 +36,7 @@ def create_account(username, password, key):
 
 @app.route("/delete/<username>/<password>/<path:file>")
 def delete(username, password, file):
-    if login(username, password) != "success":
+    if login(username, password) == "failure":
         return 'failure'
     else:
         file = file.split('/')
@@ -58,7 +58,7 @@ def delete(username, password, file):
 def upload(username, password, data, file):
     #print "Upload called on server"
     c = con.cursor()
-    if login(username, password) != "success":
+    if login(username, password) == "failure":
         return 'failure'
     else:
         #print 'Initial filepath: ' + file
@@ -103,7 +103,7 @@ def upload(username, password, data, file):
 
 @app.route('/changepw/<username>/<password>/<new_password>')
 def change_password(username, password, new_password):
-    if not login(username, password):
+    if login(username, password) == 'failure':
         return 'failure'
 
     command = "UPDATE accounts SET password = '%s' WHERE usr = '%s'" %(new_password, username)
@@ -112,7 +112,7 @@ def change_password(username, password, new_password):
 
 @app.route('/changeusr/<username>/<password>/<new_usr>')
 def change_username(username, password, new_usr):
-    if not login(username, password):
+    if login(username, password) == 'failure':
         return 'failure'
 
     command = "UPDATE accounts SET usr = '%s' WHERE usr = '%s'" %(new_usr, username)

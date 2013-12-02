@@ -197,6 +197,8 @@ class LoggedIn(Frame):
 
 
 def main():
+    if 'onedir' not in os.listdir(os.environ['HOME']):
+        os.mkdir(os.environ['HOME'] + '/onedir')
     loggedout = Tk()
     loggedout.option_add('*background', blue)
     loggedout.option_add('*foreground', gray)
