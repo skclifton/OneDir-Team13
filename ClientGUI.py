@@ -13,7 +13,6 @@ blue = "#639793"
 
 darkGreen = "#4C9603"
 lightGreen = "#C1FD86"
-# loggedout = Tk()
 
 class LoggedOut(Frame):
     def __init__(self, parent):
@@ -85,6 +84,7 @@ class LoggedOut(Frame):
                     loggedin.option_add('*Entry*background', 'white')
                     app = LoggedIn(loggedin)
                     loggedin.mainloop()
+                    # loggedout.destroy()
 
             else:
                 error(self)
@@ -199,6 +199,7 @@ class LoggedIn(Frame):
 def main():
     if 'onedir' not in os.listdir(os.environ['HOME']):
         os.mkdir(os.environ['HOME'] + '/onedir')
+
     loggedout = Tk()
     loggedout.option_add('*background', blue)
     loggedout.option_add('*foreground', gray)

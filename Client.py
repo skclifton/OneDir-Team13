@@ -32,14 +32,14 @@ class Client:
         #
         # loggedInMenu = 'Choose an action by typing the number:\n1: exit\n2: create account\n3: login\n' \
         #                '4: turn sync on\n5: turn sync off\n6: change username\n7: change password\n8: help'
-
+        #
         # if self.logged_in:
         #     print loggedInMenu
         # else:
         #     print loggedOutMenu
-
+        #
         command = ''
-
+        #
         # while True:
         #     command = raw_input('CMD: ').split()
         #
