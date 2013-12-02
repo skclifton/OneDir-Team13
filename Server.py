@@ -5,7 +5,7 @@ import os
 import time
 
 app = Flask(__name__)
-path = os.environ['HOME'] + "/onedir"
+path = os.environ['HOME'] + "/onedir_server"
 
 from werkzeug.contrib.fixers import ProxyFix
 app.wsgi_app = ProxyFix(app.wsgi_app)
@@ -16,8 +16,6 @@ signal(SIGPIPE,SIG_DFL)
 con = sqlite3.connect("accounts.db", check_same_thread=False)
 con.isolation_level = None
 c = con.cursor()
-
-h = open(path + '/history.txt', 'a+')
 
 c.execute("create table if not exists accounts (usr, password, key)")
 
@@ -250,7 +248,8 @@ def sync_history():
     return historyStr
 
 if __name__ == '__main__':
-    if 'onedir' not in os.listdir(os.environ['HOME']):
+    if 'onedir_server' not in os.listdir(os.environ['HOME']):
         os.mkdir(path)
+    h = open(path + '/history.txt', 'a+')
     #app.run()
     app.run(host = '0.0.0.0', debug = True)

@@ -6,6 +6,7 @@ import tkMessageBox as box
 import Client
 import config
 from Tkinter import *
+from Tkinter import *
 
 gray = "#363A37"
 blue = "#639793"

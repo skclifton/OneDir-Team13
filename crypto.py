@@ -1,4 +1,5 @@
 from Crypto.Cipher import AES
+from Crypto import Random
 import hashlib
 import random
 import string
@@ -13,14 +14,15 @@ class AESCipher:
         self.BLOCK_SIZE = 16
 
     def initialize(self, key):
-        IV = 16 * '\x00'
         mode = AES.MODE_CBC
-        self.encryptor = AES.new(key,mode,IV=IV)
-        self.decryptor = AES.new(key,mode,IV=IV)
+        print 'cipher key ' + key
+        iv = Random.new().read(self.BLOCK_SIZE)
+        self.encryptor = AES.new(key,mode,IV=iv)
+        self.decryptor = AES.new(key,mode,IV=iv)
 
     def generateKey(self):
-        key = ''.join(random.choice(string.ascii_lowercase) for x in range(16))
-        return str(hashlib.sha256(key).digest())
+        key = ''.join(random.choice(string.digits) for x in range(16))
+        return str(hashlib.sha256(key).hexdigest())[:self.BLOCK_SIZE]
 
     def encrypt( self, raw ):
         raw = self.pad(raw)
@@ -41,12 +43,17 @@ class AESCipher:
 '''
 if __name__ == "__main__":
     e = AESCipher()
+    key = e.generateKey()
+    e.initialize(key)
     print 'hello world'
     enc = e.encrypt('hello world')
     print enc
     dec = e.decrypt(enc)
     print dec
 '''
+
+
+
 
 
 

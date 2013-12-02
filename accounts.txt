@@ -1,4 +1,0 @@
-hello world
-admin onedirdev
-sample_user password
-new_user password
