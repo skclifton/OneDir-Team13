@@ -25,7 +25,7 @@ def create_account(username, password, key):
     c.execute(command)
     value = c.fetchone()
 
-    if not value is None:
+    if value != None:
         return 'exists' #"The specified email address already exists in the database."
 
     #pw = getpass.getpass("New Password: ")
@@ -240,7 +240,7 @@ def user_info():
     c.execute(command)
     user = c.fetchone()
     while user is not None:
-        retStr += user[0] + '\t' + user[1] + '\t'
+        retStr += user[0] + "\t" + user[1] + "\t" + user[2] + "\t"
         user = c.fetchone()
     return retStr
 
