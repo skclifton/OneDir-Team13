@@ -103,6 +103,16 @@ def upload(username, password, data, file):
         return 'success'
 
 
+@app.route('/backup/<username>/<password>/')
+def backup(username, password):
+    if login(username,password) == 'failure':
+        return 'failure'
+    # make the copy directory and copy the directory into it
+    os.chdir(path)
+    #os.mkdir(username + '_copy')
+    os.system('cp -R ' + username + ' ' + username + '_copy')
+    return 'success'
+
 @app.route('/changepw/<username>/<password>/<new_password>')
 def change_password(username, password, new_password):
     if login(username, password) == 'failure':
@@ -110,6 +120,23 @@ def change_password(username, password, new_password):
 
     command = "UPDATE accounts SET password = '%s' WHERE usr = '%s'" %(new_password, username)
     c.execute(command)
+    return 'success'
+
+@app.route('/restore_backup/<username>/<password>')
+def restore_backup(username, password):
+    if login(username, password) == 'failure':
+        return 'Incorrect username or password supplied.'
+    if not os.path.exists(path + '/' + username + '_copy'):
+        return 'Backup does not exist.'
+
+    # remove the current files and replace them with the backup version
+    os.chdir(path)
+    shutil.rmtree(username)
+    os.rename(username + '_copy',username)
+
+    # remake the backup
+    os.system('cp -R ' + username + ' ' + username + '_copy')
+
     return 'success'
 
 @app.route('/changeusr/<username>/<password>/<new_usr>')

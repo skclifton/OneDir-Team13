@@ -170,6 +170,12 @@ class Client:
         else:
             return 'failure'
 
+    def backup(self):
+        return urllib.urlopen(config.url + '/backup/' + config.username + '/' + config.password).read()
+
+    def restore_backup(self):
+        return urllib.urlopen(config.url + '/restore_backup/' + config.username + '/' + config.password).read()
+
     # This method will check the files in a user's onedir folder and compare them to the ones the server has for that
     # user and upload and download the missing files on each end, it is to be called when first logged in, and then
     # periodically to check for updates from other computers

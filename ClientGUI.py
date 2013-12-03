@@ -37,6 +37,7 @@ class LoggedOut(Frame):
         self.rowconfigure(2, pad=3)
         self.rowconfigure(3, pad=3)
         self.rowconfigure(4, pad=3)
+        self.rowconfigure(5, pad=3)
 
         onedirLabel = Label(self, text="OneDir Login", font='25')
         onedirLabel.grid(row=0, column=0, rowspan=2)
@@ -104,8 +105,8 @@ class LoggedOut(Frame):
 
 
     def centerWindow(self):
-        w = 317
-        h = 125
+        w = 330 #317
+        h = 150
 
         sw = self.parent.winfo_screenwidth()
         sh = self.parent.winfo_screenheight()
@@ -134,6 +135,8 @@ class LoggedIn(Frame):
         self.rowconfigure(1, pad=5)
         self.rowconfigure(2, pad=5)
         self.rowconfigure(3, pad=5)
+        self.rowconfigure(4, pad=5)
+        self.rowconfigure(5, pad=5)
 
 
         onedirLabel = Label(self, text="OneDir", font='25')
@@ -150,11 +153,20 @@ class LoggedIn(Frame):
         changePwBtn = Button(self, text="Change password", command=self.changePw)
         changePwBtn.grid(row=2, column=0)
 
+        # Create Backup
+        backupBtn = Button(self, text="Create a Backup", command=self.backup)
+        backupBtn.grid(row=3, column=0)
+
+        # Restore Backup
+        restorebBtn = Button(self, text="Restore from Backup", command=self.restore_from_backup)
+        restorebBtn.grid(row=4, column=0)
+
         # Turn sync on and off
         self.sync = IntVar()
         syncCb = Checkbutton(self, text="Sync files", variable=self.sync, command=self.onSyncClick)
         syncCb.select()
-        syncCb.grid(row=3, column=0)
+        syncCb.grid(row=5, column=0)
+
 
     def onSyncClick(self):
         if self.sync.get() == 1:
@@ -184,9 +196,25 @@ class LoggedIn(Frame):
             else:
                 box.showinfo("", "You must enter a new password")
 
+    def backup(self):
+        cli = Client.Client()
+        response = cli.backup()
+        if response == 'success':
+            box.showinfo("",'Backup created successfully.')
+        else:
+            box.showinfo('','There was an error backing up your files.')
+
+    def restore_from_backup(self):
+        cli = Client.Client()
+        response = cli.restore_backup()
+        if response == 'success':
+            box.showinfo('','Successfully restored from backup.')
+        else:
+            box.showinfo('',response)
+
     def centerWindow(self):
-        w = 142
-        h = 150
+        w = 160#142
+        h = 200
 
         sw = self.parent.winfo_screenwidth()
         sh = self.parent.winfo_screenheight()
