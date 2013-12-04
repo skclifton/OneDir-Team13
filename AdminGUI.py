@@ -64,7 +64,7 @@ class LoggedOut(Frame):
             usernameLabel.grid(row=2, column=0, pady=5, padx=5)
             usrTf = Entry(root)
             usrTf.grid(row=2, column=1, columnspan=2, padx=5, sticky=E + W)
-            b = Button(root, text = "Change Password", command = lambda: other_del_acct(usrTf.get()))
+            b = Button(root, text = "Delete Account", command = lambda: other_del_acct(usrTf.get()))
             b.grid(row = 3, column = 1)
             root.mainloop()
 

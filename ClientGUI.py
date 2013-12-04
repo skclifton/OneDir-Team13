@@ -186,7 +186,7 @@ class LoggedIn(Frame):
                 box.showinfo("", "You must enter a new username")
 
     def changePw(self):
-        new_pw = tkSimpleDialog.askstring(title="Change Password", prompt="New Password")
+        new_pw = tkSimpleDialog.askstring(title="Change Password", prompt="New Password", show="*")
         if new_pw is not None:
             if new_pw is not "":
                 cli = Client.Client()
