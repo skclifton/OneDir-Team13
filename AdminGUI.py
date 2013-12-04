@@ -108,18 +108,21 @@ class LoggedOut(Frame):
             root.wm_title("View User Info")
             userinfo = urllib.urlopen(config.url + "/userinfo").read().split('\t')
             #print "{0:<20} {1:>20}".format("Username", "Password")
-            a = Label(root, text = "{0:<20} {1:>20}".format("Username", "Password"))
+            a = Label(root, text = "{0:<20} {1:>20} {2:>20}".format("Username", "Password", "Key"))
             a.pack()
             #print "-"*41
             b = Label(root, text = "-"*41)
             b.pack()
             i = 0
             j = 1
-            while j < len(userinfo):
+            k = 2
+            while k < len(userinfo):
                 #print "{0:20} {1:>20}".format(userinfo[i], userinfo[j])
-                c = Label(root, text = "{0:20} {1:>20}".format(userinfo[i], userinfo[j]))
-                i += 2
-                j += 2
+                c = Label(root, text = "{0:20} {1:>20} {2:>20}".format(userinfo[i], userinfo[j], userinfo[k]))
+                c.pack()
+                i += 3
+                j += 3
+                k += 3
 
         def view_sync_info():
             # print '---------- START SYNC HISTORY ----------'
@@ -133,12 +136,12 @@ class LoggedOut(Frame):
             root.option_add('*Entry*background', 'white')
             root.option_add('*Entry*foreground', blue)
             usernameLabel = Label(root, text="Username:")
-            a = Label(root, text = "---------- START SYNC HISTORY ----------")
-            a.pack()
+            # a = Label(root, text = "---------- START SYNC HISTORY ----------")
+            # a.pack()
             b = Label(root, text = urllib.urlopen(config.url + "/synchistory").read())
             b.pack()
-            c = Label(root, text = "---------- END SYNC HISTORY ----------")
-            c.pack()
+            # c = Label(root, text = "---------- END SYNC HISTORY ----------")
+            # c.pack()
             root.mainloop()
 
         def view_file_info():
@@ -219,11 +222,11 @@ class LoggedOut(Frame):
 
 def main():
     root = Tk()
-    root.option_add('*background', gray)
-    root.option_add('*foreground', 'white')
-    root.option_add('*Button*background', blue)
+    root.option_add('*background', blue)
+    root.option_add('*foreground', gray)
+    root.option_add('*Button*background', 'white')
     root.option_add('*Entry*background', 'white')
-    root.option_add('*Entry*foreground', blue)
+    #root.option_add('*Entry*foreground', blue)
     app = LoggedOut(root)
     root.mainloop()
 
