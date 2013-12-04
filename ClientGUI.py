@@ -106,8 +106,8 @@ class LoggedOut(Frame):
 
 
     def centerWindow(self):
-        w = 330 #317
-        h = 150
+        w = 330
+        h = 140
 
         sw = self.parent.winfo_screenwidth()
         sh = self.parent.winfo_screenheight()
@@ -214,8 +214,8 @@ class LoggedIn(Frame):
             box.showinfo('',response)
 
     def centerWindow(self):
-        w = 160#142
-        h = 200
+        w = 160
+        h = 215
 
         sw = self.parent.winfo_screenwidth()
         sh = self.parent.winfo_screenheight()
