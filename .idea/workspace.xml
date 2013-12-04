@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Admin.py" afterPath="$PROJECT_DIR$/Admin.py" />
+    <list default="true" id="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" name="Default" comment="added ability for admin to remove files when deleting a user">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AdminGUI.py" afterPath="$PROJECT_DIR$/AdminGUI.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server.py" afterPath="$PROJECT_DIR$/Server.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClientGUI.py" afterPath="$PROJECT_DIR$/ClientGUI.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TkinterTutorial.py" afterPath="$PROJECT_DIR$/TkinterTutorial.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="OneDir-Team13.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1386020355344" ignored="false" />
-    <file path="/Server.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1386019924901" ignored="false" />
-    <file path="/Admin.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1385757458265" ignored="false" />
-    <file path="/Client.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1385756978960" ignored="false" />
-    <file path="/gui_sample.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1385756099320" ignored="false" />
-    <file path="/LocalFileMonitor.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1384810266705" ignored="false" />
-    <file path="/AdminGUI.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1386020833831" ignored="false" />
-    <file path="/config.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1385579975992" ignored="false" />
+    <file path="/Dummy.txt" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1386123266645" ignored="false" />
+    <file path="/TkinterTutorial.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1385930280003" ignored="false" />
+    <file path="/Client.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1385922558966" ignored="false" />
+    <file path="/Server.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1385146216529" ignored="false" />
+    <file path="/config.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1385398434702" ignored="false" />
+    <file path="/ClientGUI.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1386017937646" ignored="false" />
+    <file path="/AdminGUI.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1386122426577" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,10 +35,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Admin.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Admin.py">
+      <file leaf-file-name="LocalFileMonitor.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LocalFileMonitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="55" selection-start="3483" selection-end="3497" vertical-scroll-proportion="0.0">
+            <state line="11" column="32" selection-start="202" selection-end="202" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -48,52 +47,16 @@
       <file leaf-file-name="Server.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="244" column="19" selection-start="7899" selection-end="7899" vertical-scroll-proportion="0.0">
+            <state line="249" column="17" selection-start="8000" selection-end="8000" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config.py">
+      <file leaf-file-name="Admin.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="8" selection-start="50" selection-end="50" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdminGUI.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/AdminGUI.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="116" column="110" selection-start="4124" selection-end="4124" vertical-scroll-proportion="0.61567163">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientGUI.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ClientGUI.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="211" column="10" selection-start="6694" selection-end="6694" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="crypto.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/crypto.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="36" selection-start="1977" selection-end="1977" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gui_sample.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gui_sample.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="8" selection-start="109" selection-end="109" vertical-scroll-proportion="0.0">
+            <state line="74" column="0" selection-start="2996" selection-end="2996" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -102,7 +65,54 @@
       <file leaf-file-name="Client.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="134" column="7" selection-start="4817" selection-end="4817" vertical-scroll-proportion="0.0">
+            <state line="39" column="9" selection-start="1051" selection-end="1051" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClientGUI.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ClientGUI.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="108" column="15" selection-start="3437" selection-end="3437" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdminGUI.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/AdminGUI.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="130" column="42" selection-start="4556" selection-end="4556" vertical-scroll-proportion="0.3872">
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Tkinter.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file:///usr/lib/python2.7/lib-tk/Tkinter.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1766" column="0" selection-start="72278" selection-end="72278" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TkinterTutorial.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TkinterTutorial.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="40" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="13" selection-start="41" selection-end="41" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -127,15 +137,16 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
+        <option value="$PROJECT_DIR$/LocalFileMonitor.py" />
         <option value="$PROJECT_DIR$/user_input2.py" />
         <option value="$PROJECT_DIR$/user_input.py" />
-        <option value="$PROJECT_DIR$/LocalFileMonitor.py" />
-        <option value="$PROJECT_DIR$/config.py" />
-        <option value="$PROJECT_DIR$/gui_sample.py" />
         <option value="$PROJECT_DIR$/Admin.py" />
-        <option value="$PROJECT_DIR$/ClientGUI.py" />
+        <option value="$PROJECT_DIR$/config.py" />
+        <option value="$PROJECT_DIR$/ClientLoggedInGUI.py" />
+        <option value="$PROJECT_DIR$/TkinterTutorial.py" />
         <option value="$PROJECT_DIR$/Client.py" />
         <option value="$PROJECT_DIR$/Server.py" />
+        <option value="$PROJECT_DIR$/ClientGUI.py" />
         <option value="$PROJECT_DIR$/AdminGUI.py" />
       </list>
     </option>
@@ -143,8 +154,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="64" />
     <option name="y" value="-4" />
-    <option name="width" value="1377" />
-    <option name="height" value="905" />
+    <option name="width" value="1537" />
+    <option name="height" value="811" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -219,7 +230,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.AdminGUI">
+  <component name="RunManager" selected="Python.Server">
     <configuration default="false" name="Server" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -238,44 +249,6 @@
       <RunnerSettings RunnerId="PyDebugRunner" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PyDebugRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="AdminGUI" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="OneDir-Team13" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AdminGUI.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="ClientGUI" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="OneDir-Team13" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ClientGUI.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
@@ -298,7 +271,7 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="gui_sample" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="ClientGUI" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -311,7 +284,47 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="OneDir-Team13" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/gui_sample.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ClientGUI.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonCover" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonCover" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="AdminGUI" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="OneDir-Team13" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AdminGUI.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Client" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="OneDir-Team13" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Client.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
@@ -446,18 +459,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.Server" />
-      <item index="1" class="java.lang.String" itemvalue="Python.AdminGUI" />
+      <item index="1" class="java.lang.String" itemvalue="Python.Admin" />
       <item index="2" class="java.lang.String" itemvalue="Python.ClientGUI" />
-      <item index="3" class="java.lang.String" itemvalue="Python.Admin" />
-      <item index="4" class="java.lang.String" itemvalue="Python.gui_sample" />
+      <item index="3" class="java.lang.String" itemvalue="Python.AdminGUI" />
+      <item index="4" class="java.lang.String" itemvalue="Python.Client" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.AdminGUI" />
-        <item index="1" class="java.lang.String" itemvalue="Python.ClientGUI" />
-        <item index="2" class="java.lang.String" itemvalue="Python.Server" />
-        <item index="3" class="java.lang.String" itemvalue="Python.gui_sample" />
-        <item index="4" class="java.lang.String" itemvalue="Python.Admin" />
+        <item index="0" class="java.lang.String" itemvalue="Python.Server" />
+        <item index="1" class="java.lang.String" itemvalue="Python.AdminGUI" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Admin" />
+        <item index="3" class="java.lang.String" itemvalue="Python.ClientGUI" />
+        <item index="4" class="java.lang.String" itemvalue="Python.Client" />
       </list>
     </recent_temporary>
   </component>
@@ -553,21 +566,21 @@
       <created>1384739939469</created>
       <updated>1384739939469</updated>
     </task>
-    <task id="LOCAL-00018" summary="added ability for admin to remove files when deleting a user">
-      <created>1385756328294</created>
-      <updated>1385756328294</updated>
+    <task id="LOCAL-00018" summary="Minor bug fixes to admin">
+      <created>1385146618920</created>
+      <updated>1385146618920</updated>
     </task>
-    <task id="LOCAL-00019" summary="Added GUI capabilities to AdminGUI file">
-      <created>1385756365556</created>
-      <updated>1385756365556</updated>
+    <task id="LOCAL-00019" summary="Added file containing UI basics">
+      <created>1385147139806</created>
+      <updated>1385147139806</updated>
     </task>
-    <task id="LOCAL-00020" summary="Add GUI capabilities to AdminGUI file&#10;">
-      <created>1385757042016</created>
-      <updated>1385757042016</updated>
+    <task id="LOCAL-00020" summary="updates to client GUI">
+      <created>1385411586466</created>
+      <updated>1385411586466</updated>
     </task>
-    <task id="LOCAL-00021" summary="Add GUI capabilities to AdminGUI file&#10;">
-      <created>1385757507498</created>
-      <updated>1385757507499</updated>
+    <task id="LOCAL-00021" summary="minor changes to GUIs">
+      <created>1386019631412</created>
+      <updated>1386019631412</updated>
     </task>
     <option name="localTasksCounter" value="22" />
     <servers>
@@ -586,25 +599,25 @@
     </servers>
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-4" width="1377" height="905" extended-state="6" />
+    <frame x="64" y="-4" width="1537" height="811" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977098" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34490567" sideWeight="0.75" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39915967" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2486702" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32845744" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.10313901" sideWeight="0.57746476" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3984733" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.0976431" sideWeight="0.45648855" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41221374" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928678" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32764506" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977098" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -652,7 +665,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add GUI capabilities to AdminGUI file&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor changes to GUIs" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -678,21 +691,16 @@
     <MESSAGE value="updates to admin functions" />
     <MESSAGE value="minor changes to make admin functions work" />
     <MESSAGE value="added ability for admin to remove files when deleting a user" />
-    <MESSAGE value="Added GUI capabilities to AdminGUI file" />
-    <MESSAGE value="Add GUI capabilities to AdminGUI file&#10;" />
+    <MESSAGE value="Minor bug fixes to admin" />
+    <MESSAGE value="Added file containing UI basics" />
+    <MESSAGE value="updates to client GUI" />
+    <MESSAGE value="minor changes to GUIs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="0" selection-start="835" selection-end="835" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client.py">
+    <entry file="file://$PROJECT_DIR$/LocalFileMonitor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
@@ -702,11 +710,6 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python2.7/socket.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="302" column="0" selection-start="10320" selection-end="10320" vertical-scroll-proportion="0.33333334" />
       </provider>
     </entry>
     <entry file="file:///usr/lib/python2.7/urllib.py">
@@ -719,69 +722,83 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LocalFileMonitor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="15" selection-start="1120" selection-end="1120" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user_input.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="11" selection-start="4779" selection-end="4779" vertical-scroll-proportion="0.8128342" />
+        <state line="110" column="11" selection-start="4779" selection-end="4779" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client.py">
+    <entry file="file:///usr/lib/python2.7/genericpath.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="7" selection-start="4817" selection-end="4817" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="48" column="0" selection-start="1320" selection-end="1320" vertical-scroll-proportion="0.33150685" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/crypto.py">
+    <entry file="file://$PROJECT_DIR$/LocalFileMonitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="36" selection-start="1977" selection-end="1977" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gui_sample.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="8" selection-start="109" selection-end="109" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ClientGUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="211" column="10" selection-start="6694" selection-end="6694" vertical-scroll-proportion="0.0">
+        <state line="11" column="32" selection-start="202" selection-end="202" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="8" selection-start="50" selection-end="50" vertical-scroll-proportion="0.0">
+        <state line="3" column="13" selection-start="41" selection-end="41" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TkinterTutorial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="40" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/socket.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="189" column="57" selection-start="6412" selection-end="6412" vertical-scroll-proportion="5.7083335" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="9" selection-start="1051" selection-end="1051" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="244" column="19" selection-start="7899" selection-end="7899" vertical-scroll-proportion="0.0">
+        <state line="249" column="17" selection-start="8000" selection-end="8000" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="55" selection-start="3483" selection-end="3497" vertical-scroll-proportion="0.0">
+        <state line="74" column="0" selection-start="2996" selection-end="2996" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ClientGUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="108" column="15" selection-start="3437" selection-end="3437" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/lib-tk/Tkinter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1766" column="0" selection-start="72278" selection-end="72278" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AdminGUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="110" selection-start="4124" selection-end="4124" vertical-scroll-proportion="0.61567163">
-          <folding />
+        <state line="130" column="42" selection-start="4556" selection-end="4556" vertical-scroll-proportion="0.3872">
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
