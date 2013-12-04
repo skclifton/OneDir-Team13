@@ -17,11 +17,6 @@ class LocalFileMonitor():
         thread.start_new_thread(self.notifier.loop, ())
 
 class EventHandler(ProcessEvent):
-
-    #def process_IN_CREATE(self, event):
-    #    if not "~lock" in event.pathname:
-    #       self.uploadFile(event.pathname)
-
     def process_IN_DELETE(self, event):
         if not "~lock" in event.pathname:
             urllib.urlopen(config.url + "/delete/" + config.username + '/' + config.password + '/' + event.pathname)

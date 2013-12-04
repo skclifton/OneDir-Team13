@@ -168,7 +168,6 @@ class LoggedIn(Frame):
         syncCb.select()
         syncCb.grid(row=5, column=0)
 
-
     def onSyncClick(self):
         if self.sync.get() == 1:
             config.run = True

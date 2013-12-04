@@ -24,101 +24,9 @@ class Client:
             time.sleep(n)
             if config.run:
                 self.sync(False)
-            # get any updated server files every n seconds
-            # sdhflksdj;flkj;
 
     def CLI(self):
-        # loggedOutMenu = 'Choose an action by typing the number:\n1: exit\n2: create account\n3: login\n8: help'
-        #
-        # loggedInMenu = 'Choose an action by typing the number:\n1: exit\n2: create account\n3: login\n' \
-        #                '4: turn sync on\n5: turn sync off\n6: change username\n7: change password\n8: help'
-        #
-        # if self.logged_in:
-        #     print loggedInMenu
-        # else:
-        #     print loggedOutMenu
-        #
-        command = ''
-        #
-        # while True:
-        #     command = raw_input('CMD: ').split()
-        #
-        #     if self.logged_in \
-        #         and not (command[0] == '1'
-        #                  or command[0] == '2'
-        #                  or command[0] == '3'
-        #                  or command[0] == '4'
-        #                  or command[0] == '5'
-        #                  or command[0] == '6'
-        #                  or command[0] == '7'
-        #                  or command[0] == '8'):
-        #         print 'invalid command'
-        #         continue
-        #
-        #     elif not self.logged_in \
-        #         and not (command[0] == '1'
-        #                  or command[0] == '2'
-        #                  or command[0] == '3'
-        #                  or command[0] == '8'):
-        #         print 'invalid command'
-        #         continue
-        #
-        #     else:
-        #         # exit
-        #         if command[0] == '1':
-        #             thread.exit()
-        #             exit(0)
-        #
-        #         # create a new account
-        #         if command[0] == '2':
-        #             usr = raw_input("Username: ")
-        #             pw = 'a'
-        #             confirm_pw = 'b'
-        #             while pw != confirm_pw:
-        #                 pw = raw_input("Password: ")
-        #                 confirm_pw = raw_input("Confirm your password: ")
-        #                 if pw != confirm_pw:
-        #                     print "Passwords do not match."
-        #             self.create_account(usr, pw)
-        #
-        #         # login
-        #         if command[0] == '3':
-        #             if self.login(): #thread.start_new_thread(self.login(), ()):
-        #                 print "Successfully Logged in."
-        #                 print loggedInMenu
-        #             else:
-        #                 print "Incorrect username or password."
-        #
-        #         # turn sync on
-        #         if command[0] == '4':
-        #             config.run = True
-        #
-        #         # turn sync off
-        #         if command[0] == '5':
-        #             config.run = False
-        #
-        #         # change username
-        #         if command[0] == '6':
-        #             success = self.change_username(config.username, config.password)
-        #             if success == 'success':
-        #                 print 'Username successfully changed.'
-        #             else:
-        #                 print 'Ya done goofed ;-D'
-        #
-        #         # change password
-        #         if command[0] == '7':
-        #             success = self.change_password(config.username, config.password)
-        #             if success == 'success':
-        #                 print 'Password successfully changed.'
-        #             else:
-        #                 print 'Ya done goofed ;-D'
-        #
-        #         # help/print menu
-        #         if command[0] == '8':
-        #             if self.logged_in:
-        #                 print loggedInMenu
-        #             else:
-        #                 print loggedOutMenu
+        pass
 
     def login(self, username, password):
         log = urllib.urlopen(config.url+"/login/" + username + "/" + password).read()
@@ -132,24 +40,11 @@ class Client:
             thread.start_new_thread(self.update, ())
             return True
         return False
-    '''
-    def create_account(self):
-        usr = raw_input("Username: ")
-        pw = 'a'
-        confirm_pw = 'b'
-        while pw != confirm_pw:
-            pw = raw_input("Password: ")
-            confirm_pw = raw_input("Confirm your password: ")
-            if pw != confirm_pw:
-                print "Passwords do not match."
-
-    '''
 
     def create_account(self, usr, pw):
         response = urllib.urlopen(config.url+"/account/"+usr+"/"+pw)
         if response.read() != 'created':
             return "Account Exists"
-            # self.create_account()
         else:
             return "Account Created."
 
@@ -225,7 +120,6 @@ class Client:
                         #cipher = AESCipher(config.key)
                         #dlFile.write(cipher.decrypt(data))
 
-
         #make the user's filepaths match the server's
         if upload:
             if len(local_files) > 0:
@@ -238,9 +132,9 @@ class Client:
                     local_path = '/'.join(local_path)
                     local_path = os.environ['HOME'] + '/onedir/' + config.username + '/' + local_path
 
-
                     if os.path.isfile(file) and (local_path not in server_files or float(os.path.getmtime(file)) > float(urllib.urlopen(config.url+'/lastmodified'+local_path).read())):
                         uploadFile(file)
+
 
 def uploadFile(filePath):
     if config.run:
@@ -258,3 +152,6 @@ def uploadFile(filePath):
                     line.append(str(ord(x)))
                 urllib.urlopen(config.url+"/upload/"+config.username+"/"+config.password+"/" + ' '.join(line) + filePath)
 
+
+if __name__ == "__main__":
+    Client()
