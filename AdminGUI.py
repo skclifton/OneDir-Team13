@@ -14,7 +14,6 @@ from Tkinter import *
 gray = "#626864"
 blue = "#639793"
 
-
 class LoggedOut(Frame):
     def __init__(self, parent):
         Frame.__init__(self, parent)
@@ -135,33 +134,6 @@ class LoggedOut(Frame):
         def view_file_info():
             root = Tk()
             root.wm_title("View File Info")
-
-#             self._widgets = []
-#             rows = 10
-#             columns = 5
-#
-#             label1 = Label(root, text='Username')
-#             label1.grid(row=0, column=0)
-#             gap = Label(root, text='    '
-# z)
-#             label2 = Label(root, text='File Size (kb)')
-#             label2.grid(row=0, column=1)
-#             label3 = Label(root, text='Number of Files')
-#             label3.grid(row=0, column=2)
-#
-#             for row in range(rows):
-#                 current_row = []
-#                 for column in range(columns):
-#                     label = Label(root, text='Hello?')
-#                     label.grid(row=1, column=1, sticky='nsew', padx=1, pady=1)
-#                     current_row.append(label)
-#                 self.widgets.append(current_row)
-#
-#             for column in range(columns):
-#                 root.grid_columnconfigure(column, weight=10)
-
-
-
             fileinfo = urllib.urlopen(config.url + "/fileinfo").read().split('\t')
             a = Label(root, text="{0:<20} {1:^20} {2:>20}".format("User", "File Size", "Number of Files"))
             a.pack()
