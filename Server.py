@@ -161,7 +161,7 @@ def login(username, password):
     if value is None:
         return "failure"
     else:
-        return value[2]
+        return 'success'
 
 @app.route('/list/<username>/<password>')
 def list(username, password):

@@ -238,5 +238,5 @@ def main():
 
 
 if __name__ == '__main__':
-    #config.url = sys.argv[1]
+    config.url = sys.argv[1]
     main()
