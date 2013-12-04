@@ -16,6 +16,7 @@ signal(SIGPIPE,SIG_DFL)
 con = sqlite3.connect("accounts.db", check_same_thread=False)
 con.isolation_level = None
 c = con.cursor()
+#s
 
 c.execute("create table if not exists accounts (usr, password)")
 
@@ -25,6 +26,7 @@ def create_account(username, password):
     c.execute(command)
     value = c.fetchone()
 
+    
     if value != None:
         return 'exists' #"The specified email address already exists in the database."
 
@@ -93,11 +95,9 @@ def upload(username, password, data, file):
 
         upload = open(filename, 'ab')
         #print "Writing line: " + data
-
         data = data.split()
         for data in data:
             upload.write(chr(int(data)))
-
         upload.close()
 
         return 'success'

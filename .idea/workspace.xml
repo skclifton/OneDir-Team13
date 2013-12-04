@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Admin.py" afterPath="$PROJECT_DIR$/Admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AdminGUI.py" afterPath="$PROJECT_DIR$/AdminGUI.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ClientGUI.py" afterPath="$PROJECT_DIR$/ClientGUI.py" />
+    <list default="true" id="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" name="Default" comment="Add GUI capabilities to AdminGUI file&#10;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client.py" afterPath="$PROJECT_DIR$/Client.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="OneDir-Team13.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1386122993947" ignored="false" />
-    <file path="/Server.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1386019924901" ignored="false" />
-    <file path="/Admin.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1386123980332" ignored="false" />
+    <file path="/Dummy.txt" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1385756891941" ignored="false" />
+    <file path="/Server.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1385580998888" ignored="false" />
+    <file path="/Admin.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1385581438562" ignored="false" />
     <file path="/Client.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1385756978960" ignored="false" />
     <file path="/gui_sample.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1385756099320" ignored="false" />
     <file path="/LocalFileMonitor.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1384810266705" ignored="false" />
-    <file path="/AdminGUI.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1386123278249" ignored="false" />
+    <file path="/AdminGUI.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1385756266044" ignored="false" />
     <file path="/config.py" changelist="afe5bf4d-f5ef-49c2-ae24-d86b340b229b" time="1385579975992" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +37,7 @@
       <file leaf-file-name="Admin.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="12" selection-start="94" selection-end="94" vertical-scroll-proportion="-3.387097">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -50,7 +48,7 @@
       <file leaf-file-name="Server.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="270" column="0" selection-start="8795" selection-end="8795" vertical-scroll-proportion="0.0">
+            <state line="182" column="52" selection-start="5892" selection-end="5892" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -59,36 +57,16 @@
       <file leaf-file-name="config.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="8" selection-start="50" selection-end="50" vertical-scroll-proportion="0.0">
+            <state line="3" column="23" selection-start="62" selection-end="62" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminGUI.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="AdminGUI.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AdminGUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="51" selection-start="1987" selection-end="1987" vertical-scroll-proportion="-6.612903">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientGUI.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ClientGUI.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="188" column="99" selection-start="6077" selection-end="6077" vertical-scroll-proportion="0.6">
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="crypto.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/crypto.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="36" selection-start="1977" selection-end="1977" vertical-scroll-proportion="0.0">
+            <state line="137" column="49" selection-start="5076" selection-end="5076" vertical-scroll-proportion="1.4673913">
               <folding />
             </state>
           </provider>
@@ -106,10 +84,19 @@
       <file leaf-file-name="Client.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="12" selection-start="1064" selection-end="1064" vertical-scroll-proportion="0.0">
+            <state line="18" column="23" selection-start="322" selection-end="322" vertical-scroll-proportion="49.35484">
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClientGUI.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ClientGUI.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="172" column="10" selection-start="5211" selection-end="5211" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -122,6 +109,7 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitLogSettings">
@@ -136,20 +124,19 @@
         <option value="$PROJECT_DIR$/user_input.py" />
         <option value="$PROJECT_DIR$/LocalFileMonitor.py" />
         <option value="$PROJECT_DIR$/config.py" />
-        <option value="$PROJECT_DIR$/gui_sample.py" />
-        <option value="$PROJECT_DIR$/Client.py" />
         <option value="$PROJECT_DIR$/Server.py" />
+        <option value="$PROJECT_DIR$/gui_sample.py" />
         <option value="$PROJECT_DIR$/AdminGUI.py" />
         <option value="$PROJECT_DIR$/Admin.py" />
-        <option value="$PROJECT_DIR$/ClientGUI.py" />
+        <option value="$PROJECT_DIR$/Client.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="64" />
     <option name="y" value="-4" />
-    <option name="width" value="1377" />
-    <option name="height" value="905" />
+    <option name="width" value="1446" />
+    <option name="height" value="739" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -224,121 +211,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RestoreUpdateTree">
-    <UpdateInfo date="Moments ago" ActionInfo="_Update">
-      <UpdatedFiles>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated from server" />
-          <option name="myStatusName" value="Changed on server" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CHANGED_ON_SERVER" />
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Updated" />
-            <option name="myStatusName" value="Changed" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="UPDATED" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/Client.py</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/ClientGUI.py</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/Server.py</PATH>
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Created" />
-            <option name="myStatusName" value="Created" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="CREATED" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Deleted" />
-            <option name="myStatusName" value="Deleted" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="true" />
-            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Restored" />
-            <option name="myStatusName" value="Will be restored" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="RESTORED" />
-          </FILE-GROUP>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Modified" />
-          <option name="myStatusName" value="Modified" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MODIFIED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Skipped" />
-          <option name="myStatusName" value="Skipped" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="SKIPPED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with conflicts" />
-          <option name="myStatusName" value="Will be merged with conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_CONFLICTS" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with tree conflicts" />
-          <option name="myStatusName" value="Merged with tree conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with property conflicts" />
-          <option name="myStatusName" value="Will be merged with property conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged" />
-          <option name="myStatusName" value="Will be merged" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Not in repository" />
-          <option name="myStatusName" value="Not in repository" />
-          <option name="mySupportsDeletion" value="true" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UNKNOWN" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally added" />
-          <option name="myStatusName" value="Locally added" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_ADDED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally removed" />
-          <option name="myStatusName" value="Locally removed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_REMOVED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Switched" />
-          <option name="myStatusName" value="Switched" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="SWITCHED" />
-        </FILE-GROUP>
-      </UpdatedFiles>
-    </UpdateInfo>
-  </component>
-  <component name="RunManager" selected="Python.ClientGUI">
+  <component name="RunManager" selected="Python.AdminGUI">
     <configuration default="false" name="Server" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -572,8 +445,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.ClientGUI" />
-        <item index="1" class="java.lang.String" itemvalue="Python.AdminGUI" />
+        <item index="0" class="java.lang.String" itemvalue="Python.AdminGUI" />
+        <item index="1" class="java.lang.String" itemvalue="Python.ClientGUI" />
         <item index="2" class="java.lang.String" itemvalue="Python.Server" />
         <item index="3" class="java.lang.String" itemvalue="Python.gui_sample" />
         <item index="4" class="java.lang.String" itemvalue="Python.Admin" />
@@ -680,19 +553,7 @@
       <created>1385756365556</created>
       <updated>1385756365556</updated>
     </task>
-    <task id="LOCAL-00020" summary="Add GUI capabilities to AdminGUI file&#10;">
-      <created>1385757042016</created>
-      <updated>1385757042016</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Add GUI capabilities to AdminGUI file&#10;">
-      <created>1385757507498</created>
-      <updated>1385757507499</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Fix &#10;">
-      <created>1386020947730</created>
-      <updated>1386020947730</updated>
-    </task>
-    <option name="localTasksCounter" value="23" />
+    <option name="localTasksCounter" value="20" />
     <servers>
       <GitHub shared="false">
         <commitMessageFormat>{id} {summary}</commitMessageFormat>
@@ -709,25 +570,25 @@
     </servers>
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-4" width="1377" height="905" extended-state="6" />
+    <frame x="64" y="-4" width="1446" height="739" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977098" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34490567" sideWeight="0.7513298" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32281205" sideWeight="0.6774744" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39915967" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2486702" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32845744" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3225256" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928678" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32764506" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32881355" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -775,7 +636,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix &#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add GUI capabilities to AdminGUI file&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -803,12 +664,18 @@
     <MESSAGE value="added ability for admin to remove files when deleting a user" />
     <MESSAGE value="Added GUI capabilities to AdminGUI file" />
     <MESSAGE value="Add GUI capabilities to AdminGUI file&#10;" />
-    <MESSAGE value="Fix &#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="0" selection-start="835" selection-end="835" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Server.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="0" selection-start="835" selection-end="835" vertical-scroll-proportion="0.0">
@@ -855,9 +722,32 @@
         <state line="110" column="11" selection-start="4779" selection-end="4779" vertical-scroll-proportion="0.8128342" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/crypto.py">
+    <entry file="file://$PROJECT_DIR$/Admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="36" selection-start="1977" selection-end="1977" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ClientGUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="172" column="10" selection-start="5211" selection-end="5211" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="23" selection-start="62" selection-end="62" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="182" column="52" selection-start="5892" selection-end="5892" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -869,51 +759,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="270" column="0" selection-start="8795" selection-end="8795" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="8" selection-start="50" selection-end="50" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AdminGUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="51" selection-start="1987" selection-end="1987" vertical-scroll-proportion="-6.612903">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Client.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="12" selection-start="1064" selection-end="1064" vertical-scroll-proportion="0.0">
+        <state line="18" column="23" selection-start="322" selection-end="322" vertical-scroll-proportion="49.35484">
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Admin.py">
+    <entry file="file://$PROJECT_DIR$/AdminGUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="12" selection-start="94" selection-end="94" vertical-scroll-proportion="-3.387097">
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ClientGUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="188" column="99" selection-start="6077" selection-end="6077" vertical-scroll-proportion="0.6">
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
+        <state line="137" column="49" selection-start="5076" selection-end="5076" vertical-scroll-proportion="1.4673913">
+          <folding />
         </state>
       </provider>
     </entry>
