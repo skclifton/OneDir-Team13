@@ -258,7 +258,3 @@ def uploadFile(filePath):
                     line.append(str(ord(x)))
                 urllib.urlopen(config.url+"/upload/"+config.username+"/"+config.password+"/" + ' '.join(line) + filePath)
 
-
-
-if __name__ == "__main__":
-    Client()
