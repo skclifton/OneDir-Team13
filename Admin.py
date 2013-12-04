@@ -17,7 +17,3 @@ class Admin:
         if urllib.urlopen(config.url + '/' + 'deleteaccount/' + username + '/' + str(deletefiles)).read() == 'success':
             return 'success'
         return 'failure'
-
-if __name__ == "__main__":
-    config.url = sys.argv[1]
-    Admin()
