@@ -143,13 +143,10 @@ class Client:
             if pw != confirm_pw:
                 print "Passwords do not match."
 
-        key = cipher.generateKey()
-        response = urllib.urlopen(config.url+"/account/"+usr+"/"+pw+"/"+key)
     '''
 
     def create_account(self, usr, pw):
-        config.key = str(datetime.now())
-        response = urllib.urlopen(config.url+"/account/"+usr+"/"+pw+"/"+config.key)
+        response = urllib.urlopen(config.url+"/account/"+usr+"/"+pw)
         if response.read() != 'created':
             return "Account Exists"
             # self.create_account()

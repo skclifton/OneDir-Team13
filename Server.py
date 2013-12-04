@@ -17,10 +17,10 @@ con = sqlite3.connect("accounts.db", check_same_thread=False)
 con.isolation_level = None
 c = con.cursor()
 
-c.execute("create table if not exists accounts (usr, password, key)")
+c.execute("create table if not exists accounts (usr, password)")
 
-@app.route('/account/<username>/<password>/<key>')
-def create_account(username, password, key):
+@app.route('/account/<username>/<password>/')
+def create_account(username, password):
     command = "select * from accounts where usr = '%s'" % username
     c.execute(command)
     value = c.fetchone()
@@ -30,7 +30,7 @@ def create_account(username, password, key):
 
     #pw = getpass.getpass("New Password: ")
     #confirm_pw = getpass.getpass("Confirm Password: ")
-    c.execute("insert into accounts values (?, ?, ?)", (username, password, key))
+    c.execute("insert into accounts values (?, ?)", (username, password))
     return 'created'
 
 
@@ -240,7 +240,7 @@ def user_info():
     c.execute(command)
     user = c.fetchone()
     while user is not None:
-        retStr += user[0] + "\t" + user[1] + "\t" + user[2] + "\t"
+        retStr += user[0] + "\t" + user[1] + "\t"
         user = c.fetchone()
     return retStr
 
