@@ -6,7 +6,6 @@ import time
 import os
 import thread
 from pyinotify import *
-from crypto import AESCipher
 import LocalFileMonitor
 import config
 #s
@@ -34,7 +33,6 @@ class Client:
             config.username = username
             config.password = password
             self.logged_in = True
-            config.key = log # log will be the key if login is successful
             self.lfm = thread.start_new_thread(LocalFileMonitor.LocalFileMonitor, ())
             self.sync(True)
             thread.start_new_thread(self.update, ())
@@ -135,7 +133,6 @@ class Client:
                     if os.path.isfile(file) and (local_path not in server_files or float(os.path.getmtime(file)) > float(urllib.urlopen(config.url+'/lastmodified'+local_path).read())):
                         uploadFile(file)
 
-
 def uploadFile(filePath):
     if config.run:
         with open(filePath, 'rb') as upload:
@@ -152,6 +149,3 @@ def uploadFile(filePath):
                     line.append(str(ord(x)))
                 urllib.urlopen(config.url+"/upload/"+config.username+"/"+config.password+"/" + ' '.join(line) + filePath)
 
-
-if __name__ == "__main__":
-    Client()
