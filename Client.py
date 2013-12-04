@@ -102,7 +102,8 @@ class Client:
                 if has:
                     local_time = float(os.path.getmtime(server_path))
                     server_time = float(urllib.urlopen(config.url+'/lastmodified'+file).read())
-                    server_newer = server_time > local_time
+                    #server_newer = server_time > local_time
+                    server_newer = server_time - local_time > 30
                 if (valid and not has) or server_newer:
                     server_path = server_path.split('/')
                     filename = server_path.pop()

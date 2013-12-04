@@ -19,7 +19,7 @@ class LocalFileMonitor():
 class EventHandler(ProcessEvent):
     def process_IN_DELETE(self, event):
         if not "~lock" in event.pathname:
-            urllib.urlopen(config.url + "/delete/" + config.username + '/' + config.password + '/' + event.pathname)
+            urllib.urlopen(config.url + "/delete/" + config.username + '/' + config.password + event.pathname)
 
     def process_IN_MOVED_FROM(self, event):
         urllib.urlopen(config.url + '/delete/' + config.username + '/' + config.password + event.pathname)
