@@ -240,7 +240,7 @@ def user_info():
     c.execute(command)
     user = c.fetchone()
     while user is not None:
-        retStr += user[0] + "\t" + user[1] + "\t" + user[2] + "\t"
+        retStr += user[0] + "\t" + user[1] + "\t"
         user = c.fetchone()
     return retStr
 
