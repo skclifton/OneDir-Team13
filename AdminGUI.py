@@ -43,16 +43,28 @@ class LoggedOut(Frame):
         onedirLabel.grid(row=0, column=0, rowspan=2)
 
 
-        def other_del_acct(usr):
+        def true_del_acct(usr):
             if not (usr == ''):
                 adm = Admin.Admin()
-                response = adm.delete_account(usr, deletefiles=True)
+                response = adm.delete_account(usr, deletefiles='Y')
                 if response == 'failure':
                     del_acct_error(self)
                 else:
                     del_acct_success(self)
             else:
                 error(self)
+
+        def false_del_acct(usr):
+            if not (usr == ''):
+                adm = Admin.Admin()
+                response = adm.delete_account(usr, deletefiles='f')
+                if response == 'failure':
+                    del_acct_error(self)
+                else:
+                    del_acct_success(self)
+            else:
+                error(self)
+
 
 
         def del_acct():
@@ -65,8 +77,10 @@ class LoggedOut(Frame):
             usernameLabel.grid(row=2, column=0, pady=5, padx=5)
             usrTf = Entry(root)
             usrTf.grid(row=2, column=1, columnspan=2, padx=5, sticky=E + W)
-            b = Button(root, text="Delete Account", command=lambda: other_del_acct(usrTf.get()))
+            b = Button(root, text="Delete Account and Files", command=lambda: true_del_acct(usrTf.get()))
             b.grid(row=3, column=1)
+            c = Button(root, text = "Delete Account and Keep Files", command = lambda: false_del_acct(usrTf.get()))
+            c.grid(row=3, column=2)
             root.mainloop()
 
         def other_reset_pw(usr, pw):
@@ -151,6 +165,7 @@ class LoggedOut(Frame):
             root.mainloop()
 
 
+
         def error(self):
             box.showerror("", "Enter a username")
 
@@ -207,6 +222,6 @@ def main():
 
 
 if __name__ == '__main__':
-    config.url = sys.argv[1]
+    #config.url = sys.argv[1]
     main()
 
