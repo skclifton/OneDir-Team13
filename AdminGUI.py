@@ -43,6 +43,7 @@ class LoggedOut(Frame):
         onedirLabel = Label(self, text="OneDir Admin", font='25')
         onedirLabel.grid(row=0, column=0, rowspan=2)
 
+
         def other_del_acct(usr):
             if not (usr == ''):
                 adm = Admin.Admin()
@@ -53,6 +54,7 @@ class LoggedOut(Frame):
                     del_acct_success(self)
             else:
                 error(self)
+
 
         def del_acct():
             root = Tk()
@@ -78,6 +80,7 @@ class LoggedOut(Frame):
                     change_pw_success(self)
             else:
                 error_2(self)
+
 
         def reset_pw():
             root = Tk()
@@ -133,29 +136,29 @@ class LoggedOut(Frame):
             root = Tk()
             root.wm_title("View File Info")
 
-            #             self._widgets = []
-            #             rows = 10
-            #             columns = 5
-            #
-            #             label1 = Label(root, text='Username')
-            #             label1.grid(row=0, column=0)
-            #             gap = Label(root, text='    '
-            # z)
-            #             label2 = Label(root, text='File Size (kb)')
-            #             label2.grid(row=0, column=1)
-            #             label3 = Label(root, text='Number of Files')
-            #             label3.grid(row=0, column=2)
-            #
-            #             for row in range(rows):
-            #                 current_row = []
-            #                 for column in range(columns):
-            #                     label = Label(root, text='Hello?')
-            #                     label.grid(row=1, column=1, sticky='nsew', padx=1, pady=1)
-            #                     current_row.append(label)
-            #                 self.widgets.append(current_row)
-            #
-            #             for column in range(columns):
-            #                 root.grid_columnconfigure(column, weight=10)
+#             self._widgets = []
+#             rows = 10
+#             columns = 5
+#
+#             label1 = Label(root, text='Username')
+#             label1.grid(row=0, column=0)
+#             gap = Label(root, text='    '
+# z)
+#             label2 = Label(root, text='File Size (kb)')
+#             label2.grid(row=0, column=1)
+#             label3 = Label(root, text='Number of Files')
+#             label3.grid(row=0, column=2)
+#
+#             for row in range(rows):
+#                 current_row = []
+#                 for column in range(columns):
+#                     label = Label(root, text='Hello?')
+#                     label.grid(row=1, column=1, sticky='nsew', padx=1, pady=1)
+#                     current_row.append(label)
+#                 self.widgets.append(current_row)
+#
+#             for column in range(columns):
+#                 root.grid_columnconfigure(column, weight=10)
 
 
 
@@ -173,10 +176,6 @@ class LoggedOut(Frame):
                 i += 3
                 j += 3
                 k += 3
-
-            # scrollbar = Scrollbar(root)
-            # scrollbar.pack(side=RIGHT, fill=Y)
-
             root.mainloop()
 
 
