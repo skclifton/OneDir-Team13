@@ -8,4 +8,5 @@ sudo pip install pycrypto
 
 clear
 
-python Client.py
+
+python ClientGUI.py $1

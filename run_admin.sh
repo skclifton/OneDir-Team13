@@ -1,1 +1,1 @@
-python Admin.py
+python AdminGUI.py $1
