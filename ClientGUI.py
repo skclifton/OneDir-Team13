@@ -7,6 +7,7 @@ import Client
 import config
 from Tkinter import *
 from Tkinter import *
+import sys
 
 gray = "#363A37"
 blue = "#639793"
@@ -238,4 +239,5 @@ def main():
 
 
 if __name__ == '__main__':
+    config.url = sys.argv[1]
     main()

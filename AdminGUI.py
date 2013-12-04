@@ -7,6 +7,7 @@ import Admin
 import Client
 import urllib
 import config
+import sys
 
 from Tkinter import *
 
@@ -220,5 +221,6 @@ def main():
 
 
 if __name__ == '__main__':
+    config.url = sys.argv[1]
     main()
 
