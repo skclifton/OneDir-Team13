@@ -47,12 +47,17 @@ class LoggedOut(Frame):
             if not (usr == ''):
                 adm = Admin.Admin()
                 response = adm.delete_account(usr, deletefiles='Y')
+                if response == 'nofiles':
+                    no_files_error(self)
                 if response == 'failure':
                     del_acct_error(self)
                 else:
                     del_acct_success(self)
             else:
                 error(self)
+
+        def no_files_error(self):
+            box.showerror("", "User has no files")
 
         def false_del_acct(usr):
             if not (usr == ''):
@@ -222,6 +227,6 @@ def main():
 
 
 if __name__ == '__main__':
-    #config.url = sys.argv[1]
+    config.url = sys.argv[1]
     main()
 
